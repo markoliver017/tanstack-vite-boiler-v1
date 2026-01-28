@@ -48,10 +48,10 @@ export default function PrivateLayout({
                 </header>
                 <main className="wrapper">{children}</main>
             </div>
-            <div className="fixed bottom-0 right-0 left-0 z-50">
+            {/* <div className="fixed bottom-0 right-0 left-0 z-50">
                 Context:
                 <pre>{JSON.stringify(context, null, 2)}</pre>
-            </div>
+            </div> */}
         </SidebarProvider>
     );
 }

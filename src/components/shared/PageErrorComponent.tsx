@@ -1,4 +1,5 @@
 export default function PageErrorComponent({ error }: { error: Error }) {
+    console.log(error);
     return (
         <div className="bg-yellow-50 p-4">
             <h3 className="font-bold">ERROR</h3>

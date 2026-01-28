@@ -9,23 +9,24 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as SignInRouteImport } from './routes/sign-in'
 import { Route as PublicRouteImport } from './routes/_public'
 import { Route as AuthenticatedRouteImport } from './routes/_authenticated'
 import { Route as PublicIndexRouteImport } from './routes/_public/index'
-import { Route as PublicSignUpRouteImport } from './routes/_public/sign-up'
 import { Route as PublicAboutRouteImport } from './routes/_public/about'
 import { Route as AuthenticatedUsersRouteImport } from './routes/_authenticated/users'
+import { Route as AuthenticatedPatientsRouteImport } from './routes/_authenticated/patients'
 import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
+import { Route as authSignUpRouteImport } from './routes/(auth)/sign-up'
+import { Route as authSignInRouteImport } from './routes/(auth)/sign-in'
+import { Route as authCenteredRouteImport } from './routes/(auth)/_centered'
 import { Route as AuthenticatedUsersCreateRouteImport } from './routes/_authenticated/users.create'
 import { Route as AuthenticatedUsersUserIdRouteImport } from './routes/_authenticated/users.$userId'
 import { Route as AuthenticatedDashboardSettingsRouteImport } from './routes/_authenticated/dashboard.settings'
+import { Route as authCenteredResetPasswordRouteImport } from './routes/(auth)/_centered.reset-password'
+import { Route as authCenteredForgotPasswordRouteImport } from './routes/(auth)/_centered.forgot-password'
+import { Route as authCenteredAuthVerificationRouteImport } from './routes/(auth)/_centered.auth-verification'
+import { Route as authCenteredAuthErrorRouteImport } from './routes/(auth)/_centered.auth-error'
 
-const SignInRoute = SignInRouteImport.update({
-  id: '/sign-in',
-  path: '/sign-in',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const PublicRoute = PublicRouteImport.update({
   id: '/_public',
   getParentRoute: () => rootRouteImport,
@@ -39,11 +40,6 @@ const PublicIndexRoute = PublicIndexRouteImport.update({
   path: '/',
   getParentRoute: () => PublicRoute,
 } as any)
-const PublicSignUpRoute = PublicSignUpRouteImport.update({
-  id: '/sign-up',
-  path: '/sign-up',
-  getParentRoute: () => PublicRoute,
-} as any)
 const PublicAboutRoute = PublicAboutRouteImport.update({
   id: '/about',
   path: '/about',
@@ -54,10 +50,29 @@ const AuthenticatedUsersRoute = AuthenticatedUsersRouteImport.update({
   path: '/users',
   getParentRoute: () => AuthenticatedRoute,
 } as any)
+const AuthenticatedPatientsRoute = AuthenticatedPatientsRouteImport.update({
+  id: '/patients',
+  path: '/patients',
+  getParentRoute: () => AuthenticatedRoute,
+} as any)
 const AuthenticatedDashboardRoute = AuthenticatedDashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
   getParentRoute: () => AuthenticatedRoute,
+} as any)
+const authSignUpRoute = authSignUpRouteImport.update({
+  id: '/(auth)/sign-up',
+  path: '/sign-up',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const authSignInRoute = authSignInRouteImport.update({
+  id: '/(auth)/sign-in',
+  path: '/sign-in',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const authCenteredRoute = authCenteredRouteImport.update({
+  id: '/(auth)/_centered',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const AuthenticatedUsersCreateRoute =
   AuthenticatedUsersCreateRouteImport.update({
@@ -77,25 +92,58 @@ const AuthenticatedDashboardSettingsRoute =
     path: '/settings',
     getParentRoute: () => AuthenticatedDashboardRoute,
   } as any)
+const authCenteredResetPasswordRoute =
+  authCenteredResetPasswordRouteImport.update({
+    id: '/reset-password',
+    path: '/reset-password',
+    getParentRoute: () => authCenteredRoute,
+  } as any)
+const authCenteredForgotPasswordRoute =
+  authCenteredForgotPasswordRouteImport.update({
+    id: '/forgot-password',
+    path: '/forgot-password',
+    getParentRoute: () => authCenteredRoute,
+  } as any)
+const authCenteredAuthVerificationRoute =
+  authCenteredAuthVerificationRouteImport.update({
+    id: '/auth-verification',
+    path: '/auth-verification',
+    getParentRoute: () => authCenteredRoute,
+  } as any)
+const authCenteredAuthErrorRoute = authCenteredAuthErrorRouteImport.update({
+  id: '/auth-error',
+  path: '/auth-error',
+  getParentRoute: () => authCenteredRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof PublicIndexRoute
-  '/sign-in': typeof SignInRoute
+  '/sign-in': typeof authSignInRoute
+  '/sign-up': typeof authSignUpRoute
   '/dashboard': typeof AuthenticatedDashboardRouteWithChildren
+  '/patients': typeof AuthenticatedPatientsRoute
   '/users': typeof AuthenticatedUsersRouteWithChildren
   '/about': typeof PublicAboutRoute
-  '/sign-up': typeof PublicSignUpRoute
+  '/auth-error': typeof authCenteredAuthErrorRoute
+  '/auth-verification': typeof authCenteredAuthVerificationRoute
+  '/forgot-password': typeof authCenteredForgotPasswordRoute
+  '/reset-password': typeof authCenteredResetPasswordRoute
   '/dashboard/settings': typeof AuthenticatedDashboardSettingsRoute
   '/users/$userId': typeof AuthenticatedUsersUserIdRoute
   '/users/create': typeof AuthenticatedUsersCreateRoute
 }
 export interface FileRoutesByTo {
   '/': typeof PublicIndexRoute
-  '/sign-in': typeof SignInRoute
+  '/sign-in': typeof authSignInRoute
+  '/sign-up': typeof authSignUpRoute
   '/dashboard': typeof AuthenticatedDashboardRouteWithChildren
+  '/patients': typeof AuthenticatedPatientsRoute
   '/users': typeof AuthenticatedUsersRouteWithChildren
   '/about': typeof PublicAboutRoute
-  '/sign-up': typeof PublicSignUpRoute
+  '/auth-error': typeof authCenteredAuthErrorRoute
+  '/auth-verification': typeof authCenteredAuthVerificationRoute
+  '/forgot-password': typeof authCenteredForgotPasswordRoute
+  '/reset-password': typeof authCenteredResetPasswordRoute
   '/dashboard/settings': typeof AuthenticatedDashboardSettingsRoute
   '/users/$userId': typeof AuthenticatedUsersUserIdRoute
   '/users/create': typeof AuthenticatedUsersCreateRoute
@@ -104,12 +152,18 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/_authenticated': typeof AuthenticatedRouteWithChildren
   '/_public': typeof PublicRouteWithChildren
-  '/sign-in': typeof SignInRoute
+  '/(auth)/_centered': typeof authCenteredRouteWithChildren
+  '/(auth)/sign-in': typeof authSignInRoute
+  '/(auth)/sign-up': typeof authSignUpRoute
   '/_authenticated/dashboard': typeof AuthenticatedDashboardRouteWithChildren
+  '/_authenticated/patients': typeof AuthenticatedPatientsRoute
   '/_authenticated/users': typeof AuthenticatedUsersRouteWithChildren
   '/_public/about': typeof PublicAboutRoute
-  '/_public/sign-up': typeof PublicSignUpRoute
   '/_public/': typeof PublicIndexRoute
+  '/(auth)/_centered/auth-error': typeof authCenteredAuthErrorRoute
+  '/(auth)/_centered/auth-verification': typeof authCenteredAuthVerificationRoute
+  '/(auth)/_centered/forgot-password': typeof authCenteredForgotPasswordRoute
+  '/(auth)/_centered/reset-password': typeof authCenteredResetPasswordRoute
   '/_authenticated/dashboard/settings': typeof AuthenticatedDashboardSettingsRoute
   '/_authenticated/users/$userId': typeof AuthenticatedUsersUserIdRoute
   '/_authenticated/users/create': typeof AuthenticatedUsersCreateRoute
@@ -119,10 +173,15 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/sign-in'
+    | '/sign-up'
     | '/dashboard'
+    | '/patients'
     | '/users'
     | '/about'
-    | '/sign-up'
+    | '/auth-error'
+    | '/auth-verification'
+    | '/forgot-password'
+    | '/reset-password'
     | '/dashboard/settings'
     | '/users/$userId'
     | '/users/create'
@@ -130,10 +189,15 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/sign-in'
+    | '/sign-up'
     | '/dashboard'
+    | '/patients'
     | '/users'
     | '/about'
-    | '/sign-up'
+    | '/auth-error'
+    | '/auth-verification'
+    | '/forgot-password'
+    | '/reset-password'
     | '/dashboard/settings'
     | '/users/$userId'
     | '/users/create'
@@ -141,12 +205,18 @@ export interface FileRouteTypes {
     | '__root__'
     | '/_authenticated'
     | '/_public'
-    | '/sign-in'
+    | '/(auth)/_centered'
+    | '/(auth)/sign-in'
+    | '/(auth)/sign-up'
     | '/_authenticated/dashboard'
+    | '/_authenticated/patients'
     | '/_authenticated/users'
     | '/_public/about'
-    | '/_public/sign-up'
     | '/_public/'
+    | '/(auth)/_centered/auth-error'
+    | '/(auth)/_centered/auth-verification'
+    | '/(auth)/_centered/forgot-password'
+    | '/(auth)/_centered/reset-password'
     | '/_authenticated/dashboard/settings'
     | '/_authenticated/users/$userId'
     | '/_authenticated/users/create'
@@ -155,18 +225,13 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   AuthenticatedRoute: typeof AuthenticatedRouteWithChildren
   PublicRoute: typeof PublicRouteWithChildren
-  SignInRoute: typeof SignInRoute
+  authCenteredRoute: typeof authCenteredRouteWithChildren
+  authSignInRoute: typeof authSignInRoute
+  authSignUpRoute: typeof authSignUpRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/sign-in': {
-      id: '/sign-in'
-      path: '/sign-in'
-      fullPath: '/sign-in'
-      preLoaderRoute: typeof SignInRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/_public': {
       id: '/_public'
       path: ''
@@ -188,13 +253,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PublicIndexRouteImport
       parentRoute: typeof PublicRoute
     }
-    '/_public/sign-up': {
-      id: '/_public/sign-up'
-      path: '/sign-up'
-      fullPath: '/sign-up'
-      preLoaderRoute: typeof PublicSignUpRouteImport
-      parentRoute: typeof PublicRoute
-    }
     '/_public/about': {
       id: '/_public/about'
       path: '/about'
@@ -209,12 +267,40 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedUsersRouteImport
       parentRoute: typeof AuthenticatedRoute
     }
+    '/_authenticated/patients': {
+      id: '/_authenticated/patients'
+      path: '/patients'
+      fullPath: '/patients'
+      preLoaderRoute: typeof AuthenticatedPatientsRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
     '/_authenticated/dashboard': {
       id: '/_authenticated/dashboard'
       path: '/dashboard'
       fullPath: '/dashboard'
       preLoaderRoute: typeof AuthenticatedDashboardRouteImport
       parentRoute: typeof AuthenticatedRoute
+    }
+    '/(auth)/sign-up': {
+      id: '/(auth)/sign-up'
+      path: '/sign-up'
+      fullPath: '/sign-up'
+      preLoaderRoute: typeof authSignUpRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/(auth)/sign-in': {
+      id: '/(auth)/sign-in'
+      path: '/sign-in'
+      fullPath: '/sign-in'
+      preLoaderRoute: typeof authSignInRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/(auth)/_centered': {
+      id: '/(auth)/_centered'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof authCenteredRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/_authenticated/users/create': {
       id: '/_authenticated/users/create'
@@ -236,6 +322,34 @@ declare module '@tanstack/react-router' {
       fullPath: '/dashboard/settings'
       preLoaderRoute: typeof AuthenticatedDashboardSettingsRouteImport
       parentRoute: typeof AuthenticatedDashboardRoute
+    }
+    '/(auth)/_centered/reset-password': {
+      id: '/(auth)/_centered/reset-password'
+      path: '/reset-password'
+      fullPath: '/reset-password'
+      preLoaderRoute: typeof authCenteredResetPasswordRouteImport
+      parentRoute: typeof authCenteredRoute
+    }
+    '/(auth)/_centered/forgot-password': {
+      id: '/(auth)/_centered/forgot-password'
+      path: '/forgot-password'
+      fullPath: '/forgot-password'
+      preLoaderRoute: typeof authCenteredForgotPasswordRouteImport
+      parentRoute: typeof authCenteredRoute
+    }
+    '/(auth)/_centered/auth-verification': {
+      id: '/(auth)/_centered/auth-verification'
+      path: '/auth-verification'
+      fullPath: '/auth-verification'
+      preLoaderRoute: typeof authCenteredAuthVerificationRouteImport
+      parentRoute: typeof authCenteredRoute
+    }
+    '/(auth)/_centered/auth-error': {
+      id: '/(auth)/_centered/auth-error'
+      path: '/auth-error'
+      fullPath: '/auth-error'
+      preLoaderRoute: typeof authCenteredAuthErrorRouteImport
+      parentRoute: typeof authCenteredRoute
     }
   }
 }
@@ -269,11 +383,13 @@ const AuthenticatedUsersRouteWithChildren =
 
 interface AuthenticatedRouteChildren {
   AuthenticatedDashboardRoute: typeof AuthenticatedDashboardRouteWithChildren
+  AuthenticatedPatientsRoute: typeof AuthenticatedPatientsRoute
   AuthenticatedUsersRoute: typeof AuthenticatedUsersRouteWithChildren
 }
 
 const AuthenticatedRouteChildren: AuthenticatedRouteChildren = {
   AuthenticatedDashboardRoute: AuthenticatedDashboardRouteWithChildren,
+  AuthenticatedPatientsRoute: AuthenticatedPatientsRoute,
   AuthenticatedUsersRoute: AuthenticatedUsersRouteWithChildren,
 }
 
@@ -283,23 +399,41 @@ const AuthenticatedRouteWithChildren = AuthenticatedRoute._addFileChildren(
 
 interface PublicRouteChildren {
   PublicAboutRoute: typeof PublicAboutRoute
-  PublicSignUpRoute: typeof PublicSignUpRoute
   PublicIndexRoute: typeof PublicIndexRoute
 }
 
 const PublicRouteChildren: PublicRouteChildren = {
   PublicAboutRoute: PublicAboutRoute,
-  PublicSignUpRoute: PublicSignUpRoute,
   PublicIndexRoute: PublicIndexRoute,
 }
 
 const PublicRouteWithChildren =
   PublicRoute._addFileChildren(PublicRouteChildren)
 
+interface authCenteredRouteChildren {
+  authCenteredAuthErrorRoute: typeof authCenteredAuthErrorRoute
+  authCenteredAuthVerificationRoute: typeof authCenteredAuthVerificationRoute
+  authCenteredForgotPasswordRoute: typeof authCenteredForgotPasswordRoute
+  authCenteredResetPasswordRoute: typeof authCenteredResetPasswordRoute
+}
+
+const authCenteredRouteChildren: authCenteredRouteChildren = {
+  authCenteredAuthErrorRoute: authCenteredAuthErrorRoute,
+  authCenteredAuthVerificationRoute: authCenteredAuthVerificationRoute,
+  authCenteredForgotPasswordRoute: authCenteredForgotPasswordRoute,
+  authCenteredResetPasswordRoute: authCenteredResetPasswordRoute,
+}
+
+const authCenteredRouteWithChildren = authCenteredRoute._addFileChildren(
+  authCenteredRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   AuthenticatedRoute: AuthenticatedRouteWithChildren,
   PublicRoute: PublicRouteWithChildren,
-  SignInRoute: SignInRoute,
+  authCenteredRoute: authCenteredRouteWithChildren,
+  authSignInRoute: authSignInRoute,
+  authSignUpRoute: authSignUpRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

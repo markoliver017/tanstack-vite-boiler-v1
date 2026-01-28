@@ -8,8 +8,14 @@ export const signInSchema = z.object({
     callbackURL: z.string().optional(),
 });
 
+export const forgotPasswordSchema = z.object({
+    email: z.email("Please enter a valid email address"),
+});
+
 export const searchSchema = z.object({
     redirect: z.string().optional(),
 });
 
 export type SignInValues = z.infer<typeof signInSchema>;
+
+export type ForgotPasswordValues = z.infer<typeof forgotPasswordSchema>;

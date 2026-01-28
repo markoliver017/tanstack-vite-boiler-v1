@@ -83,7 +83,7 @@ export function CreateUserForm({ onSuccess }: { onSuccess: () => void }) {
                                     onValueChange={field.onChange}
                                 >
                                     <SelectTrigger
-                                        className="w-[180px]"
+                                        className="w-45"
                                         aria-invalid={fieldState.invalid}
                                     >
                                         <SelectValue placeholder="Select Role" />

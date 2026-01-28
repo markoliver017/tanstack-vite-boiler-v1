@@ -34,6 +34,12 @@
     .container {
         @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
     }
+    .container-center {
+        @apply max-w-7xl mx-auto min-h-8/12 px-4 sm:px-6 lg:px-8 flex items-center justify-center;
+    }
+    .border-test {
+        @apply border-2 border-dashed border-red-500;
+    }
 }
 
 @theme inline {

@@ -26,3 +26,12 @@ export const getInitials = (fullName: string): string => {
         .map((name) => name[0])
         .join("");
 };
+
+export const getBaseUrl = () => {
+    return import.meta.env.VITE_APP_URL || "http://localhost:3000";
+};
+
+export const getCallbackUrl = (redirect?: string) => {
+    const baseUrl = getBaseUrl();
+    return redirect ? `${baseUrl}${redirect}` : `${baseUrl}/dashboard`;
+};

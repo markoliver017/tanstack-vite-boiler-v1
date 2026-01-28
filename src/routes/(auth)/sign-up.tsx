@@ -1,10 +1,8 @@
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+
+import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { useSignIn } from "./mutations";
-import { signInSchema, type SignInValues } from "./zAuthSchema";
-import { standardSchemaResolver } from "@hookform/resolvers/standard-schema";
-import { Link, useSearch } from "@tanstack/react-router";
-import { toast, Toaster } from "sonner";
-import { motion } from "framer-motion";
+import { Button } from "@/components/shadcn-ui/button";
 import {
     Form,
     FormControl,
@@ -14,46 +12,74 @@ import {
     FormMessage,
 } from "@/components/shadcn-ui/form";
 import { Input } from "@/components/shadcn-ui/input";
-import { Button } from "@/components/shadcn-ui/button";
-import { Checkbox } from "@/components/shadcn-ui/checkbox";
-import { Eye, EyeOff, Lock, Mail } from "lucide-react";
-import { useState } from "react";
-import { Card, CardContent } from "@/components/shadcn-ui/card";
-import { authClient } from "@/lib/auth/auth-client";
-import { getCallbackUrl } from "@/lib/utils";
+import { useMutation } from "@tanstack/react-query";
 
-export default function LoginForm() {
-    const { redirect } = useSearch({ from: "/(auth)/sign-in" });
+import { toast } from "sonner";
+import { useState } from "react";
+import {
+    AlertCircle,
+    User,
+    Mail,
+    Lock,
+    ArrowRight,
+    EyeOff,
+    Eye,
+} from "lucide-react";
+import { authClient } from "@/lib/auth/auth-client";
+import { signUpSchema, type SignUpValues } from "@/features/users/zUsersSchema";
+import { getCallbackUrl } from "@/lib/utils";
+import PreloaderAlert from "@/components/shared/PreloaderAlert";
+import { Card, CardContent } from "@/components/shadcn-ui/card";
+import { motion } from "framer-motion";
+
+export const Route = createFileRoute("/(auth)/sign-up")({
+    component: RouteComponent,
+});
+
+function RouteComponent() {
+    const navigate = useNavigate();
     const [showPassword, setShowPassword] = useState(false);
     const [googleSigningIn, setGoogleSigningIn] = useState(false);
 
-    const { mutate, isPending } = useSignIn();
-    const form = useForm<SignInValues>({
-        resolver: standardSchemaResolver(signInSchema),
-        defaultValues: {
-            email: "",
-            password: "",
-            role: "user",
-            rememberMe: false,
-            callbackURL: redirect || "/dashboard",
+    const {
+        mutate: signUp,
+        isPending,
+        error,
+        isError,
+    } = useMutation({
+        mutationFn: async (values: SignUpValues) => {
+            const response = await authClient.signUp.email(values);
+            if (response.error) {
+                throw response.error;
+            }
+            return {
+                success: true,
+                message: "Sign up successful",
+            };
+        },
+        onSuccess: (response, variables) => {
+            toast.success(response.message);
+            navigate({ to: variables.callbackURL });
+        },
+        onError: (error) => {
+            toast.error(error.message);
         },
     });
 
-    const onSubmit = (data: SignInValues) => {
-        mutate(data, {
-            onSuccess: (res) => {
-                form.reset();
-                if (typeof res === "string") {
-                    toast.success(`Login successfull: ${res}`);
-                } else {
-                    toast.success(`Login successful: ${JSON.stringify(res)}`);
-                }
-            },
-            onError: (err) => {
-                toast.error(`Login failed: ${err?.message || "Unknown error"}`);
-            },
-        });
-    };
+    const form = useForm<SignUpValues>({
+        resolver: zodResolver(signUpSchema),
+        defaultValues: {
+            name: "",
+            email: "",
+            password: "",
+            callbackURL: getCallbackUrl("/auth-verification"),
+        },
+    });
+
+    function onSubmit(values: SignUpValues) {
+        const callbackURL = `/auth-verification?email=${values.email}`;
+        signUp({ ...values, callbackURL });
+    }
 
     const handleLoginProvider = async () => {
         setGoogleSigningIn(true);
@@ -61,7 +87,7 @@ export default function LoginForm() {
         try {
             const res = await authClient.signIn.social({
                 provider: "google",
-                callbackURL: getCallbackUrl(redirect),
+                callbackURL: getCallbackUrl("/dashboard"),
                 errorCallbackURL: getCallbackUrl("/auth-error"),
                 // newUserCallbackURL: "/auth-welcome",
                 disableRedirect: false,
@@ -76,8 +102,6 @@ export default function LoginForm() {
 
     return (
         <div className="flex min-h-screen w-full flex-col lg:flex-row">
-            <Toaster position="top-center" />
-
             {/* LEFT PANEL: Branding (Visible on Large Screens) */}
             <div className="hidden lg:flex w-1/2 flex-col items-center justify-center bg-primary p-12 text-primary-foreground">
                 <motion.div
@@ -86,7 +110,6 @@ export default function LoginForm() {
                     className="flex flex-col items-center text-center space-y-6"
                 >
                     <div className="h-48 w-48 rounded-full bg-white/10 p-4 backdrop-blur-sm border border-white/20 shadow-2xl">
-                        {/* Replace with your actual logo path */}
                         <img
                             src="/pcmc_logo.png"
                             alt="PCMC Logo"
@@ -118,7 +141,6 @@ export default function LoginForm() {
                                 className="flex flex-col items-center text-center space-y-6"
                             >
                                 <div className="h-24 w-24 rounded-full bg-white/10 p-2 backdrop-blur-sm border border-white/20 shadow-2xl">
-                                    {/* Replace with your actual logo path */}
                                     <img
                                         src="/pcmc_logo.png"
                                         alt="PCMC Logo"
@@ -136,10 +158,10 @@ export default function LoginForm() {
                             </motion.div>
                         </div>
                         <h2 className="hidden lg:block text-2xl font-bold text-slate-900">
-                            Welcome Back
+                            Create an Account
                         </h2>
                         <p className="mt-2 text-sm text-slate-500">
-                            Please enter your details to sign in.
+                            Please fill in the details to register.
                         </p>
                     </div>
 
@@ -148,6 +170,36 @@ export default function LoginForm() {
                             onSubmit={form.handleSubmit(onSubmit)}
                             className="space-y-5"
                         >
+                            {isError && (
+                                <div className="p-3 bg-red-50 border border-red-200 rounded-lg flex gap-3 items-center animate-in fade-in slide-in-from-top-2">
+                                    <AlertCircle className="h-5 w-5 text-red-600" />
+                                    <span className="text-red-700 text-sm font-medium">
+                                        {error?.message}
+                                    </span>
+                                </div>
+                            )}
+                            <FormField
+                                control={form.control}
+                                name="name"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel className="text-slate-700 font-semibold">
+                                            Full Name
+                                        </FormLabel>
+                                        <FormControl>
+                                            <div className="relative">
+                                                <User className="absolute left-3 top-3 h-4.5 w-4.5 text-slate-400" />
+                                                <Input
+                                                    placeholder="Enter your full name"
+                                                    {...field}
+                                                    className="pl-10 h-11 border-slate-200 bg-slate-50/30 focus:bg-white focus:ring-2 focus:ring-blue-500/20"
+                                                />
+                                            </div>
+                                        </FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
                             <FormField
                                 control={form.control}
                                 name="email"
@@ -170,23 +222,14 @@ export default function LoginForm() {
                                     </FormItem>
                                 )}
                             />
-
                             <FormField
                                 control={form.control}
                                 name="password"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <div className="flex items-center justify-between">
-                                            <FormLabel className="text-slate-700 font-semibold">
-                                                Password
-                                            </FormLabel>
-                                            <Link
-                                                to="/forgot-password" // Typically forgot-password route
-                                                className="text-xs font-bold text-blue-600 hover:text-blue-700 transition-colors"
-                                            >
-                                                Forgot Password?
-                                            </Link>
-                                        </div>
+                                        <FormLabel className="text-slate-700 font-semibold">
+                                            Password
+                                        </FormLabel>
                                         <FormControl>
                                             <div className="relative">
                                                 <Lock className="absolute left-3 top-3 h-4.5 w-4.5 text-slate-400" />
@@ -196,9 +239,9 @@ export default function LoginForm() {
                                                             ? "text"
                                                             : "password"
                                                     }
-                                                    placeholder="••••••••"
+                                                    placeholder="Enter your password"
                                                     {...field}
-                                                    className="pl-10 pr-10 h-11 border-slate-200 bg-slate-50/30 focus:bg-white"
+                                                    className="pl-10 pr-10 h-11 border-slate-200 bg-slate-50/30 focus:bg-white focus:ring-2 focus:ring-blue-500/20"
                                                 />
                                                 <button
                                                     type="button"
@@ -210,9 +253,9 @@ export default function LoginForm() {
                                                     className="absolute right-3 top-3 text-slate-400 hover:text-slate-600"
                                                 >
                                                     {showPassword ? (
-                                                        <EyeOff size={18} />
+                                                        <EyeOff className="h-4 w-4" />
                                                     ) : (
-                                                        <Eye size={18} />
+                                                        <Eye className="h-4 w-4" />
                                                     )}
                                                 </button>
                                             </div>
@@ -221,103 +264,87 @@ export default function LoginForm() {
                                     </FormItem>
                                 )}
                             />
-
-                            <FormField
-                                control={form.control}
-                                name="rememberMe"
-                                render={({ field }) => (
-                                    <FormItem>
-                                        <div className="flex items-center space-x-2">
-                                            <Checkbox
-                                                id="rememberMe"
-                                                checked={field.value}
-                                                onCheckedChange={(checked) =>
-                                                    field.onChange(checked)
-                                                }
-                                            />
-                                            <label
-                                                htmlFor="rememberMe"
-                                                className="text-sm font-medium text-slate-600 cursor-pointer"
-                                            >
-                                                Remember me
-                                            </label>
-                                        </div>
-                                    </FormItem>
-                                )}
-                            />
-
                             <Button
                                 type="submit"
+                                className="w-full h-11 font-semibold shadow-md transition-all bg-primary hover:bg-blue-700"
                                 disabled={isPending}
-                                className="w-full h-11 bg-primary hover:bg-[#003366] text-white font-bold transition-all shadow-lg active:scale-[0.98]"
-                            >
-                                {isPending ? "SIGNING IN..." : "SIGN IN"}
-                            </Button>
-
-                            <div className="relative flex items-center py-2">
-                                <div className="grow border-t border-slate-200"></div>
-                                <span className="mx-4 shrink text-xs font-bold text-slate-400">
-                                    Or continue with
-                                </span>
-                                <div className="grow border-t border-slate-200"></div>
-                            </div>
-
-                            <Button
-                                variant="outline"
-                                type="button"
-                                className="w-full h-11 border-slate-200 text-slate-700 hover:bg-slate-50 font-medium transition-colors"
-                                disabled={isPending || googleSigningIn}
-                                onClick={handleLoginProvider}
                             >
                                 {isPending ? (
-                                    <div className="flex items-center gap-2">
-                                        <span className="h-4 w-4 animate-spin rounded-full border-2 border-slate-500 border-t-transparent" />
-                                        <span>Connecting...</span>
-                                    </div>
+                                    "Creating account..."
                                 ) : (
-                                    <div className="flex items-center justify-center gap-2">
-                                        <svg
-                                            className="h-5 w-5"
-                                            viewBox="0 0 24 24"
-                                        >
-                                            <path
-                                                d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
-                                                fill="#4285F4"
-                                            />
-                                            <path
-                                                d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
-                                                fill="#34A853"
-                                            />
-                                            <path
-                                                d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"
-                                                fill="#FBBC05"
-                                            />
-                                            <path
-                                                d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
-                                                fill="#EA4335"
-                                            />
-                                        </svg>
-                                        <span>Google</span>
-                                    </div>
+                                    <span className="flex items-center justify-center gap-2">
+                                        Create Account{" "}
+                                        <ArrowRight className="size-4" />
+                                    </span>
                                 )}
                             </Button>
                         </form>
                     </Form>
 
+                    <div className="relative">
+                        <div className="absolute inset-0 flex items-center">
+                            <span className="w-full border-t" />
+                        </div>
+                        <div className="relative flex justify-center text-xs uppercase">
+                            <span className="bg-white px-2 text-muted-foreground">
+                                Or continue with
+                            </span>
+                        </div>
+                    </div>
+
+                    <Button
+                        variant="outline"
+                        className="w-full h-11"
+                        onClick={handleLoginProvider}
+                        disabled={googleSigningIn}
+                    >
+                        {googleSigningIn ? (
+                            "Signing up..."
+                        ) : (
+                            <div className="flex items-center gap-2">
+                                <svg
+                                    className="h-5 w-5"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path
+                                        d="M22.5777 12.2592C22.5777 11.4592 22.5077 10.6892 22.3877 9.94922H12.0077V14.2592H18.0677C17.8077 15.6592 17.0277 16.8592 15.8677 17.6592V20.5392H19.7077C21.5677 18.8892 22.5777 15.8892 22.5777 12.2592Z"
+                                        fill="#4285F4"
+                                    />
+                                    <path
+                                        d="M12.0077 23.0001C15.1677 23.0001 17.8177 21.9301 19.7077 20.5401L15.8677 17.6601C14.7977 18.3901 13.4977 18.8301 12.0077 18.8301C9.13773 18.8301 6.72773 16.9501 5.86773 14.4301H1.91772V17.4101C3.80772 20.6901 7.59773 23.0001 12.0077 23.0001Z"
+                                        fill="#34A853"
+                                    />
+                                    <path
+                                        d="M5.86773 14.4299C5.62773 13.7299 5.48773 12.9899 5.48773 12.2299C5.48773 11.4699 5.62773 10.7299 5.86773 10.0299V7.04992H1.91772C1.16772 8.54992 0.727725 10.3199 0.727725 12.2299C0.727725 14.1399 1.16772 15.9099 1.91772 17.4099L5.86773 14.4299Z"
+                                        fill="#FBBC05"
+                                    />
+                                    <path
+                                        d="M12.0077 5.61995C13.6177 5.61995 15.0077 6.16995 16.1377 7.23995L19.7777 3.76995C17.8077 1.95995 15.1577 0.889954 12.0077 0.889954C7.59773 0.889954 3.80772 3.19995 1.91772 6.47995L5.86773 9.45995C6.72773 6.93995 9.13773 5.61995 12.0077 5.61995Z"
+                                        fill="#EA4335"
+                                    />
+                                </svg>
+                                Sign up with Google
+                            </div>
+                        )}
+                    </Button>
+
                     <div className="text-center pt-2">
                         <p className="text-sm text-slate-600">
-                            No account?{" "}
+                            Already have an account?{" "}
                             <Link
-                                to="/sign-up"
+                                to="/sign-in"
                                 className="font-bold text-blue-600 hover:text-blue-700 hover:underline transition-colors"
                             >
-                                Sign up here
+                                Sign in here
                             </Link>
                         </p>
                     </div>
-                    {/* <pre className="text-gray-400 text-sm">
-                        {JSON.stringify(form.watch(), null, 2)}
-                    </pre> */}
+                    <PreloaderAlert
+                        isLoading={isPending || googleSigningIn}
+                        linearBg={false}
+                    />
                 </CardContent>
             </Card>
         </div>

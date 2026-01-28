@@ -71,6 +71,9 @@ importers:
       next-themes:
         specifier: ^0.4.6
         version: 0.4.6(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      philippines:
+        specifier: ^1.0.0
+        version: 1.0.0
       react:
         specifier: ^19.2.0
         version: 19.2.3
@@ -2018,6 +2021,10 @@ packages:
 
   pathe@2.0.3:
     resolution: {integrity: sha512-WUjGcAqP1gQacoQe+OBJsFA7Ld4DyXuUIjZ5cc75cLHvJ7dtNsTugphxIADwspS+AraAUePCKrSVtPLFj/F88w==}
+
+  philippines@1.0.0:
+    resolution: {integrity: sha512-3Hwp/NJKreaESAQoQ8YtuJgS2fyqKec5KiJkMsu2ZHLboLCTCdDbc1Y7rXY8TiL+/z3td7VQBrBUYf8TqlVVyA==}
+    engines: {node: '>=0.10.0'}
 
   picocolors@1.1.1:
     resolution: {integrity: sha512-xceH2snhtb5M9liqDsmEw56le376mTZkEX/jEb/RxNFyegNul7eNslCXP9FDj/Lcu0X8KEyMceP2ntpaHrDEVA==}
@@ -4035,6 +4042,8 @@ snapshots:
   path-key@3.1.1: {}
 
   pathe@2.0.3: {}
+
+  philippines@1.0.0: {}
 
   picocolors@1.1.1: {}
 

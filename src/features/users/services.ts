@@ -12,3 +12,7 @@ export const createUserApi = async (data: CreateUserValues) => {
     mockUsers = [...mockUsers, newUser];
     return newUser;
 };
+
+// export const getUserByEmail = (email: string) => {
+//     const res = await
+// };
