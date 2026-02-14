@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { standardSchemaResolver } from "@hookform/resolvers/standard-schema";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/shadcn-ui/button";
 import {
     Form,
@@ -24,7 +24,7 @@ export function CreateUserForm({ onSuccess }: { onSuccess: () => void }) {
     const { mutate, isPending } = useCreateUser();
 
     const form = useForm<CreateUserValues>({
-        resolver: standardSchemaResolver(createUserSchema),
+        resolver: zodResolver(createUserSchema),
         defaultValues: { name: "", email: "", role: "user" },
     });
 

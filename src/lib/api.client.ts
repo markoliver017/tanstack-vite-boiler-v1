@@ -6,7 +6,7 @@ export async function apiRequest<T>(
 ): Promise<T> {
     const response = await fetch(`${BASE_URL}${endpoint}`, {
         ...options,
-        credentials: "include",
+        credentials: "include", // use in nestjs api calls
         headers: {
             "Content-Type": "application/json",
             ...options?.headers,
@@ -14,11 +14,45 @@ export async function apiRequest<T>(
     });
 
     if (!response.ok) {
-        const errorData = await response.json().catch(() => ({}));
-        throw new Error(
-            errorData.message || "An error occurred while fetching",
-        );
+        try {
+            const errorData = await response.json();
+            throw new Error(
+                errorData.message || "An unknown error occurred while fetching",
+            );
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        } catch (error) {
+            // If the response body is not JSON or doesn't contain a message,
+            // use the HTTP status text as a fallback.
+            throw new Error(
+                response.statusText || "An error occurred while fetching",
+            );
+        }
     }
 
     return response.json();
+}
+
+export async function fetchList<T>(
+    endpoint: string,
+    options?: RequestInit,
+): Promise<{ data: T; total: number }> {
+    const response = await fetch(`${BASE_URL}${endpoint}`, {
+        ...options,
+        credentials: "include", // use in nestjs api calls
+        headers: {
+            "Content-Type": "application/json",
+            ...options?.headers,
+        },
+    });
+
+    if (!response.ok) {
+        throw new Error(
+            response.statusText || "An error occurred while fetching",
+        );
+    }
+
+    const total = Number(response.headers.get("X-Total-Count") || 0);
+    const data = await response.json();
+
+    return { data, total };
 }

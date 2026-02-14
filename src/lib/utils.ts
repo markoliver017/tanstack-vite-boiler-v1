@@ -1,5 +1,6 @@
 import { twMerge } from "tailwind-merge";
 import { clsx, type ClassValue } from "clsx";
+import { format, parse } from "date-fns";
 
 export function cn(...inputs: ClassValue[]) {
     return twMerge(clsx(inputs));
@@ -35,3 +36,8 @@ export const getCallbackUrl = (redirect?: string) => {
     const baseUrl = getBaseUrl();
     return redirect ? `${baseUrl}${redirect}` : `${baseUrl}/dashboard`;
 };
+
+export function formatTimeTo12Hr(time: string) {
+    const parsed = parse(time, "HH:mm", new Date());
+    return format(parsed, "hh:mm a");
+}

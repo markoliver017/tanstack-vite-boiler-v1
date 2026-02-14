@@ -13,19 +13,23 @@ import { Route as PublicRouteImport } from './routes/_public'
 import { Route as AuthenticatedRouteImport } from './routes/_authenticated'
 import { Route as PublicIndexRouteImport } from './routes/_public/index'
 import { Route as PublicAboutRouteImport } from './routes/_public/about'
-import { Route as AuthenticatedUsersRouteImport } from './routes/_authenticated/users'
+import { Route as AuthenticatedProfileRouteImport } from './routes/_authenticated/profile'
 import { Route as AuthenticatedPatientsRouteImport } from './routes/_authenticated/patients'
 import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
 import { Route as authSignUpRouteImport } from './routes/(auth)/sign-up'
 import { Route as authSignInRouteImport } from './routes/(auth)/sign-in'
 import { Route as authCenteredRouteImport } from './routes/(auth)/_centered'
+import { Route as AuthenticatedUsersIndexRouteImport } from './routes/_authenticated/users.index'
+import { Route as AuthenticatedAuditTrailsIndexRouteImport } from './routes/_authenticated/audit-trails.index'
 import { Route as AuthenticatedUsersCreateRouteImport } from './routes/_authenticated/users.create'
 import { Route as AuthenticatedUsersUserIdRouteImport } from './routes/_authenticated/users.$userId'
 import { Route as AuthenticatedDashboardSettingsRouteImport } from './routes/_authenticated/dashboard.settings'
+import { Route as AuthenticatedAuditTrailsAuditTrailIdRouteImport } from './routes/_authenticated/audit-trails.$auditTrailId'
 import { Route as authCenteredResetPasswordRouteImport } from './routes/(auth)/_centered.reset-password'
 import { Route as authCenteredForgotPasswordRouteImport } from './routes/(auth)/_centered.forgot-password'
 import { Route as authCenteredAuthVerificationRouteImport } from './routes/(auth)/_centered.auth-verification'
 import { Route as authCenteredAuthErrorRouteImport } from './routes/(auth)/_centered.auth-error'
+import { Route as AuthenticatedUsersUserIdEditRouteImport } from './routes/_authenticated/users.$userId_.edit'
 
 const PublicRoute = PublicRouteImport.update({
   id: '/_public',
@@ -45,9 +49,9 @@ const PublicAboutRoute = PublicAboutRouteImport.update({
   path: '/about',
   getParentRoute: () => PublicRoute,
 } as any)
-const AuthenticatedUsersRoute = AuthenticatedUsersRouteImport.update({
-  id: '/users',
-  path: '/users',
+const AuthenticatedProfileRoute = AuthenticatedProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
   getParentRoute: () => AuthenticatedRoute,
 } as any)
 const AuthenticatedPatientsRoute = AuthenticatedPatientsRouteImport.update({
@@ -74,23 +78,40 @@ const authCenteredRoute = authCenteredRouteImport.update({
   id: '/(auth)/_centered',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedUsersIndexRoute = AuthenticatedUsersIndexRouteImport.update({
+  id: '/users/',
+  path: '/users/',
+  getParentRoute: () => AuthenticatedRoute,
+} as any)
+const AuthenticatedAuditTrailsIndexRoute =
+  AuthenticatedAuditTrailsIndexRouteImport.update({
+    id: '/audit-trails/',
+    path: '/audit-trails/',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
 const AuthenticatedUsersCreateRoute =
   AuthenticatedUsersCreateRouteImport.update({
-    id: '/create',
-    path: '/create',
-    getParentRoute: () => AuthenticatedUsersRoute,
+    id: '/users/create',
+    path: '/users/create',
+    getParentRoute: () => AuthenticatedRoute,
   } as any)
 const AuthenticatedUsersUserIdRoute =
   AuthenticatedUsersUserIdRouteImport.update({
-    id: '/$userId',
-    path: '/$userId',
-    getParentRoute: () => AuthenticatedUsersRoute,
+    id: '/users/$userId',
+    path: '/users/$userId',
+    getParentRoute: () => AuthenticatedRoute,
   } as any)
 const AuthenticatedDashboardSettingsRoute =
   AuthenticatedDashboardSettingsRouteImport.update({
     id: '/settings',
     path: '/settings',
     getParentRoute: () => AuthenticatedDashboardRoute,
+  } as any)
+const AuthenticatedAuditTrailsAuditTrailIdRoute =
+  AuthenticatedAuditTrailsAuditTrailIdRouteImport.update({
+    id: '/audit-trails/$auditTrailId',
+    path: '/audit-trails/$auditTrailId',
+    getParentRoute: () => AuthenticatedRoute,
   } as any)
 const authCenteredResetPasswordRoute =
   authCenteredResetPasswordRouteImport.update({
@@ -115,6 +136,12 @@ const authCenteredAuthErrorRoute = authCenteredAuthErrorRouteImport.update({
   path: '/auth-error',
   getParentRoute: () => authCenteredRoute,
 } as any)
+const AuthenticatedUsersUserIdEditRoute =
+  AuthenticatedUsersUserIdEditRouteImport.update({
+    id: '/users/$userId_/edit',
+    path: '/users/$userId/edit',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof PublicIndexRoute
@@ -122,15 +149,19 @@ export interface FileRoutesByFullPath {
   '/sign-up': typeof authSignUpRoute
   '/dashboard': typeof AuthenticatedDashboardRouteWithChildren
   '/patients': typeof AuthenticatedPatientsRoute
-  '/users': typeof AuthenticatedUsersRouteWithChildren
+  '/profile': typeof AuthenticatedProfileRoute
   '/about': typeof PublicAboutRoute
   '/auth-error': typeof authCenteredAuthErrorRoute
   '/auth-verification': typeof authCenteredAuthVerificationRoute
   '/forgot-password': typeof authCenteredForgotPasswordRoute
   '/reset-password': typeof authCenteredResetPasswordRoute
+  '/audit-trails/$auditTrailId': typeof AuthenticatedAuditTrailsAuditTrailIdRoute
   '/dashboard/settings': typeof AuthenticatedDashboardSettingsRoute
   '/users/$userId': typeof AuthenticatedUsersUserIdRoute
   '/users/create': typeof AuthenticatedUsersCreateRoute
+  '/audit-trails/': typeof AuthenticatedAuditTrailsIndexRoute
+  '/users/': typeof AuthenticatedUsersIndexRoute
+  '/users/$userId/edit': typeof AuthenticatedUsersUserIdEditRoute
 }
 export interface FileRoutesByTo {
   '/': typeof PublicIndexRoute
@@ -138,15 +169,19 @@ export interface FileRoutesByTo {
   '/sign-up': typeof authSignUpRoute
   '/dashboard': typeof AuthenticatedDashboardRouteWithChildren
   '/patients': typeof AuthenticatedPatientsRoute
-  '/users': typeof AuthenticatedUsersRouteWithChildren
+  '/profile': typeof AuthenticatedProfileRoute
   '/about': typeof PublicAboutRoute
   '/auth-error': typeof authCenteredAuthErrorRoute
   '/auth-verification': typeof authCenteredAuthVerificationRoute
   '/forgot-password': typeof authCenteredForgotPasswordRoute
   '/reset-password': typeof authCenteredResetPasswordRoute
+  '/audit-trails/$auditTrailId': typeof AuthenticatedAuditTrailsAuditTrailIdRoute
   '/dashboard/settings': typeof AuthenticatedDashboardSettingsRoute
   '/users/$userId': typeof AuthenticatedUsersUserIdRoute
   '/users/create': typeof AuthenticatedUsersCreateRoute
+  '/audit-trails': typeof AuthenticatedAuditTrailsIndexRoute
+  '/users': typeof AuthenticatedUsersIndexRoute
+  '/users/$userId/edit': typeof AuthenticatedUsersUserIdEditRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -157,16 +192,20 @@ export interface FileRoutesById {
   '/(auth)/sign-up': typeof authSignUpRoute
   '/_authenticated/dashboard': typeof AuthenticatedDashboardRouteWithChildren
   '/_authenticated/patients': typeof AuthenticatedPatientsRoute
-  '/_authenticated/users': typeof AuthenticatedUsersRouteWithChildren
+  '/_authenticated/profile': typeof AuthenticatedProfileRoute
   '/_public/about': typeof PublicAboutRoute
   '/_public/': typeof PublicIndexRoute
   '/(auth)/_centered/auth-error': typeof authCenteredAuthErrorRoute
   '/(auth)/_centered/auth-verification': typeof authCenteredAuthVerificationRoute
   '/(auth)/_centered/forgot-password': typeof authCenteredForgotPasswordRoute
   '/(auth)/_centered/reset-password': typeof authCenteredResetPasswordRoute
+  '/_authenticated/audit-trails/$auditTrailId': typeof AuthenticatedAuditTrailsAuditTrailIdRoute
   '/_authenticated/dashboard/settings': typeof AuthenticatedDashboardSettingsRoute
   '/_authenticated/users/$userId': typeof AuthenticatedUsersUserIdRoute
   '/_authenticated/users/create': typeof AuthenticatedUsersCreateRoute
+  '/_authenticated/audit-trails/': typeof AuthenticatedAuditTrailsIndexRoute
+  '/_authenticated/users/': typeof AuthenticatedUsersIndexRoute
+  '/_authenticated/users/$userId_/edit': typeof AuthenticatedUsersUserIdEditRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -176,15 +215,19 @@ export interface FileRouteTypes {
     | '/sign-up'
     | '/dashboard'
     | '/patients'
-    | '/users'
+    | '/profile'
     | '/about'
     | '/auth-error'
     | '/auth-verification'
     | '/forgot-password'
     | '/reset-password'
+    | '/audit-trails/$auditTrailId'
     | '/dashboard/settings'
     | '/users/$userId'
     | '/users/create'
+    | '/audit-trails/'
+    | '/users/'
+    | '/users/$userId/edit'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -192,15 +235,19 @@ export interface FileRouteTypes {
     | '/sign-up'
     | '/dashboard'
     | '/patients'
-    | '/users'
+    | '/profile'
     | '/about'
     | '/auth-error'
     | '/auth-verification'
     | '/forgot-password'
     | '/reset-password'
+    | '/audit-trails/$auditTrailId'
     | '/dashboard/settings'
     | '/users/$userId'
     | '/users/create'
+    | '/audit-trails'
+    | '/users'
+    | '/users/$userId/edit'
   id:
     | '__root__'
     | '/_authenticated'
@@ -210,16 +257,20 @@ export interface FileRouteTypes {
     | '/(auth)/sign-up'
     | '/_authenticated/dashboard'
     | '/_authenticated/patients'
-    | '/_authenticated/users'
+    | '/_authenticated/profile'
     | '/_public/about'
     | '/_public/'
     | '/(auth)/_centered/auth-error'
     | '/(auth)/_centered/auth-verification'
     | '/(auth)/_centered/forgot-password'
     | '/(auth)/_centered/reset-password'
+    | '/_authenticated/audit-trails/$auditTrailId'
     | '/_authenticated/dashboard/settings'
     | '/_authenticated/users/$userId'
     | '/_authenticated/users/create'
+    | '/_authenticated/audit-trails/'
+    | '/_authenticated/users/'
+    | '/_authenticated/users/$userId_/edit'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -260,11 +311,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PublicAboutRouteImport
       parentRoute: typeof PublicRoute
     }
-    '/_authenticated/users': {
-      id: '/_authenticated/users'
-      path: '/users'
-      fullPath: '/users'
-      preLoaderRoute: typeof AuthenticatedUsersRouteImport
+    '/_authenticated/profile': {
+      id: '/_authenticated/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof AuthenticatedProfileRouteImport
       parentRoute: typeof AuthenticatedRoute
     }
     '/_authenticated/patients': {
@@ -302,19 +353,33 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof authCenteredRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated/users/': {
+      id: '/_authenticated/users/'
+      path: '/users'
+      fullPath: '/users/'
+      preLoaderRoute: typeof AuthenticatedUsersIndexRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/audit-trails/': {
+      id: '/_authenticated/audit-trails/'
+      path: '/audit-trails'
+      fullPath: '/audit-trails/'
+      preLoaderRoute: typeof AuthenticatedAuditTrailsIndexRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
     '/_authenticated/users/create': {
       id: '/_authenticated/users/create'
-      path: '/create'
+      path: '/users/create'
       fullPath: '/users/create'
       preLoaderRoute: typeof AuthenticatedUsersCreateRouteImport
-      parentRoute: typeof AuthenticatedUsersRoute
+      parentRoute: typeof AuthenticatedRoute
     }
     '/_authenticated/users/$userId': {
       id: '/_authenticated/users/$userId'
-      path: '/$userId'
+      path: '/users/$userId'
       fullPath: '/users/$userId'
       preLoaderRoute: typeof AuthenticatedUsersUserIdRouteImport
-      parentRoute: typeof AuthenticatedUsersRoute
+      parentRoute: typeof AuthenticatedRoute
     }
     '/_authenticated/dashboard/settings': {
       id: '/_authenticated/dashboard/settings'
@@ -322,6 +387,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/dashboard/settings'
       preLoaderRoute: typeof AuthenticatedDashboardSettingsRouteImport
       parentRoute: typeof AuthenticatedDashboardRoute
+    }
+    '/_authenticated/audit-trails/$auditTrailId': {
+      id: '/_authenticated/audit-trails/$auditTrailId'
+      path: '/audit-trails/$auditTrailId'
+      fullPath: '/audit-trails/$auditTrailId'
+      preLoaderRoute: typeof AuthenticatedAuditTrailsAuditTrailIdRouteImport
+      parentRoute: typeof AuthenticatedRoute
     }
     '/(auth)/_centered/reset-password': {
       id: '/(auth)/_centered/reset-password'
@@ -351,6 +423,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof authCenteredAuthErrorRouteImport
       parentRoute: typeof authCenteredRoute
     }
+    '/_authenticated/users/$userId_/edit': {
+      id: '/_authenticated/users/$userId_/edit'
+      path: '/users/$userId/edit'
+      fullPath: '/users/$userId/edit'
+      preLoaderRoute: typeof AuthenticatedUsersUserIdEditRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
   }
 }
 
@@ -368,29 +447,29 @@ const AuthenticatedDashboardRouteWithChildren =
     AuthenticatedDashboardRouteChildren,
   )
 
-interface AuthenticatedUsersRouteChildren {
-  AuthenticatedUsersUserIdRoute: typeof AuthenticatedUsersUserIdRoute
-  AuthenticatedUsersCreateRoute: typeof AuthenticatedUsersCreateRoute
-}
-
-const AuthenticatedUsersRouteChildren: AuthenticatedUsersRouteChildren = {
-  AuthenticatedUsersUserIdRoute: AuthenticatedUsersUserIdRoute,
-  AuthenticatedUsersCreateRoute: AuthenticatedUsersCreateRoute,
-}
-
-const AuthenticatedUsersRouteWithChildren =
-  AuthenticatedUsersRoute._addFileChildren(AuthenticatedUsersRouteChildren)
-
 interface AuthenticatedRouteChildren {
   AuthenticatedDashboardRoute: typeof AuthenticatedDashboardRouteWithChildren
   AuthenticatedPatientsRoute: typeof AuthenticatedPatientsRoute
-  AuthenticatedUsersRoute: typeof AuthenticatedUsersRouteWithChildren
+  AuthenticatedProfileRoute: typeof AuthenticatedProfileRoute
+  AuthenticatedAuditTrailsAuditTrailIdRoute: typeof AuthenticatedAuditTrailsAuditTrailIdRoute
+  AuthenticatedUsersUserIdRoute: typeof AuthenticatedUsersUserIdRoute
+  AuthenticatedUsersCreateRoute: typeof AuthenticatedUsersCreateRoute
+  AuthenticatedAuditTrailsIndexRoute: typeof AuthenticatedAuditTrailsIndexRoute
+  AuthenticatedUsersIndexRoute: typeof AuthenticatedUsersIndexRoute
+  AuthenticatedUsersUserIdEditRoute: typeof AuthenticatedUsersUserIdEditRoute
 }
 
 const AuthenticatedRouteChildren: AuthenticatedRouteChildren = {
   AuthenticatedDashboardRoute: AuthenticatedDashboardRouteWithChildren,
   AuthenticatedPatientsRoute: AuthenticatedPatientsRoute,
-  AuthenticatedUsersRoute: AuthenticatedUsersRouteWithChildren,
+  AuthenticatedProfileRoute: AuthenticatedProfileRoute,
+  AuthenticatedAuditTrailsAuditTrailIdRoute:
+    AuthenticatedAuditTrailsAuditTrailIdRoute,
+  AuthenticatedUsersUserIdRoute: AuthenticatedUsersUserIdRoute,
+  AuthenticatedUsersCreateRoute: AuthenticatedUsersCreateRoute,
+  AuthenticatedAuditTrailsIndexRoute: AuthenticatedAuditTrailsIndexRoute,
+  AuthenticatedUsersIndexRoute: AuthenticatedUsersIndexRoute,
+  AuthenticatedUsersUserIdEditRoute: AuthenticatedUsersUserIdEditRoute,
 }
 
 const AuthenticatedRouteWithChildren = AuthenticatedRoute._addFileChildren(
