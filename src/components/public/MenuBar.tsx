@@ -1,5 +1,5 @@
 import { Link, useLocation } from "@tanstack/react-router";
-import { Book, Contact, Home, Menu, MenuIcon } from "lucide-react";
+import { Home, Menu, MenuIcon, Popcorn, Sparkles, Timer } from "lucide-react";
 import { useState } from "react";
 import { isRouteActive } from "@/lib/utils";
 import { Button } from "../shadcn-ui/button";
@@ -13,9 +13,18 @@ import {
 
 const navItems = [
     { name: "Home", href: "/", icon: <Home className="w-3" /> },
-    { name: "About", href: "/about", icon: <Home className="w-3" /> },
-    { name: "Blog", href: "/blog", icon: <Book className="w-3" /> },
-    { name: "Contact", href: "/contact", icon: <Contact className="w-3" /> },
+    { name: "About", href: "/about", icon: <MenuIcon className="w-3" /> },
+    {
+        name: "Now Showing",
+        href: "/now-showing",
+        icon: <Popcorn className="w-3" />,
+    },
+    { name: "Upcoming", href: "/upcoming", icon: <Timer className="w-3" /> },
+    {
+        name: "Recommended",
+        href: "/recommended",
+        icon: <Sparkles className="w-3" />,
+    },
 ];
 
 export default function MenuBar() {
