@@ -1,8 +1,6 @@
 import { NavHeader } from "@/components/layouts/NavHeader";
 import { Button } from "@/components/shadcn-ui/button";
 import { DataTable } from "@/components/shared/DataTable";
-import LoadingComponent from "@/components/shared/LoadingComponent";
-import PageErrorComponent from "@/components/shared/PageErrorComponent";
 import {
     useBanUser,
     useDeleteUser,
@@ -13,28 +11,25 @@ import {
 import { userListOptions } from "@/features/users/use-users";
 import { userColumns } from "@/features/users/users-columns";
 import { userSearchSchema } from "@/features/users/zUsersSchema";
-import { useSuspenseQuery } from "@tanstack/react-query";
+import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { PlusIcon } from "lucide-react";
 
 export const Route = createFileRoute("/_authenticated/users/")({
     validateSearch: (search) => userSearchSchema.parse(search),
-    loaderDeps: ({ search }) => ({ ...search }),
-    loader: ({ context: { queryClient }, deps }) => {
-        return queryClient.ensureQueryData(userListOptions(deps));
-    },
     staticData: {
         title: "Users Management",
         breadcrumb: "List of Users",
     },
-    errorComponent: ({ error }) => <PageErrorComponent error={error} />,
-    pendingComponent: () => <LoadingComponent />,
     component: UsersPage,
 });
 
 function UsersPage() {
     const search = Route.useSearch();
-    const { data: loaderData } = useSuspenseQuery(userListOptions(search));
+    const { data: loaderData, isFetching } = useQuery({
+        ...userListOptions(search),
+        placeholderData: keepPreviousData,
+    });
 
     const deleteMutation = useDeleteUser();
     const banMutation = useBanUser();
@@ -64,6 +59,15 @@ function UsersPage() {
         });
     };
 
+    // Show loading state only on initial load (no data yet)
+    if (!loaderData && isFetching) {
+        return (
+            <div className="flex items-center justify-center min-h-[400px]">
+                <div className="animate-spin h-8 w-8 border-4 border-gray-300 border-t-blue-600 rounded-full" />
+            </div>
+        );
+    }
+
     return (
         <>
             <NavHeader
@@ -83,6 +87,7 @@ function UsersPage() {
                     searchValue={q}
                     onSearchChange={handleSearch}
                     searchPlaceholder="Search users..."
+                    isLoading={isFetching}
                     sideComponent={
                         <Button variant="success" asChild>
                             <Link

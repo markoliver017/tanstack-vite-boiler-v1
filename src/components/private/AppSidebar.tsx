@@ -6,6 +6,8 @@ import {
     LogOut,
     User,
     ScrollText,
+    Building2,
+    Film,
 } from "lucide-react";
 import {
     Sidebar,
@@ -60,6 +62,31 @@ const items = [
 ];
 
 const adminItems = [
+    {
+        title: "Theater Groups",
+        url: "/theater-groups",
+        icon: Building2,
+    },
+    {
+        title: "Agencies",
+        url: "/agencies",
+        icon: Building2,
+    },
+    {
+        title: "Theaters",
+        url: "/theaters",
+        icon: Building2,
+    },
+    {
+        title: "Cinemas",
+        url: "/cinemas",
+        icon: Film,
+    },
+    {
+        title: "Cinema Formats",
+        url: "/cinema-formats",
+        icon: Film,
+    },
     {
         title: "Users",
         url: "/users",

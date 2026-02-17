@@ -7,6 +7,7 @@ import {
     type ColumnDef,
     type PaginationState,
     type OnChangeFn,
+    getPaginationRowModel,
 } from "@tanstack/react-table";
 import { useState } from "react";
 import { DataTablePagination } from "./DataTablePagination";
@@ -23,6 +24,7 @@ interface DataTableProps<TData> {
     pagination?: PaginationState;
     onPaginationChange?: OnChangeFn<PaginationState>;
     manualPagination?: boolean;
+    isLoading?: boolean;
 }
 
 export function DataTable<TData>({
@@ -36,6 +38,7 @@ export function DataTable<TData>({
     pagination,
     onPaginationChange,
     manualPagination,
+    isLoading = false,
 }: DataTableProps<TData>) {
     // 2. Initialize the table
     const [sorting, setSorting] = useState<SortingState>([]);
@@ -47,12 +50,13 @@ export function DataTable<TData>({
         getCoreRowModel: getCoreRowModel(),
         onSortingChange: setSorting,
         getSortedRowModel: getSortedRowModel(),
+        getPaginationRowModel: getPaginationRowModel(),
         pageCount,
         manualPagination,
         onPaginationChange: onPaginationChange,
         state: {
             sorting,
-            pagination,
+            pagination: pagination ?? undefined,
         },
     });
 
@@ -60,12 +64,19 @@ export function DataTable<TData>({
         <div className="p-4 overflow-x-auto">
             <div className="flex justify-between">
                 {onSearchChange && (
-                    <input
-                        value={searchValue ?? ""}
-                        onChange={(e) => onSearchChange(e.target.value)}
-                        placeholder={searchPlaceholder}
-                        className="p-2 border rounded mb-4 w-full max-w-sm"
-                    />
+                    <div className="relative w-full max-w-sm">
+                        <input
+                            value={searchValue ?? ""}
+                            onChange={(e) => onSearchChange(e.target.value)}
+                            placeholder={searchPlaceholder}
+                            className="p-2 border rounded mb-4 w-full"
+                        />
+                        {isLoading && (
+                            <div className="absolute right-2 top-2">
+                                <div className="animate-spin h-5 w-5 border-2 border-gray-300 border-t-blue-600 rounded-full" />
+                            </div>
+                        )}
+                    </div>
                 )}
                 {sideComponent}
             </div>

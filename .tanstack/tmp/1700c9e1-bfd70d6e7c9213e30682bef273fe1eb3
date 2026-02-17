@@ -1,0 +1,251 @@
+import { createFileRoute } from "@tanstack/react-router";
+import PageErrorComponent from "@/components/shared/PageErrorComponent";
+import LoadingComponent from "@/components/shared/LoadingComponent";
+import { useQuery } from "@tanstack/react-query";
+import { cinemaFormatMapListOptions } from "@/features/cinema-format-map/use-cinema-format-map";
+import {
+    Table,
+    TableBody,
+    TableCell,
+    TableHead,
+    TableHeader,
+    TableRow,
+} from "@/components/shadcn-ui/table";
+import { Button } from "@/components/shadcn-ui/button";
+import { Badge } from "@/components/shadcn-ui/badge";
+import { Trash2, ShieldCheck, Shield } from "lucide-react";
+import Swal from "sweetalert2";
+import AssignFormatToCinemaForm from "@/features/cinema-format-map/AssignFormatToCinemaForm";
+import {
+    Dialog,
+    DialogContent,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+} from "@/components/shadcn-ui/dialog";
+import { useState } from "react";
+import {
+    useRemoveAssignment,
+    useUpdateAssignment,
+} from "@/features/cinema-format-map/mutations";
+
+export const Route = createFileRoute(
+    "/_authenticated/cinemas/$cinemaId_/formats",
+)({
+    staticData: {
+        title: "Cinema Formats",
+        breadcrumb: "Formats",
+    },
+    errorComponent: ({ error }) => <PageErrorComponent error={error} />,
+    pendingComponent: () => <LoadingComponent />,
+    component: CinemaFormatsNestedPage,
+});
+
+function CinemaFormatsNestedPage() {
+    const { cinemaId } = Route.useParams();
+    const id = parseInt(cinemaId, 10);
+    const [isDialogOpen, setIsDialogOpen] = useState(false);
+
+    const { data, refetch } = useQuery(cinemaFormatMapListOptions(id));
+    const assignments = data?.data || [];
+
+    const { mutate: removeAssignment } = useRemoveAssignment();
+    const { mutate: updateAssignment } = useUpdateAssignment();
+
+    const handleDelete = (assignmentId: number) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#d33",
+            cancelButtonColor: "#3085d6",
+            confirmButtonText: "Yes, delete it!",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                removeAssignment(
+                    { id: assignmentId },
+                    {
+                        onSuccess: () => {
+                            Swal.fire(
+                                "Deleted!",
+                                "The format has been removed.",
+                                "success",
+                            );
+                            refetch();
+                        },
+                        onError: (err) => {
+                            const error = err as Error;
+                            Swal.fire(
+                                "Error",
+                                error.message || "Failed to delete",
+                                "error",
+                            );
+                        },
+                    },
+                );
+            }
+        });
+    };
+
+    const handleSetPrimary = (assignmentId: number) => {
+        Swal.fire({
+            title: "Set as Primary?",
+            text: "This will unset any other primary format for this cinema.",
+            icon: "question",
+            showCancelButton: true,
+            confirmButtonText: "Yes, set as primary",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                updateAssignment(
+                    {
+                        id: assignmentId,
+                        data: {
+                            isPrimary: true,
+                            cinemaId: id,
+                            cinemaFormatId: 0,
+                        }, // dummy values for schema reqs if needed, though we passed Partial
+                    },
+                    {
+                        onSuccess: () => {
+                            Swal.fire(
+                                "Success",
+                                "Primary format updated",
+                                "success",
+                            );
+                            refetch();
+                        },
+                        onError: (err) => {
+                            const error = err as Error;
+                            Swal.fire(
+                                "Error",
+                                error.message || "Failed to update",
+                                "error",
+                            );
+                        },
+                    },
+                );
+            }
+        });
+    };
+
+    return (
+        <div className="space-y-6">
+            <div className="flex justify-between items-center">
+                <h3 className="text-lg font-medium">Assigned Formats</h3>
+                <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+                    <DialogTrigger asChild>
+                        <Button variant="success" size="sm">
+                            Assign Format
+                        </Button>
+                    </DialogTrigger>
+                    <DialogContent
+                        className="sm:max-w-[600px]"
+                        id="assign-format-modal"
+                    >
+                        <DialogHeader>
+                            <DialogTitle>Assign Format to Cinema</DialogTitle>
+                        </DialogHeader>
+                        <AssignFormatToCinemaForm
+                            cinemaId={id}
+                            onSuccess={() => {
+                                setIsDialogOpen(false);
+                                refetch();
+                            }}
+                        />
+                    </DialogContent>
+                </Dialog>
+            </div>
+
+            <div className="border rounded-md">
+                <Table>
+                    <TableHeader>
+                        <TableRow>
+                            <TableHead>Format Code</TableHead>
+                            <TableHead>Label</TableHead>
+                            <TableHead>Seat Count</TableHead>
+                            <TableHead>Status</TableHead>
+                            <TableHead className="text-right">
+                                Actions
+                            </TableHead>
+                        </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                        {assignments.length === 0 ? (
+                            <TableRow>
+                                <TableCell
+                                    colSpan={5}
+                                    className="text-center h-24"
+                                >
+                                    No formats assigned yet.
+                                </TableCell>
+                            </TableRow>
+                        ) : (
+                            assignments.map((assignment) => (
+                                <TableRow key={assignment.id}>
+                                    <TableCell className="font-medium">
+                                        {assignment.cinemaFormat.code}
+                                    </TableCell>
+                                    <TableCell>
+                                        {assignment.cinemaFormat.label}
+                                    </TableCell>
+                                    <TableCell>
+                                        {assignment.seatCount || "-"}
+                                    </TableCell>
+                                    <TableCell>
+                                        {assignment.isPrimary && (
+                                            <Badge
+                                                variant="default"
+                                                className="bg-emerald-600"
+                                            >
+                                                Primary
+                                            </Badge>
+                                        )}
+                                    </TableCell>
+                                    <TableCell className="text-right">
+                                        <div className="flex justify-end gap-2">
+                                            {!assignment.isPrimary && (
+                                                <Button
+                                                    variant="ghost"
+                                                    size="icon-sm"
+                                                    title="Set as Primary"
+                                                    onClick={() =>
+                                                        handleSetPrimary(
+                                                            assignment.id,
+                                                        )
+                                                    }
+                                                >
+                                                    <Shield className="h-4 w-4 text-muted-foreground hover:text-emerald-600" />
+                                                </Button>
+                                            )}
+                                            {assignment.isPrimary && (
+                                                <Button
+                                                    variant="ghost"
+                                                    size="icon-sm"
+                                                    disabled
+                                                    title="Currently Primary"
+                                                >
+                                                    <ShieldCheck className="h-4 w-4 text-emerald-600" />
+                                                </Button>
+                                            )}
+                                            <Button
+                                                variant="ghost"
+                                                size="icon-sm"
+                                                className="text-destructive hover:text-destructive/90"
+                                                onClick={() =>
+                                                    handleDelete(assignment.id)
+                                                }
+                                            >
+                                                <Trash2 className="h-4 w-4" />
+                                            </Button>
+                                        </div>
+                                    </TableCell>
+                                </TableRow>
+                            ))
+                        )}
+                    </TableBody>
+                </Table>
+            </div>
+        </div>
+    );
+}

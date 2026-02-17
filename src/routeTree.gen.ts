@@ -20,16 +20,32 @@ import { Route as authSignUpRouteImport } from './routes/(auth)/sign-up'
 import { Route as authSignInRouteImport } from './routes/(auth)/sign-in'
 import { Route as authCenteredRouteImport } from './routes/(auth)/_centered'
 import { Route as AuthenticatedUsersIndexRouteImport } from './routes/_authenticated/users.index'
+import { Route as AuthenticatedTheatersIndexRouteImport } from './routes/_authenticated/theaters.index'
+import { Route as AuthenticatedTheaterGroupsIndexRouteImport } from './routes/_authenticated/theater-groups.index'
+import { Route as AuthenticatedCinemasIndexRouteImport } from './routes/_authenticated/cinemas.index'
+import { Route as AuthenticatedCinemaFormatsIndexRouteImport } from './routes/_authenticated/cinema-formats.index'
 import { Route as AuthenticatedAuditTrailsIndexRouteImport } from './routes/_authenticated/audit-trails.index'
+import { Route as AuthenticatedAgenciesIndexRouteImport } from './routes/_authenticated/agencies.index'
 import { Route as AuthenticatedUsersCreateRouteImport } from './routes/_authenticated/users.create'
 import { Route as AuthenticatedUsersUserIdRouteImport } from './routes/_authenticated/users.$userId'
+import { Route as AuthenticatedTheatersCreateRouteImport } from './routes/_authenticated/theaters.create'
+import { Route as AuthenticatedTheatersTheaterIdRouteImport } from './routes/_authenticated/theaters.$theaterId'
+import { Route as AuthenticatedTheaterGroupsCreateRouteImport } from './routes/_authenticated/theater-groups.create'
+import { Route as AuthenticatedTheaterGroupsTheaterGroupIdRouteImport } from './routes/_authenticated/theater-groups.$theaterGroupId'
 import { Route as AuthenticatedDashboardSettingsRouteImport } from './routes/_authenticated/dashboard.settings'
+import { Route as AuthenticatedCinemasCreateRouteImport } from './routes/_authenticated/cinemas.create'
+import { Route as AuthenticatedCinemasCinemaIdRouteImport } from './routes/_authenticated/cinemas.$cinemaId'
+import { Route as AuthenticatedCinemaFormatsCreateRouteImport } from './routes/_authenticated/cinema-formats.create'
+import { Route as AuthenticatedCinemaFormatsCinemaFormatIdRouteImport } from './routes/_authenticated/cinema-formats.$cinemaFormatId'
 import { Route as AuthenticatedAuditTrailsAuditTrailIdRouteImport } from './routes/_authenticated/audit-trails.$auditTrailId'
+import { Route as AuthenticatedAgenciesCreateRouteImport } from './routes/_authenticated/agencies.create'
+import { Route as AuthenticatedAgenciesAgencyIdRouteImport } from './routes/_authenticated/agencies.$agencyId'
 import { Route as authCenteredResetPasswordRouteImport } from './routes/(auth)/_centered.reset-password'
 import { Route as authCenteredForgotPasswordRouteImport } from './routes/(auth)/_centered.forgot-password'
 import { Route as authCenteredAuthVerificationRouteImport } from './routes/(auth)/_centered.auth-verification'
 import { Route as authCenteredAuthErrorRouteImport } from './routes/(auth)/_centered.auth-error'
 import { Route as AuthenticatedUsersUserIdEditRouteImport } from './routes/_authenticated/users.$userId_.edit'
+import { Route as AuthenticatedCinemasCinemaIdFormatsRouteImport } from './routes/_authenticated/cinemas.$cinemaId_.formats'
 
 const PublicRoute = PublicRouteImport.update({
   id: '/_public',
@@ -83,10 +99,40 @@ const AuthenticatedUsersIndexRoute = AuthenticatedUsersIndexRouteImport.update({
   path: '/users/',
   getParentRoute: () => AuthenticatedRoute,
 } as any)
+const AuthenticatedTheatersIndexRoute =
+  AuthenticatedTheatersIndexRouteImport.update({
+    id: '/theaters/',
+    path: '/theaters/',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedTheaterGroupsIndexRoute =
+  AuthenticatedTheaterGroupsIndexRouteImport.update({
+    id: '/theater-groups/',
+    path: '/theater-groups/',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedCinemasIndexRoute =
+  AuthenticatedCinemasIndexRouteImport.update({
+    id: '/cinemas/',
+    path: '/cinemas/',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedCinemaFormatsIndexRoute =
+  AuthenticatedCinemaFormatsIndexRouteImport.update({
+    id: '/cinema-formats/',
+    path: '/cinema-formats/',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
 const AuthenticatedAuditTrailsIndexRoute =
   AuthenticatedAuditTrailsIndexRouteImport.update({
     id: '/audit-trails/',
     path: '/audit-trails/',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedAgenciesIndexRoute =
+  AuthenticatedAgenciesIndexRouteImport.update({
+    id: '/agencies/',
+    path: '/agencies/',
     getParentRoute: () => AuthenticatedRoute,
   } as any)
 const AuthenticatedUsersCreateRoute =
@@ -101,16 +147,76 @@ const AuthenticatedUsersUserIdRoute =
     path: '/users/$userId',
     getParentRoute: () => AuthenticatedRoute,
   } as any)
+const AuthenticatedTheatersCreateRoute =
+  AuthenticatedTheatersCreateRouteImport.update({
+    id: '/theaters/create',
+    path: '/theaters/create',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedTheatersTheaterIdRoute =
+  AuthenticatedTheatersTheaterIdRouteImport.update({
+    id: '/theaters/$theaterId',
+    path: '/theaters/$theaterId',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedTheaterGroupsCreateRoute =
+  AuthenticatedTheaterGroupsCreateRouteImport.update({
+    id: '/theater-groups/create',
+    path: '/theater-groups/create',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedTheaterGroupsTheaterGroupIdRoute =
+  AuthenticatedTheaterGroupsTheaterGroupIdRouteImport.update({
+    id: '/theater-groups/$theaterGroupId',
+    path: '/theater-groups/$theaterGroupId',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
 const AuthenticatedDashboardSettingsRoute =
   AuthenticatedDashboardSettingsRouteImport.update({
     id: '/settings',
     path: '/settings',
     getParentRoute: () => AuthenticatedDashboardRoute,
   } as any)
+const AuthenticatedCinemasCreateRoute =
+  AuthenticatedCinemasCreateRouteImport.update({
+    id: '/cinemas/create',
+    path: '/cinemas/create',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedCinemasCinemaIdRoute =
+  AuthenticatedCinemasCinemaIdRouteImport.update({
+    id: '/cinemas/$cinemaId',
+    path: '/cinemas/$cinemaId',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedCinemaFormatsCreateRoute =
+  AuthenticatedCinemaFormatsCreateRouteImport.update({
+    id: '/cinema-formats/create',
+    path: '/cinema-formats/create',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedCinemaFormatsCinemaFormatIdRoute =
+  AuthenticatedCinemaFormatsCinemaFormatIdRouteImport.update({
+    id: '/cinema-formats/$cinemaFormatId',
+    path: '/cinema-formats/$cinemaFormatId',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
 const AuthenticatedAuditTrailsAuditTrailIdRoute =
   AuthenticatedAuditTrailsAuditTrailIdRouteImport.update({
     id: '/audit-trails/$auditTrailId',
     path: '/audit-trails/$auditTrailId',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedAgenciesCreateRoute =
+  AuthenticatedAgenciesCreateRouteImport.update({
+    id: '/agencies/create',
+    path: '/agencies/create',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedAgenciesAgencyIdRoute =
+  AuthenticatedAgenciesAgencyIdRouteImport.update({
+    id: '/agencies/$agencyId',
+    path: '/agencies/$agencyId',
     getParentRoute: () => AuthenticatedRoute,
   } as any)
 const authCenteredResetPasswordRoute =
@@ -142,6 +248,12 @@ const AuthenticatedUsersUserIdEditRoute =
     path: '/users/$userId/edit',
     getParentRoute: () => AuthenticatedRoute,
   } as any)
+const AuthenticatedCinemasCinemaIdFormatsRoute =
+  AuthenticatedCinemasCinemaIdFormatsRouteImport.update({
+    id: '/cinemas/$cinemaId_/formats',
+    path: '/cinemas/$cinemaId/formats',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof PublicIndexRoute
@@ -155,12 +267,28 @@ export interface FileRoutesByFullPath {
   '/auth-verification': typeof authCenteredAuthVerificationRoute
   '/forgot-password': typeof authCenteredForgotPasswordRoute
   '/reset-password': typeof authCenteredResetPasswordRoute
+  '/agencies/$agencyId': typeof AuthenticatedAgenciesAgencyIdRoute
+  '/agencies/create': typeof AuthenticatedAgenciesCreateRoute
   '/audit-trails/$auditTrailId': typeof AuthenticatedAuditTrailsAuditTrailIdRoute
+  '/cinema-formats/$cinemaFormatId': typeof AuthenticatedCinemaFormatsCinemaFormatIdRoute
+  '/cinema-formats/create': typeof AuthenticatedCinemaFormatsCreateRoute
+  '/cinemas/$cinemaId': typeof AuthenticatedCinemasCinemaIdRoute
+  '/cinemas/create': typeof AuthenticatedCinemasCreateRoute
   '/dashboard/settings': typeof AuthenticatedDashboardSettingsRoute
+  '/theater-groups/$theaterGroupId': typeof AuthenticatedTheaterGroupsTheaterGroupIdRoute
+  '/theater-groups/create': typeof AuthenticatedTheaterGroupsCreateRoute
+  '/theaters/$theaterId': typeof AuthenticatedTheatersTheaterIdRoute
+  '/theaters/create': typeof AuthenticatedTheatersCreateRoute
   '/users/$userId': typeof AuthenticatedUsersUserIdRoute
   '/users/create': typeof AuthenticatedUsersCreateRoute
+  '/agencies/': typeof AuthenticatedAgenciesIndexRoute
   '/audit-trails/': typeof AuthenticatedAuditTrailsIndexRoute
+  '/cinema-formats/': typeof AuthenticatedCinemaFormatsIndexRoute
+  '/cinemas/': typeof AuthenticatedCinemasIndexRoute
+  '/theater-groups/': typeof AuthenticatedTheaterGroupsIndexRoute
+  '/theaters/': typeof AuthenticatedTheatersIndexRoute
   '/users/': typeof AuthenticatedUsersIndexRoute
+  '/cinemas/$cinemaId/formats': typeof AuthenticatedCinemasCinemaIdFormatsRoute
   '/users/$userId/edit': typeof AuthenticatedUsersUserIdEditRoute
 }
 export interface FileRoutesByTo {
@@ -175,12 +303,28 @@ export interface FileRoutesByTo {
   '/auth-verification': typeof authCenteredAuthVerificationRoute
   '/forgot-password': typeof authCenteredForgotPasswordRoute
   '/reset-password': typeof authCenteredResetPasswordRoute
+  '/agencies/$agencyId': typeof AuthenticatedAgenciesAgencyIdRoute
+  '/agencies/create': typeof AuthenticatedAgenciesCreateRoute
   '/audit-trails/$auditTrailId': typeof AuthenticatedAuditTrailsAuditTrailIdRoute
+  '/cinema-formats/$cinemaFormatId': typeof AuthenticatedCinemaFormatsCinemaFormatIdRoute
+  '/cinema-formats/create': typeof AuthenticatedCinemaFormatsCreateRoute
+  '/cinemas/$cinemaId': typeof AuthenticatedCinemasCinemaIdRoute
+  '/cinemas/create': typeof AuthenticatedCinemasCreateRoute
   '/dashboard/settings': typeof AuthenticatedDashboardSettingsRoute
+  '/theater-groups/$theaterGroupId': typeof AuthenticatedTheaterGroupsTheaterGroupIdRoute
+  '/theater-groups/create': typeof AuthenticatedTheaterGroupsCreateRoute
+  '/theaters/$theaterId': typeof AuthenticatedTheatersTheaterIdRoute
+  '/theaters/create': typeof AuthenticatedTheatersCreateRoute
   '/users/$userId': typeof AuthenticatedUsersUserIdRoute
   '/users/create': typeof AuthenticatedUsersCreateRoute
+  '/agencies': typeof AuthenticatedAgenciesIndexRoute
   '/audit-trails': typeof AuthenticatedAuditTrailsIndexRoute
+  '/cinema-formats': typeof AuthenticatedCinemaFormatsIndexRoute
+  '/cinemas': typeof AuthenticatedCinemasIndexRoute
+  '/theater-groups': typeof AuthenticatedTheaterGroupsIndexRoute
+  '/theaters': typeof AuthenticatedTheatersIndexRoute
   '/users': typeof AuthenticatedUsersIndexRoute
+  '/cinemas/$cinemaId/formats': typeof AuthenticatedCinemasCinemaIdFormatsRoute
   '/users/$userId/edit': typeof AuthenticatedUsersUserIdEditRoute
 }
 export interface FileRoutesById {
@@ -199,12 +343,28 @@ export interface FileRoutesById {
   '/(auth)/_centered/auth-verification': typeof authCenteredAuthVerificationRoute
   '/(auth)/_centered/forgot-password': typeof authCenteredForgotPasswordRoute
   '/(auth)/_centered/reset-password': typeof authCenteredResetPasswordRoute
+  '/_authenticated/agencies/$agencyId': typeof AuthenticatedAgenciesAgencyIdRoute
+  '/_authenticated/agencies/create': typeof AuthenticatedAgenciesCreateRoute
   '/_authenticated/audit-trails/$auditTrailId': typeof AuthenticatedAuditTrailsAuditTrailIdRoute
+  '/_authenticated/cinema-formats/$cinemaFormatId': typeof AuthenticatedCinemaFormatsCinemaFormatIdRoute
+  '/_authenticated/cinema-formats/create': typeof AuthenticatedCinemaFormatsCreateRoute
+  '/_authenticated/cinemas/$cinemaId': typeof AuthenticatedCinemasCinemaIdRoute
+  '/_authenticated/cinemas/create': typeof AuthenticatedCinemasCreateRoute
   '/_authenticated/dashboard/settings': typeof AuthenticatedDashboardSettingsRoute
+  '/_authenticated/theater-groups/$theaterGroupId': typeof AuthenticatedTheaterGroupsTheaterGroupIdRoute
+  '/_authenticated/theater-groups/create': typeof AuthenticatedTheaterGroupsCreateRoute
+  '/_authenticated/theaters/$theaterId': typeof AuthenticatedTheatersTheaterIdRoute
+  '/_authenticated/theaters/create': typeof AuthenticatedTheatersCreateRoute
   '/_authenticated/users/$userId': typeof AuthenticatedUsersUserIdRoute
   '/_authenticated/users/create': typeof AuthenticatedUsersCreateRoute
+  '/_authenticated/agencies/': typeof AuthenticatedAgenciesIndexRoute
   '/_authenticated/audit-trails/': typeof AuthenticatedAuditTrailsIndexRoute
+  '/_authenticated/cinema-formats/': typeof AuthenticatedCinemaFormatsIndexRoute
+  '/_authenticated/cinemas/': typeof AuthenticatedCinemasIndexRoute
+  '/_authenticated/theater-groups/': typeof AuthenticatedTheaterGroupsIndexRoute
+  '/_authenticated/theaters/': typeof AuthenticatedTheatersIndexRoute
   '/_authenticated/users/': typeof AuthenticatedUsersIndexRoute
+  '/_authenticated/cinemas/$cinemaId_/formats': typeof AuthenticatedCinemasCinemaIdFormatsRoute
   '/_authenticated/users/$userId_/edit': typeof AuthenticatedUsersUserIdEditRoute
 }
 export interface FileRouteTypes {
@@ -221,12 +381,28 @@ export interface FileRouteTypes {
     | '/auth-verification'
     | '/forgot-password'
     | '/reset-password'
+    | '/agencies/$agencyId'
+    | '/agencies/create'
     | '/audit-trails/$auditTrailId'
+    | '/cinema-formats/$cinemaFormatId'
+    | '/cinema-formats/create'
+    | '/cinemas/$cinemaId'
+    | '/cinemas/create'
     | '/dashboard/settings'
+    | '/theater-groups/$theaterGroupId'
+    | '/theater-groups/create'
+    | '/theaters/$theaterId'
+    | '/theaters/create'
     | '/users/$userId'
     | '/users/create'
+    | '/agencies/'
     | '/audit-trails/'
+    | '/cinema-formats/'
+    | '/cinemas/'
+    | '/theater-groups/'
+    | '/theaters/'
     | '/users/'
+    | '/cinemas/$cinemaId/formats'
     | '/users/$userId/edit'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -241,12 +417,28 @@ export interface FileRouteTypes {
     | '/auth-verification'
     | '/forgot-password'
     | '/reset-password'
+    | '/agencies/$agencyId'
+    | '/agencies/create'
     | '/audit-trails/$auditTrailId'
+    | '/cinema-formats/$cinemaFormatId'
+    | '/cinema-formats/create'
+    | '/cinemas/$cinemaId'
+    | '/cinemas/create'
     | '/dashboard/settings'
+    | '/theater-groups/$theaterGroupId'
+    | '/theater-groups/create'
+    | '/theaters/$theaterId'
+    | '/theaters/create'
     | '/users/$userId'
     | '/users/create'
+    | '/agencies'
     | '/audit-trails'
+    | '/cinema-formats'
+    | '/cinemas'
+    | '/theater-groups'
+    | '/theaters'
     | '/users'
+    | '/cinemas/$cinemaId/formats'
     | '/users/$userId/edit'
   id:
     | '__root__'
@@ -264,12 +456,28 @@ export interface FileRouteTypes {
     | '/(auth)/_centered/auth-verification'
     | '/(auth)/_centered/forgot-password'
     | '/(auth)/_centered/reset-password'
+    | '/_authenticated/agencies/$agencyId'
+    | '/_authenticated/agencies/create'
     | '/_authenticated/audit-trails/$auditTrailId'
+    | '/_authenticated/cinema-formats/$cinemaFormatId'
+    | '/_authenticated/cinema-formats/create'
+    | '/_authenticated/cinemas/$cinemaId'
+    | '/_authenticated/cinemas/create'
     | '/_authenticated/dashboard/settings'
+    | '/_authenticated/theater-groups/$theaterGroupId'
+    | '/_authenticated/theater-groups/create'
+    | '/_authenticated/theaters/$theaterId'
+    | '/_authenticated/theaters/create'
     | '/_authenticated/users/$userId'
     | '/_authenticated/users/create'
+    | '/_authenticated/agencies/'
     | '/_authenticated/audit-trails/'
+    | '/_authenticated/cinema-formats/'
+    | '/_authenticated/cinemas/'
+    | '/_authenticated/theater-groups/'
+    | '/_authenticated/theaters/'
     | '/_authenticated/users/'
+    | '/_authenticated/cinemas/$cinemaId_/formats'
     | '/_authenticated/users/$userId_/edit'
   fileRoutesById: FileRoutesById
 }
@@ -360,11 +568,46 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedUsersIndexRouteImport
       parentRoute: typeof AuthenticatedRoute
     }
+    '/_authenticated/theaters/': {
+      id: '/_authenticated/theaters/'
+      path: '/theaters'
+      fullPath: '/theaters/'
+      preLoaderRoute: typeof AuthenticatedTheatersIndexRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/theater-groups/': {
+      id: '/_authenticated/theater-groups/'
+      path: '/theater-groups'
+      fullPath: '/theater-groups/'
+      preLoaderRoute: typeof AuthenticatedTheaterGroupsIndexRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/cinemas/': {
+      id: '/_authenticated/cinemas/'
+      path: '/cinemas'
+      fullPath: '/cinemas/'
+      preLoaderRoute: typeof AuthenticatedCinemasIndexRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/cinema-formats/': {
+      id: '/_authenticated/cinema-formats/'
+      path: '/cinema-formats'
+      fullPath: '/cinema-formats/'
+      preLoaderRoute: typeof AuthenticatedCinemaFormatsIndexRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
     '/_authenticated/audit-trails/': {
       id: '/_authenticated/audit-trails/'
       path: '/audit-trails'
       fullPath: '/audit-trails/'
       preLoaderRoute: typeof AuthenticatedAuditTrailsIndexRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/agencies/': {
+      id: '/_authenticated/agencies/'
+      path: '/agencies'
+      fullPath: '/agencies/'
+      preLoaderRoute: typeof AuthenticatedAgenciesIndexRouteImport
       parentRoute: typeof AuthenticatedRoute
     }
     '/_authenticated/users/create': {
@@ -381,6 +624,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedUsersUserIdRouteImport
       parentRoute: typeof AuthenticatedRoute
     }
+    '/_authenticated/theaters/create': {
+      id: '/_authenticated/theaters/create'
+      path: '/theaters/create'
+      fullPath: '/theaters/create'
+      preLoaderRoute: typeof AuthenticatedTheatersCreateRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/theaters/$theaterId': {
+      id: '/_authenticated/theaters/$theaterId'
+      path: '/theaters/$theaterId'
+      fullPath: '/theaters/$theaterId'
+      preLoaderRoute: typeof AuthenticatedTheatersTheaterIdRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/theater-groups/create': {
+      id: '/_authenticated/theater-groups/create'
+      path: '/theater-groups/create'
+      fullPath: '/theater-groups/create'
+      preLoaderRoute: typeof AuthenticatedTheaterGroupsCreateRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/theater-groups/$theaterGroupId': {
+      id: '/_authenticated/theater-groups/$theaterGroupId'
+      path: '/theater-groups/$theaterGroupId'
+      fullPath: '/theater-groups/$theaterGroupId'
+      preLoaderRoute: typeof AuthenticatedTheaterGroupsTheaterGroupIdRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
     '/_authenticated/dashboard/settings': {
       id: '/_authenticated/dashboard/settings'
       path: '/settings'
@@ -388,11 +659,53 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedDashboardSettingsRouteImport
       parentRoute: typeof AuthenticatedDashboardRoute
     }
+    '/_authenticated/cinemas/create': {
+      id: '/_authenticated/cinemas/create'
+      path: '/cinemas/create'
+      fullPath: '/cinemas/create'
+      preLoaderRoute: typeof AuthenticatedCinemasCreateRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/cinemas/$cinemaId': {
+      id: '/_authenticated/cinemas/$cinemaId'
+      path: '/cinemas/$cinemaId'
+      fullPath: '/cinemas/$cinemaId'
+      preLoaderRoute: typeof AuthenticatedCinemasCinemaIdRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/cinema-formats/create': {
+      id: '/_authenticated/cinema-formats/create'
+      path: '/cinema-formats/create'
+      fullPath: '/cinema-formats/create'
+      preLoaderRoute: typeof AuthenticatedCinemaFormatsCreateRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/cinema-formats/$cinemaFormatId': {
+      id: '/_authenticated/cinema-formats/$cinemaFormatId'
+      path: '/cinema-formats/$cinemaFormatId'
+      fullPath: '/cinema-formats/$cinemaFormatId'
+      preLoaderRoute: typeof AuthenticatedCinemaFormatsCinemaFormatIdRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
     '/_authenticated/audit-trails/$auditTrailId': {
       id: '/_authenticated/audit-trails/$auditTrailId'
       path: '/audit-trails/$auditTrailId'
       fullPath: '/audit-trails/$auditTrailId'
       preLoaderRoute: typeof AuthenticatedAuditTrailsAuditTrailIdRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/agencies/create': {
+      id: '/_authenticated/agencies/create'
+      path: '/agencies/create'
+      fullPath: '/agencies/create'
+      preLoaderRoute: typeof AuthenticatedAgenciesCreateRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/agencies/$agencyId': {
+      id: '/_authenticated/agencies/$agencyId'
+      path: '/agencies/$agencyId'
+      fullPath: '/agencies/$agencyId'
+      preLoaderRoute: typeof AuthenticatedAgenciesAgencyIdRouteImport
       parentRoute: typeof AuthenticatedRoute
     }
     '/(auth)/_centered/reset-password': {
@@ -430,6 +743,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedUsersUserIdEditRouteImport
       parentRoute: typeof AuthenticatedRoute
     }
+    '/_authenticated/cinemas/$cinemaId_/formats': {
+      id: '/_authenticated/cinemas/$cinemaId_/formats'
+      path: '/cinemas/$cinemaId/formats'
+      fullPath: '/cinemas/$cinemaId/formats'
+      preLoaderRoute: typeof AuthenticatedCinemasCinemaIdFormatsRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
   }
 }
 
@@ -451,11 +771,27 @@ interface AuthenticatedRouteChildren {
   AuthenticatedDashboardRoute: typeof AuthenticatedDashboardRouteWithChildren
   AuthenticatedPatientsRoute: typeof AuthenticatedPatientsRoute
   AuthenticatedProfileRoute: typeof AuthenticatedProfileRoute
+  AuthenticatedAgenciesAgencyIdRoute: typeof AuthenticatedAgenciesAgencyIdRoute
+  AuthenticatedAgenciesCreateRoute: typeof AuthenticatedAgenciesCreateRoute
   AuthenticatedAuditTrailsAuditTrailIdRoute: typeof AuthenticatedAuditTrailsAuditTrailIdRoute
+  AuthenticatedCinemaFormatsCinemaFormatIdRoute: typeof AuthenticatedCinemaFormatsCinemaFormatIdRoute
+  AuthenticatedCinemaFormatsCreateRoute: typeof AuthenticatedCinemaFormatsCreateRoute
+  AuthenticatedCinemasCinemaIdRoute: typeof AuthenticatedCinemasCinemaIdRoute
+  AuthenticatedCinemasCreateRoute: typeof AuthenticatedCinemasCreateRoute
+  AuthenticatedTheaterGroupsTheaterGroupIdRoute: typeof AuthenticatedTheaterGroupsTheaterGroupIdRoute
+  AuthenticatedTheaterGroupsCreateRoute: typeof AuthenticatedTheaterGroupsCreateRoute
+  AuthenticatedTheatersTheaterIdRoute: typeof AuthenticatedTheatersTheaterIdRoute
+  AuthenticatedTheatersCreateRoute: typeof AuthenticatedTheatersCreateRoute
   AuthenticatedUsersUserIdRoute: typeof AuthenticatedUsersUserIdRoute
   AuthenticatedUsersCreateRoute: typeof AuthenticatedUsersCreateRoute
+  AuthenticatedAgenciesIndexRoute: typeof AuthenticatedAgenciesIndexRoute
   AuthenticatedAuditTrailsIndexRoute: typeof AuthenticatedAuditTrailsIndexRoute
+  AuthenticatedCinemaFormatsIndexRoute: typeof AuthenticatedCinemaFormatsIndexRoute
+  AuthenticatedCinemasIndexRoute: typeof AuthenticatedCinemasIndexRoute
+  AuthenticatedTheaterGroupsIndexRoute: typeof AuthenticatedTheaterGroupsIndexRoute
+  AuthenticatedTheatersIndexRoute: typeof AuthenticatedTheatersIndexRoute
   AuthenticatedUsersIndexRoute: typeof AuthenticatedUsersIndexRoute
+  AuthenticatedCinemasCinemaIdFormatsRoute: typeof AuthenticatedCinemasCinemaIdFormatsRoute
   AuthenticatedUsersUserIdEditRoute: typeof AuthenticatedUsersUserIdEditRoute
 }
 
@@ -463,12 +799,31 @@ const AuthenticatedRouteChildren: AuthenticatedRouteChildren = {
   AuthenticatedDashboardRoute: AuthenticatedDashboardRouteWithChildren,
   AuthenticatedPatientsRoute: AuthenticatedPatientsRoute,
   AuthenticatedProfileRoute: AuthenticatedProfileRoute,
+  AuthenticatedAgenciesAgencyIdRoute: AuthenticatedAgenciesAgencyIdRoute,
+  AuthenticatedAgenciesCreateRoute: AuthenticatedAgenciesCreateRoute,
   AuthenticatedAuditTrailsAuditTrailIdRoute:
     AuthenticatedAuditTrailsAuditTrailIdRoute,
+  AuthenticatedCinemaFormatsCinemaFormatIdRoute:
+    AuthenticatedCinemaFormatsCinemaFormatIdRoute,
+  AuthenticatedCinemaFormatsCreateRoute: AuthenticatedCinemaFormatsCreateRoute,
+  AuthenticatedCinemasCinemaIdRoute: AuthenticatedCinemasCinemaIdRoute,
+  AuthenticatedCinemasCreateRoute: AuthenticatedCinemasCreateRoute,
+  AuthenticatedTheaterGroupsTheaterGroupIdRoute:
+    AuthenticatedTheaterGroupsTheaterGroupIdRoute,
+  AuthenticatedTheaterGroupsCreateRoute: AuthenticatedTheaterGroupsCreateRoute,
+  AuthenticatedTheatersTheaterIdRoute: AuthenticatedTheatersTheaterIdRoute,
+  AuthenticatedTheatersCreateRoute: AuthenticatedTheatersCreateRoute,
   AuthenticatedUsersUserIdRoute: AuthenticatedUsersUserIdRoute,
   AuthenticatedUsersCreateRoute: AuthenticatedUsersCreateRoute,
+  AuthenticatedAgenciesIndexRoute: AuthenticatedAgenciesIndexRoute,
   AuthenticatedAuditTrailsIndexRoute: AuthenticatedAuditTrailsIndexRoute,
+  AuthenticatedCinemaFormatsIndexRoute: AuthenticatedCinemaFormatsIndexRoute,
+  AuthenticatedCinemasIndexRoute: AuthenticatedCinemasIndexRoute,
+  AuthenticatedTheaterGroupsIndexRoute: AuthenticatedTheaterGroupsIndexRoute,
+  AuthenticatedTheatersIndexRoute: AuthenticatedTheatersIndexRoute,
   AuthenticatedUsersIndexRoute: AuthenticatedUsersIndexRoute,
+  AuthenticatedCinemasCinemaIdFormatsRoute:
+    AuthenticatedCinemasCinemaIdFormatsRoute,
   AuthenticatedUsersUserIdEditRoute: AuthenticatedUsersUserIdEditRoute,
 }
 
