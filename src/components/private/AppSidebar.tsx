@@ -8,6 +8,7 @@ import {
     ScrollText,
     Building2,
     Film,
+    Clapperboard,
 } from "lucide-react";
 import {
     Sidebar,
@@ -86,6 +87,11 @@ const adminItems = [
         title: "Cinema Formats",
         url: "/cinema-formats",
         icon: Film,
+    },
+    {
+        title: "Production Companies",
+        url: "/production-companies",
+        icon: Clapperboard,
     },
     {
         title: "Users",
