@@ -43,7 +43,7 @@ export const createTheaterSchema = z.object({
     isActive: z.boolean().default(true),
 });
 
-export type CreateTheaterValues = z.infer<typeof createTheaterSchema>;
+export type CreateTheaterValues = z.input<typeof createTheaterSchema>;
 
 export const theaterSearchSchema = z.object({
     page: z.number().optional(),

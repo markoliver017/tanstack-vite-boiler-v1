@@ -1,6 +1,6 @@
 import type { TheaterGroup } from "./zTheaterGroupSchema";
 import { Button } from "@/components/shadcn-ui/button";
-import { Pencil, Globe, Power } from "lucide-react";
+import { Pencil, Globe, Power, Building2 } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import Swal from "sweetalert2";
 import { useUpdateTheaterGroup } from "./mutations";
@@ -63,6 +63,16 @@ export function TheaterGroupActions({
                     <DropdownMenuItem>
                         <Pencil className="mr-2 h-4 w-4" />
                         Edit Theater Group
+                    </DropdownMenuItem>
+                </Link>
+
+                <Link
+                    to="/theater-groups/$theaterGroupId/theaters"
+                    params={{ theaterGroupId: theaterGroup.id.toString() }}
+                >
+                    <DropdownMenuItem>
+                        <Building2 className="mr-2 h-4 w-4" />
+                        Manage Theaters
                     </DropdownMenuItem>
                 </Link>
 

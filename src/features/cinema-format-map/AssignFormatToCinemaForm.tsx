@@ -46,7 +46,7 @@ export default function AssignFormatToCinemaForm({
     const formats = formatsData?.data || [];
 
     const form = useForm<AssignFormatValues>({
-        resolver: zodResolver(assignFormatSchema) as any,
+        resolver: zodResolver(assignFormatSchema),
         defaultValues: {
             cinemaId: cinemaId,
             seatCount: 0,
@@ -138,15 +138,8 @@ export default function AssignFormatToCinemaForm({
     return (
         <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-                {/* Hidden Cinema ID */}
-                <input
-                    type="hidden"
-                    {...form.register("cinemaId")}
-                    value={cinemaId}
-                />
-
                 <FormField
-                    control={form.control as any}
+                    control={form.control}
                     name="cinemaFormatId"
                     render={({ field }) => (
                         <FormItem>
@@ -155,7 +148,9 @@ export default function AssignFormatToCinemaForm({
                                 <span className="text-destructive">*</span>
                             </FormLabel>
                             <Select
-                                onValueChange={field.onChange}
+                                onValueChange={(value) =>
+                                    field.onChange(Number(value))
+                                }
                                 defaultValue={field.value?.toString()}
                             >
                                 <FormControl>
@@ -180,13 +175,19 @@ export default function AssignFormatToCinemaForm({
                 />
 
                 <FormField
-                    control={form.control as any}
+                    control={form.control}
                     name="seatCount"
                     render={({ field }) => (
                         <FormItem>
                             <FormLabel>Seat Count</FormLabel>
                             <FormControl>
-                                <Input type="number" {...field} />
+                                <Input
+                                    type="number"
+                                    value={field.value ?? 0}
+                                    onChange={(event) =>
+                                        field.onChange(Number(event.target.value))
+                                    }
+                                />
                             </FormControl>
                             <FormMessage />
                         </FormItem>
@@ -194,7 +195,7 @@ export default function AssignFormatToCinemaForm({
                 />
 
                 <FormField
-                    control={form.control as any}
+                    control={form.control}
                     name="isPrimary"
                     render={({ field }) => (
                         <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4">

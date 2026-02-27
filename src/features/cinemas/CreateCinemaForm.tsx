@@ -25,28 +25,37 @@ import { fetchList } from "@/lib/api.client";
 import { Loader2 } from "lucide-react";
 import { Checkbox } from "@/components/shadcn-ui/checkbox";
 
-export function CreateCinemaForm() {
+interface CreateCinemaFormProps {
+    defaultTheaterId?: number;
+    lockTheater?: boolean;
+}
+
+export function CreateCinemaForm({
+    defaultTheaterId,
+    lockTheater = false,
+}: CreateCinemaFormProps = {}) {
     const navigate = useNavigate();
     const createCinema = useCreateCinema();
 
     // Fetch theaters for dropdown
     const { data: theatersData } = useQuery({
         queryKey: ["theaters", "all"],
-        queryFn: () => fetchList("/theaters?_limit=1000"),
+        queryFn: () =>
+            fetchList<Array<{ id: number; name: string }>>("/theaters?_limit=1000"),
     });
 
     const form = useForm<CreateCinemaValues>({
-        resolver: zodResolver(createCinemaSchema) as any,
+        resolver: zodResolver(createCinemaSchema),
         defaultValues: {
-            theaterId: undefined,
+            theaterId: defaultTheaterId,
             name: "",
             geofenceRadius: 100,
             isActive: true,
-        } as any,
+        },
     });
 
     const onSubmit = async (data: CreateCinemaValues) => {
-        const newCinema = (await createCinema.mutateAsync(data)) as any;
+        const newCinema = (await createCinema.mutateAsync(data)) as { id: number };
         if (newCinema?.id) {
             navigate({
                 to: "/cinemas/$cinemaId/formats",
@@ -55,19 +64,19 @@ export function CreateCinemaForm() {
         }
     };
 
-    const theaters =
-        (theatersData?.data as Array<{ id: number; name: string }>) || [];
+    const theaters = theatersData?.data || [];
 
     return (
         <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                 <FormField
-                    control={form.control as any}
+                    control={form.control}
                     name="theaterId"
                     render={({ field }) => (
                         <FormItem>
                             <FormLabel>Theater</FormLabel>
                             <Select
+                                disabled={lockTheater}
                                 onValueChange={(value) =>
                                     field.onChange(parseInt(value))
                                 }
@@ -100,7 +109,7 @@ export function CreateCinemaForm() {
                 />
 
                 <FormField
-                    control={form.control as any}
+                    control={form.control}
                     name="name"
                     render={({ field }) => (
                         <FormItem>
@@ -117,7 +126,7 @@ export function CreateCinemaForm() {
                 />
 
                 <FormField
-                    control={form.control as any}
+                    control={form.control}
                     name="geofenceRadius"
                     render={({ field }) => (
                         <FormItem>
@@ -140,7 +149,7 @@ export function CreateCinemaForm() {
                 />
 
                 <FormField
-                    control={form.control as any}
+                    control={form.control}
                     name="isActive"
                     render={({ field }) => (
                         <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4">

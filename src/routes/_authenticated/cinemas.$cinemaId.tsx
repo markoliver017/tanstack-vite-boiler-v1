@@ -57,17 +57,18 @@ function EditCinemaPage() {
     // Fetch theaters for dropdown
     const { data: theatersData } = useQuery({
         queryKey: ["theaters", "all"],
-        queryFn: () => fetchList("/theaters?_limit=1000"),
+        queryFn: () =>
+            fetchList<Array<{ id: number; name: string }>>("/theaters?_limit=1000"),
     });
 
     const form = useForm<CreateCinemaValues>({
-        resolver: zodResolver(createCinemaSchema) as any,
+        resolver: zodResolver(createCinemaSchema),
         defaultValues: {
             theaterId: cinema.theaterId,
             name: cinema.name,
             geofenceRadius: cinema.geofenceRadius,
             isActive: cinema.isActive,
-        } as any,
+        },
     });
 
     const onSubmit = async (data: CreateCinemaValues) => {
@@ -75,8 +76,7 @@ function EditCinemaPage() {
         navigate({ to: "/cinemas", search: { page: 1, limit: 10 } });
     };
 
-    const theaters =
-        (theatersData?.data as Array<{ id: number; name: string }>) || [];
+    const theaters = theatersData?.data || [];
 
     return (
         <div className="p-6 space-y-6">
@@ -102,7 +102,7 @@ function EditCinemaPage() {
                         className="space-y-6"
                     >
                         <FormField
-                            control={form.control as any}
+                            control={form.control}
                             name="theaterId"
                             render={({ field }) => (
                                 <FormItem>
@@ -140,7 +140,7 @@ function EditCinemaPage() {
                         />
 
                         <FormField
-                            control={form.control as any}
+                            control={form.control}
                             name="name"
                             render={({ field }) => (
                                 <FormItem>
@@ -157,7 +157,7 @@ function EditCinemaPage() {
                         />
 
                         <FormField
-                            control={form.control as any}
+                            control={form.control}
                             name="geofenceRadius"
                             render={({ field }) => (
                                 <FormItem>
@@ -183,7 +183,7 @@ function EditCinemaPage() {
                         />
 
                         <FormField
-                            control={form.control as any}
+                            control={form.control}
                             name="isActive"
                             render={({ field }) => (
                                 <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4">

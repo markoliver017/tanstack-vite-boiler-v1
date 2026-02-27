@@ -1,13 +1,13 @@
 import { z } from "zod";
 
 export const assignFormatSchema = z.object({
-    cinemaId: z.coerce.number().min(1, "Cinema is required"),
-    cinemaFormatId: z.coerce.number().min(1, "Format is required"),
-    seatCount: z.coerce.number().min(0).optional(),
+    cinemaId: z.number().min(1, "Cinema is required"),
+    cinemaFormatId: z.number().min(1, "Format is required"),
+    seatCount: z.number().min(0).optional(),
     isPrimary: z.boolean().default(false),
 });
 
-export type AssignFormatValues = z.infer<typeof assignFormatSchema>;
+export type AssignFormatValues = z.input<typeof assignFormatSchema>;
 
 export const cinemaFormatMapResponseSchema = z.object({
     id: z.number(),

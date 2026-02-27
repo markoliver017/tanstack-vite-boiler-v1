@@ -34,7 +34,7 @@ export const createCinemaSchema = z.object({
     isActive: z.boolean().default(true),
 });
 
-export type CreateCinemaValues = z.infer<typeof createCinemaSchema>;
+export type CreateCinemaValues = z.input<typeof createCinemaSchema>;
 
 // Search params schema for URL
 export const cinemaSearchSchema = z.object({
