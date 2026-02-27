@@ -9,6 +9,9 @@ import {
     Building2,
     Film,
     Clapperboard,
+    ReceiptText,
+    UserCheck,
+    CircleDollarSign,
 } from "lucide-react";
 import {
     Sidebar,
@@ -38,39 +41,36 @@ import {
 import { Link, useNavigate } from "@tanstack/react-router";
 import { useSession, authClient } from "@/lib/auth/auth-client";
 
-// Menu items.
-const items = [
+const appItems = [
     {
         title: "Home",
         url: "/dashboard",
         icon: Home,
     },
-    // {
-    //     title: "Patients",
-    //     url: "/patients",
-    //     icon: Inbox,
-    // },
-    // {
-    //     title: "Cases",
-    //     url: "/cases",
-    //     icon: Calendar,
-    // },
+];
+
+const operationsItems = [
     {
-        title: "Settings",
-        url: "#",
-        icon: Settings,
+        title: "Movies",
+        url: "/movies",
+        icon: Film,
+    },
+    {
+        title: "Hourly Reports",
+        url: "/hourly-reports",
+        icon: ScrollText,
+    },
+    {
+        title: "Checkers",
+        url: "/checkers",
+        icon: UserCheck,
     },
 ];
 
-const adminItems = [
+const theaterAdminItems = [
     {
         title: "Theater Groups",
         url: "/theater-groups",
-        icon: Building2,
-    },
-    {
-        title: "Agencies",
-        url: "/agencies",
         icon: Building2,
     },
     {
@@ -88,10 +88,59 @@ const adminItems = [
         url: "/cinema-formats",
         icon: Film,
     },
+];
+
+const pricingRulesItems = [
+    {
+        title: "Tax Rules",
+        url: "/tax-rules",
+        icon: ReceiptText,
+    },
+    {
+        title: "Cultural Taxes",
+        url: "/cultural-taxes",
+        icon: ReceiptText,
+    },
+    {
+        title: "Ticket Types",
+        url: "/ticket-types",
+        icon: ReceiptText,
+    },
+    {
+        title: "Discounts",
+        url: "/discounts",
+        icon: ReceiptText,
+    },
+    {
+        title: "Theater Ticket Prices",
+        url: "/theater-movie-ticket-prices",
+        icon: CircleDollarSign,
+    },
+    {
+        title: "Tax Rule Overrides",
+        url: "/theater-production-tax-rules",
+        icon: ReceiptText,
+    },
+];
+
+const organizationItems = [
+    {
+        title: "Agencies",
+        url: "/agencies",
+        icon: Building2,
+    },
     {
         title: "Production Companies",
         url: "/production-companies",
         icon: Clapperboard,
+    },
+];
+
+const systemItems = [
+    {
+        title: "Cinema Ticket Templates",
+        url: "/cinema-tickets-template",
+        icon: ReceiptText,
     },
     {
         title: "Users",
@@ -102,6 +151,11 @@ const adminItems = [
         title: "Audit Trails",
         url: "/audit-trails",
         icon: ScrollText,
+    },
+    {
+        title: "Settings",
+        url: "/settings",
+        icon: Settings,
     },
 ];
 
@@ -127,7 +181,7 @@ export function AppSidebar() {
     return (
         <Sidebar collapsible="icon">
             <SidebarHeader className="flex-row justify-center">
-                <img src="/pcmc_logo.png" alt="Logo" className="h-8 w-8 " />
+                <img src="/project-logo.png" alt="Logo" className="h-8 w-8 " />
                 {isSidebarOpen && (
                     <h1 className="text-lg font-semibold">
                         {import.meta.env.VITE_APP_ABBREVIATION}
@@ -139,7 +193,7 @@ export function AppSidebar() {
                     <SidebarGroupLabel>Application</SidebarGroupLabel>
                     <SidebarGroupContent>
                         <SidebarMenu>
-                            {items.map((item) => (
+                            {appItems.map((item) => (
                                 <SidebarMenuItem key={item.title}>
                                     <SidebarMenuButton asChild>
                                         <Link to={item.url}>
@@ -153,10 +207,78 @@ export function AppSidebar() {
                     </SidebarGroupContent>
                 </SidebarGroup>
                 <SidebarGroup>
-                    <SidebarGroupLabel>Administration</SidebarGroupLabel>
+                    <SidebarGroupLabel>Operations</SidebarGroupLabel>
                     <SidebarGroupContent>
                         <SidebarMenu>
-                            {adminItems.map((item) => (
+                            {operationsItems.map((item) => (
+                                <SidebarMenuItem key={item.title}>
+                                    <SidebarMenuButton asChild>
+                                        <Link to={item.url}>
+                                            <item.icon />
+                                            <span>{item.title}</span>
+                                        </Link>
+                                    </SidebarMenuButton>
+                                </SidebarMenuItem>
+                            ))}
+                        </SidebarMenu>
+                    </SidebarGroupContent>
+                </SidebarGroup>
+                <SidebarGroup>
+                    <SidebarGroupLabel>Theater Admin</SidebarGroupLabel>
+                    <SidebarGroupContent>
+                        <SidebarMenu>
+                            {theaterAdminItems.map((item) => (
+                                <SidebarMenuItem key={item.title}>
+                                    <SidebarMenuButton asChild>
+                                        <Link to={item.url}>
+                                            <item.icon />
+                                            <span>{item.title}</span>
+                                        </Link>
+                                    </SidebarMenuButton>
+                                </SidebarMenuItem>
+                            ))}
+                        </SidebarMenu>
+                    </SidebarGroupContent>
+                </SidebarGroup>
+                <SidebarGroup>
+                    <SidebarGroupLabel>Pricing & Rules</SidebarGroupLabel>
+                    <SidebarGroupContent>
+                        <SidebarMenu>
+                            {pricingRulesItems.map((item) => (
+                                <SidebarMenuItem key={item.title}>
+                                    <SidebarMenuButton asChild>
+                                        <Link to={item.url}>
+                                            <item.icon />
+                                            <span>{item.title}</span>
+                                        </Link>
+                                    </SidebarMenuButton>
+                                </SidebarMenuItem>
+                            ))}
+                        </SidebarMenu>
+                    </SidebarGroupContent>
+                </SidebarGroup>
+                <SidebarGroup>
+                    <SidebarGroupLabel>Organization</SidebarGroupLabel>
+                    <SidebarGroupContent>
+                        <SidebarMenu>
+                            {organizationItems.map((item) => (
+                                <SidebarMenuItem key={item.title}>
+                                    <SidebarMenuButton asChild>
+                                        <Link to={item.url}>
+                                            <item.icon />
+                                            <span>{item.title}</span>
+                                        </Link>
+                                    </SidebarMenuButton>
+                                </SidebarMenuItem>
+                            ))}
+                        </SidebarMenu>
+                    </SidebarGroupContent>
+                </SidebarGroup>
+                <SidebarGroup>
+                    <SidebarGroupLabel>System</SidebarGroupLabel>
+                    <SidebarGroupContent>
+                        <SidebarMenu>
+                            {systemItems.map((item) => (
                                 <SidebarMenuItem key={item.title}>
                                     <SidebarMenuButton asChild>
                                         <Link to={item.url}>

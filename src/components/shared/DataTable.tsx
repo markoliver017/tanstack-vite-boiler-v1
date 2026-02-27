@@ -43,6 +43,22 @@ export function DataTable<TData>({
     // 2. Initialize the table
     const [sorting, setSorting] = useState<SortingState>([]);
 
+    const [internalPagination, setInternalPagination] =
+        useState<PaginationState>({
+            pageIndex: 0,
+            pageSize: 10,
+        });
+
+    const resolvedPagination = pagination ?? internalPagination;
+    const resolvedOnPaginationChange =
+        onPaginationChange ??
+        ((updater) => {
+            setInternalPagination((old) => {
+                if (typeof updater === "function") return updater(old);
+                return updater;
+            });
+        });
+
     // eslint-disable-next-line react-hooks/incompatible-library
     const table = useReactTable({
         data,
@@ -53,10 +69,10 @@ export function DataTable<TData>({
         getPaginationRowModel: getPaginationRowModel(),
         pageCount,
         manualPagination,
-        onPaginationChange: onPaginationChange,
+        onPaginationChange: resolvedOnPaginationChange,
         state: {
             sorting,
-            pagination: pagination ?? undefined,
+            pagination: resolvedPagination,
         },
     });
 
@@ -114,6 +130,16 @@ export function DataTable<TData>({
                             ))}
                         </tr>
                     ))}
+                    {!data.length && (
+                        <tr>
+                            <td
+                                colSpan={columns.length}
+                                className="h-24 text-center"
+                            >
+                                No data
+                            </td>
+                        </tr>
+                    )}
                 </tbody>
             </table>
             <div className="py-2">

@@ -1,7 +1,11 @@
 import { Button } from "../shadcn-ui/button";
 import { useRouter } from "@tanstack/react-router";
 
-export default function BackButton() {
+export default function BackButton({
+    showLabel = true,
+}: {
+    showLabel?: boolean;
+}) {
     const router = useRouter();
 
     return (
@@ -10,7 +14,7 @@ export default function BackButton() {
             onClick={() => router.history.back()}
             className="mb-1"
         >
-            ← <span className="hidden md:inline">Back</span>
+            ←{showLabel && <span className="hidden md:inline"> Back</span>}
         </Button>
     );
 }
