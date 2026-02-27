@@ -6,6 +6,7 @@ import PublicPage from "@/components/public/PublicPage";
 import PublicSection from "@/components/public/PublicSection";
 import Reveal from "@/components/public/Reveal";
 import { PUBLIC_MOVIES_MOCK } from "@/lib/data/public-movies.mock";
+import { Sparkles } from "lucide-react";
 
 export const Route = createFileRoute("/_public/recommended")({
     staticData: {
@@ -21,41 +22,35 @@ function RecommendedPage() {
     return (
         <PublicPage>
             <Reveal>
-                <div className="relative overflow-hidden rounded-2xl border bg-white/60 px-6 py-10 backdrop-blur dark:bg-slate-950/40">
-                    <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">
+                <section className="relative overflow-hidden rounded-3xl border border-white/55 bg-white/70 px-6 py-10 shadow-[0_28px_80px_-70px_rgba(0,0,0,1)] backdrop-blur dark:border-white/10 dark:bg-neutral-900/55">
+                    <div className="inline-flex items-center gap-2 rounded-full border border-sky-500/30 bg-sky-100/70 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-sky-700 dark:bg-sky-300/15 dark:text-sky-100">
+                        <Sparkles className="size-3.5" />
+                        Curated Picks
+                    </div>
+                    <h1 className="mt-4 text-4xl font-semibold tracking-tight text-neutral-900 sm:text-5xl dark:text-white">
                         Recommended
                     </h1>
-                    <p className="mt-2 max-w-2xl text-sm text-muted-foreground sm:text-base">
-                        Curated picks (mock). Later this can be personalized by
-                        viewer’s production company, territory, or trending
-                        cinemas.
+                    <p className="mt-3 max-w-2xl text-sm text-neutral-700 sm:text-base dark:text-neutral-300">
+                        Curated discovery feed for featured movies. You can later
+                        personalize this by territory, trend, or release performance.
                     </p>
-                    <p className="mt-2 max-w-2xl text-xs text-muted-foreground">
-                        Poster images can live in{" "}
-                        <span className="font-medium">public/posters</span> and
-                        be referenced as{" "}
-                        <span className="font-medium">
-                            /posters/&lt;file&gt;
-                        </span>
-                        .
-                    </p>
-                    <div className="pointer-events-none absolute inset-0 opacity-40 [background:radial-gradient(700px_circle_at_10%_20%,rgba(34,211,238,0.22),transparent_40%),radial-gradient(700px_circle_at_80%_60%,rgba(168,85,247,0.18),transparent_45%)]" />
-                </div>
+                    <div className="pointer-events-none absolute inset-0 opacity-45 [background:radial-gradient(900px_circle_at_15%_20%,rgba(14,165,233,0.2),transparent_42%),radial-gradient(900px_circle_at_85%_62%,rgba(245,158,11,0.18),transparent_45%)]" />
+                </section>
             </Reveal>
 
             <PublicSection
                 title="Top picks"
-                description="Reusable list components with scroll-reveal animations."
+                description="A polished recommendation layout using your shared movie card system."
                 className="pt-8"
             >
                 {movies.length === 0 ? (
-                    <div className="rounded-xl border bg-background p-6 text-sm text-muted-foreground">
+                    <div className="rounded-xl border border-white/40 bg-white/70 p-6 text-sm text-neutral-600 dark:border-white/10 dark:bg-neutral-900/60 dark:text-neutral-300">
                         No recommendations yet.
                     </div>
                 ) : (
                     <MovieGrid>
-                        {movies.map((movie, idx) => (
-                            <Reveal key={movie.id} delay={idx * 0.06}>
+                        {movies.map((movie, index) => (
+                            <Reveal key={movie.id} delay={index * 0.06}>
                                 <MovieCard movie={movie} />
                             </Reveal>
                         ))}

@@ -20,11 +20,11 @@ export default function PublicSection({
     return (
         <section className={cn("py-10 sm:py-14", className)}>
             <header className={cn("mb-6", headerClassName)}>
-                <h2 className="text-balance text-2xl font-semibold tracking-tight sm:text-3xl">
+                <h2 className="text-balance text-3xl font-semibold tracking-tight text-neutral-900 sm:text-4xl dark:text-neutral-100">
                     {title}
                 </h2>
                 {description ? (
-                    <p className="mt-2 max-w-2xl text-pretty text-sm text-muted-foreground sm:text-base">
+                    <p className="mt-2 max-w-2xl text-pretty text-sm text-neutral-600 sm:text-base dark:text-neutral-300">
                         {description}
                     </p>
                 ) : null}

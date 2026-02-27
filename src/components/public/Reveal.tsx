@@ -11,12 +11,13 @@ interface RevealProps {
 }
 
 const variants: Variants = {
-    hidden: { opacity: 0, y: 14, filter: "blur(6px)" },
+    hidden: { opacity: 0, y: 18, scale: 0.985, filter: "blur(6px)" },
     visible: {
         opacity: 1,
         y: 0,
+        scale: 1,
         filter: "blur(0px)",
-        transition: { duration: 0.55, ease: "easeOut" },
+        transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
     },
 };
 

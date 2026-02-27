@@ -4,28 +4,23 @@ import MenuBar from "./MenuBar";
 
 export default function Header() {
     return (
-        <header className="sticky top-0 z-40 w-full border-b bg-white/80 dark:bg-slate-950/80 backdrop-blur-md supports-backdrop-filter:bg-white/60">
-            {/* Optional: Top border gradient for extra PCMC branding */}
-            <div className="absolute top-0 left-0 w-full h-[3px] bg-linear-to-r from-blue-600 via-yellow-400 to-red-600" />
-            <div className="container mx-auto flex flex-wrap h-16 items-center justify-between px-4">
-                {/* --- Logo & Title --- */}
+        <header className="sticky top-0 z-40 w-full border-b border-white/50 bg-white/65 backdrop-blur-xl dark:border-white/10 dark:bg-neutral-950/70">
+            <div className="absolute left-0 top-0 h-[2px] w-full bg-linear-to-r from-amber-500 via-rose-500 to-sky-500" />
+            <div className="container mx-auto flex h-16 flex-wrap items-center justify-between px-4">
                 <Link to="/" className="flex items-center gap-3 group">
-                    {/* Logo Image */}
                     <div className="relative size-10 transition-transform duration-300 group-hover:scale-105">
-                        {/* Make sure 'pcmc-logo.png' exists in your public folder */}
                         <img
-                            src="/pcmc_logo.png"
-                            alt="PCMC Logo"
+                            src="/project-logo.png"
+                            alt="Project Logo"
                             className="object-contain"
                         />
                     </div>
 
-                    {/* Text Styling */}
                     <div className="flex flex-col leading-none">
-                        <span className="text-lg font-extrabold tracking-tight text-blue-900 dark:text-blue-100">
+                        <span className="text-lg font-extrabold tracking-tight text-neutral-900 dark:text-neutral-100">
                             {import.meta.env.VITE_APP_ABBREVIATION}
                         </span>
-                        <span className="hidden md:block text-sm font-bold text-red-600 dark:text-red-400">
+                        <span className="hidden text-xs font-semibold uppercase tracking-[0.24em] text-amber-700 md:block dark:text-amber-300">
                             {import.meta.env.VITE_APP_NAME}
                         </span>
                     </div>

@@ -26,49 +26,44 @@ function RouteComponent() {
     return (
         <PublicPage>
             <Reveal>
-                <div className="relative overflow-hidden rounded-2xl border bg-white/60 px-6 py-10 backdrop-blur dark:bg-slate-950/40">
-                    <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">
+                <section className="relative overflow-hidden rounded-3xl border border-white/55 bg-white/70 px-6 py-10 shadow-[0_28px_80px_-70px_rgba(0,0,0,1)] backdrop-blur dark:border-white/10 dark:bg-neutral-900/55">
+                    <h1 className="text-4xl font-semibold tracking-tight text-neutral-900 sm:text-5xl dark:text-white">
                         About the system
                     </h1>
-                    <p className="mt-2 max-w-3xl text-sm text-muted-foreground sm:text-base">
-                        A cinema gross reporting platform designed to enforce
-                        schedule windows, validate attendance, automate tax and
-                        cultural deductions, and provide production companies
-                        with approved, exportable reports—without Excel.
+                    <p className="mt-3 max-w-3xl text-sm text-neutral-700 sm:text-base dark:text-neutral-300">
+                        A cinema gross reporting platform that enforces schedule
+                        windows, validates attendance, automates tax and cultural
+                        deductions, and keeps approved reports visible for production.
                     </p>
-                    <div className="pointer-events-none absolute inset-0 opacity-40 [background:radial-gradient(700px_circle_at_20%_20%,rgba(59,130,246,0.25),transparent_40%),radial-gradient(700px_circle_at_80%_70%,rgba(168,85,247,0.20),transparent_45%)]" />
-                </div>
+                    <div className="pointer-events-none absolute inset-0 opacity-45 [background:radial-gradient(900px_circle_at_20%_18%,rgba(245,158,11,0.2),transparent_40%),radial-gradient(900px_circle_at_88%_70%,rgba(14,165,233,0.16),transparent_44%)]" />
+                </section>
             </Reveal>
 
             <PublicSection
                 title="System scope"
-                description="What the platform does (and does not) handle."
+                description="What the platform handles and why it stays audit-safe."
                 className="pt-10"
             >
                 <div className="grid gap-4 md:grid-cols-3">
                     <Reveal>
                         <FeatureCard
                             title="Hourly reporting"
-                            description="Ticket counts submitted on a production-defined schedule with guardrails."
-                            icon={<Clock className="size-5 text-blue-700" />}
+                            description="Ticket counts are submitted in production-defined windows with validation guardrails."
+                            icon={<Clock className="size-5" />}
                         />
                     </Reveal>
                     <Reveal delay={0.05}>
                         <FeatureCard
                             title="Daily consolidation"
-                            description="Approved hourlies roll up into day-end summaries—clean, audited totals."
-                            icon={
-                                <BadgeCheck className="size-5 text-blue-700" />
-                            }
+                            description="Approved hourlies roll into day-end totals with cleaner reconciliation."
+                            icon={<BadgeCheck className="size-5" />}
                         />
                     </Reveal>
                     <Reveal delay={0.1}>
                         <FeatureCard
                             title="Cinema-specific computations"
-                            description="Discount + cultural tax + production tax rules computed and snapshotted per entry."
-                            icon={
-                                <Calculator className="size-5 text-blue-700" />
-                            }
+                            description="Discount, cultural tax, and production tax rules are snapshotted per entry."
+                            icon={<Calculator className="size-5" />}
                         />
                     </Reveal>
                 </div>
@@ -83,58 +78,49 @@ function RouteComponent() {
                     <Reveal>
                         <FeatureCard
                             title="Checker"
-                            description="Time-in using GPS, then submit hourly and end-of-day breakdown—only if authorized for the production company."
-                            icon={
-                                <ShieldCheck className="size-5 text-blue-700" />
-                            }
+                            description="Uses GPS attendance and submits hourly plus day-end breakdown for authorized productions."
+                            icon={<ShieldCheck className="size-5" />}
                         />
                     </Reveal>
                     <Reveal delay={0.05}>
                         <FeatureCard
                             title="Agency admin"
-                            description="Onboards checkers, assigns production access, monitors attendance, and approves/rejects/overrides with audit trail."
-                            icon={
-                                <Building2 className="size-5 text-blue-700" />
-                            }
+                            description="Onboards checkers, manages authorizations, and approves or overrides with reasons."
+                            icon={<Building2 className="size-5" />}
                         />
                     </Reveal>
                     <Reveal delay={0.1}>
                         <FeatureCard
                             title="Production viewer"
-                            description="Read-only access to approved reports only—filterable, exportable, and always available."
-                            icon={<Eye className="size-5 text-blue-700" />}
+                            description="Read-only access to approved reports with filters and export readiness."
+                            icon={<Eye className="size-5" />}
                         />
                     </Reveal>
                 </div>
             </PublicSection>
 
             <PublicSection
-                title="Computation logic (strict order)"
-                description="Every ticket entry follows a reproducible, auditable pipeline."
+                title="Computation logic"
+                description="Every ticket entry follows this strict order."
                 className="pt-0"
             >
                 <Reveal>
-                    <div className="rounded-2xl border bg-white/60 p-6 text-sm backdrop-blur dark:bg-slate-950/40">
+                    <div className="rounded-2xl border border-white/50 bg-white/75 p-6 text-sm text-neutral-700 backdrop-blur dark:border-white/10 dark:bg-neutral-900/60 dark:text-neutral-300">
                         <ol className="grid gap-2 sm:grid-cols-2">
                             <li>
-                                <span className="font-semibold">1.</span> Apply
-                                discount → discounted price
+                                <span className="font-semibold">1.</span> Apply discount to get discounted price
                             </li>
                             <li>
-                                <span className="font-semibold">2.</span> Deduct
-                                cultural tax → effective price
+                                <span className="font-semibold">2.</span> Deduct cultural tax for effective price
                             </li>
                             <li>
-                                <span className="font-semibold">3.</span>{" "}
-                                Effective price × quantity → gross
+                                <span className="font-semibold">3.</span> Effective price x quantity for gross
                             </li>
                             <li>
-                                <span className="font-semibold">4.</span> Apply
-                                resolved tax rule → tax amount
+                                <span className="font-semibold">4.</span> Apply resolved tax rule for tax amount
                             </li>
                             <li className="sm:col-span-2">
-                                <span className="font-semibold">5.</span> Gross
-                                − tax → net amount (snapshotted)
+                                <span className="font-semibold">5.</span> Gross minus tax to get final net amount
                             </li>
                         </ol>
                     </div>
@@ -144,8 +130,8 @@ function RouteComponent() {
             <PublicSection title="Next step" className="pt-0">
                 <Reveal>
                     <CalloutCTA
-                        title="Explore public movie pages"
-                        description="Browse the demo pages for Now Showing, Upcoming, and Recommended—built with reusable components and scroll-reveal animations."
+                        title="Explore the public movie pages"
+                        description="Visit Now Showing, Upcoming, and Recommended to review the refreshed UI and poster-first layout."
                         primaryHref="/now-showing"
                         primaryLabel="Now Showing"
                         secondaryHref="/upcoming"

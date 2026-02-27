@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1800" viewBox="0 0 1200 1800" role="img" aria-labelledby="title desc">
+  <title id="title">Sample Movie Poster</title>
+  <desc id="desc">A cinematic sample poster for the public movie routes.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="52%" stop-color="#111827"/>
+      <stop offset="100%" stop-color="#312e81"/>
+    </linearGradient>
+    <radialGradient id="halo" cx="50%" cy="32%" r="58%">
+      <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.86"/>
+      <stop offset="52%" stop-color="#fb7185" stop-opacity="0.36"/>
+      <stop offset="100%" stop-color="#0ea5e9" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.24"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.05"/>
+    </linearGradient>
+    <pattern id="grain" width="6" height="6" patternUnits="userSpaceOnUse">
+      <circle cx="1" cy="1" r="0.7" fill="#ffffff" fill-opacity="0.08"/>
+      <circle cx="5" cy="4" r="0.8" fill="#ffffff" fill-opacity="0.06"/>
+      <circle cx="3" cy="5" r="0.4" fill="#ffffff" fill-opacity="0.07"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="1800" fill="url(#bg)"/>
+  <rect width="1200" height="1800" fill="url(#halo)"/>
+  <rect width="1200" height="1800" fill="url(#grain)" opacity="0.65"/>
+
+  <circle cx="600" cy="620" r="300" fill="#fde68a" fill-opacity="0.26"/>
+  <circle cx="600" cy="620" r="196" fill="#f59e0b" fill-opacity="0.4"/>
+  <path d="M240 1260 Q 600 990 960 1260" fill="none" stroke="#0ea5e9" stroke-opacity="0.36" stroke-width="8"/>
+
+  <rect x="120" y="120" width="960" height="1560" rx="40" fill="url(#panel)" stroke="#ffffff" stroke-opacity="0.16"/>
+
+  <text x="600" y="290" text-anchor="middle" fill="#fef3c7" font-size="56" font-family="Oswald, Arial Narrow, sans-serif" letter-spacing="12">NOW SCREENING</text>
+  <text x="600" y="382" text-anchor="middle" fill="#ffffff" font-size="132" font-weight="700" font-family="Oswald, Arial Narrow, sans-serif" letter-spacing="4">NIGHT SHIFT</text>
+  <text x="600" y="460" text-anchor="middle" fill="#bae6fd" font-size="40" font-family="Oswald, Arial Narrow, sans-serif" letter-spacing="8">AT CINEMA DISTRICT 9</text>
+
+  <g transform="translate(0,40)">
+    <rect x="365" y="720" width="470" height="630" rx="24" fill="#030712" fill-opacity="0.45" stroke="#fbbf24" stroke-opacity="0.45"/>
+    <path d="M468 1175 L600 825 L732 1175 Z" fill="#f59e0b" fill-opacity="0.78"/>
+    <circle cx="600" cy="965" r="38" fill="#0f172a"/>
+    <circle cx="600" cy="965" r="18" fill="#fef3c7"/>
+    <rect x="542" y="1060" width="116" height="160" rx="12" fill="#0ea5e9" fill-opacity="0.8"/>
+  </g>
+
+  <text x="600" y="1515" text-anchor="middle" fill="#ffffff" font-size="38" font-family="Oswald, Arial Narrow, sans-serif" letter-spacing="3">A SAMPLE POSTER ASSET FOR UI PROTOTYPING</text>
+  <text x="600" y="1595" text-anchor="middle" fill="#d1d5db" font-size="29" font-family="Oswald, Arial Narrow, sans-serif" letter-spacing="2">Audit-safe stories. Real-time reporting. Theater-first design.</text>
+  <text x="600" y="1670" text-anchor="middle" fill="#f59e0b" font-size="30" font-family="Oswald, Arial Narrow, sans-serif" letter-spacing="10">/public/posters/sample-movie-poster.svg</text>
+</svg>

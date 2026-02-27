@@ -15,7 +15,7 @@ export const PUBLIC_MOVIES_MOCK: PublicMovie[] = [
         id: "mv-aurora",
         title: "Aurora Protocol",
         status: "now_showing",
-        posterSrc: "/posters/aurora-protocol.jpg",
+        posterSrc: "/posters/sample-movie-poster.svg",
         tags: ["IMAX", "Sci‑Fi", "Audit"],
         synopsis:
             "A high-velocity thriller about eliminating reporting blind spots with real-time validation.",
@@ -25,7 +25,7 @@ export const PUBLIC_MOVIES_MOCK: PublicMovie[] = [
         id: "mv-ledger",
         title: "Ledger at Midnight",
         status: "now_showing",
-        posterSrc: "/posters/ledger-at-midnight.jpg",
+        posterSrc: "/posters/sample-movie-poster.svg",
         tags: ["Drama", "Tax Rules", "Compliance"],
         synopsis:
             "When computations get complicated, only strict order and snapshots keep the story straight.",
@@ -35,7 +35,7 @@ export const PUBLIC_MOVIES_MOCK: PublicMovie[] = [
         id: "mv-geofence",
         title: "Geofence Run",
         status: "now_showing",
-        posterSrc: "/posters/geofence-run.jpg",
+        posterSrc: "/posters/sample-movie-poster.svg",
         tags: ["Thriller", "GPS", "Attendance"],
         synopsis:
             "A checker must be physically present—or the system refuses to accept the hour.",
@@ -45,7 +45,7 @@ export const PUBLIC_MOVIES_MOCK: PublicMovie[] = [
         id: "mv-cutoff",
         title: "Cutoff Horizon",
         status: "upcoming",
-        posterSrc: "/posters/cutoff-horizon.jpg",
+        posterSrc: "/posters/sample-movie-poster.svg",
         tags: ["Action", "Schedules", "Slots"],
         synopsis:
             "Reporting windows tighten as production schedules reshape the entire workflow.",
@@ -55,7 +55,7 @@ export const PUBLIC_MOVIES_MOCK: PublicMovie[] = [
         id: "mv-ordinance",
         title: "Ordinance Shift",
         status: "upcoming",
-        posterSrc: "/posters/ordinance-shift.jpg",
+        posterSrc: "/posters/sample-movie-poster.svg",
         tags: ["Mystery", "Cultural Tax"],
         synopsis: "City rules change overnight—your snapshots shouldn't.",
         releaseDateLabel: "Q2 2026",

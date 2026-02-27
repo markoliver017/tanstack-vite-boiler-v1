@@ -33,31 +33,28 @@ export default function MenuBar() {
 
     return (
         <>
-            {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center space-x-8">
+            <nav className="hidden items-center space-x-6 lg:flex">
                 {navItems.map((item) => {
                     const active = isRouteActive(location.pathname, item.href);
                     return (
                         <Link
                             key={item.name}
                             to={item.href}
-                            className={`relative group text-sm font-medium transition-colors flex items-center gap-1 duration-300 
+                            className={`group relative flex items-center gap-1.5 rounded-full px-3 py-1.5 text-sm font-medium transition-all duration-300
                                 ${
                                     active
-                                        ? "text-blue-700 dark:text-blue-300 font-bold"
-                                        : "text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-300"
+                                        ? "bg-amber-100/70 text-amber-800 shadow-[0_6px_18px_-12px_rgba(0,0,0,0.65)] dark:bg-amber-300/15 dark:text-amber-100"
+                                        : "text-neutral-600 hover:bg-white/60 hover:text-neutral-900 dark:text-neutral-300 dark:hover:bg-white/10 dark:hover:text-white"
                                 }`}
                         >
                             {item?.icon || <MenuIcon className="w-2" />}
                             {item.name}
-                            {/* Underline animation (Yellow/Gold) */}
-                            <span className="absolute bottom-0 left-0 w-full h-0.5 bg-red-600 dark:bg-red-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out origin-left" />
                             <span
-                                className={`absolute -bottom-1 left-0 w-full h-[2px] bg-yellow-400 transform transition-transform duration-300 origin-left
+                                className={`absolute -bottom-[7px] left-1/2 h-[2px] -translate-x-1/2 bg-amber-500 transition-all duration-300
                                 ${
                                     active
-                                        ? "scale-x-100"
-                                        : "scale-x-0 hover:scale-x-100"
+                                        ? "w-8 opacity-100"
+                                        : "w-0 opacity-0 group-hover:w-8 group-hover:opacity-100"
                                 }`}
                             />
                         </Link>
@@ -65,12 +62,11 @@ export default function MenuBar() {
                 })}
             </nav>
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
-                {/* Mobile Menu */}
                 <SheetTrigger asChild className="lg:hidden">
                     <Button
                         variant="ghost"
                         size="icon"
-                        className="text-blue-900 dark:text-blue-100"
+                        className="text-neutral-900 dark:text-neutral-100"
                     >
                         <Menu className="size-6" />
                         <span className="sr-only">Toggle menu</span>
@@ -78,7 +74,7 @@ export default function MenuBar() {
                 </SheetTrigger>
                 <SheetContent
                     side="right"
-                    className="border-l-blue-200 w-full xs:w-1/2 dark:border-l-blue-900"
+                    className="w-full border-l-white/60 bg-white/95 xs:w-1/2 dark:border-l-white/10 dark:bg-neutral-950/95"
                 >
                     <SheetHeader>
                         <SheetTitle className="text-left flex items-center gap-2">
@@ -89,8 +85,8 @@ export default function MenuBar() {
                                     className="object-contain"
                                 />
                             </div>
-                            <span className="text-blue-900 dark:text-white">
-                                Menu
+                            <span className="text-neutral-900 dark:text-white">
+                                Explore
                             </span>
                         </SheetTitle>
                     </SheetHeader>
@@ -100,7 +96,7 @@ export default function MenuBar() {
                                 key={item.name}
                                 to={item.href}
                                 onClick={() => setIsOpen(false)}
-                                className="text-lg font-medium text-slate-600 dark:text-slate-300 hover:text-blue-700 dark:hover:text-blue-400 transition-colors"
+                                className="text-lg font-medium text-neutral-700 transition-colors hover:text-amber-700 dark:text-neutral-200 dark:hover:text-amber-300"
                             >
                                 {item.name}
                             </Link>
