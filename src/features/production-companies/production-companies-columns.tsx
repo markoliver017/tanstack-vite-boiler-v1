@@ -4,7 +4,7 @@ import { Badge } from "@/components/shadcn-ui/badge";
 import { Button } from "@/components/shadcn-ui/button";
 import { Link } from "@tanstack/react-router";
 import type { ProductionCompanyResponse } from "./zProductionCompanySchema";
-import { Eye } from "lucide-react";
+import { CalendarClock, Eye } from "lucide-react";
 
 export const productionCompaniesColumns: ColumnDef<ProductionCompanyResponse>[] =
     [
@@ -44,8 +44,18 @@ export const productionCompaniesColumns: ColumnDef<ProductionCompanyResponse>[] 
                 <div className="flex gap-2">
                     <Button variant="outline" size="icon-sm" asChild>
                         <Link
+                            to="/production-companies/$companyId/schedules"
+                            params={{ companyId: String(row.original.id) }}
+                            title="Manage Schedules"
+                        >
+                            <CalendarClock className="h-4 w-4" />
+                        </Link>
+                    </Button>
+                    <Button variant="outline" size="icon-sm" asChild>
+                        <Link
                             to="/production-companies/$companyId"
                             params={{ companyId: String(row.original.id) }}
+                            title="View Details"
                         >
                             <Eye className="h-4 w-4" />
                         </Link>

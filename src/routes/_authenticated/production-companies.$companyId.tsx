@@ -53,7 +53,7 @@ function ProductionCompanyDetailPage() {
     const updateMutation = useUpdateProductionCompany();
 
     const form = useForm<CreateProductionCompanyValues>({
-        resolver: zodResolver(createProductionCompanySchema) as any,
+        resolver: zodResolver(createProductionCompanySchema),
         defaultValues: {
             name: item.name,
             shortCode: item.shortCode || "",

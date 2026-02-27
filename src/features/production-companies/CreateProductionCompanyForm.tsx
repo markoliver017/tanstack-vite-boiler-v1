@@ -26,7 +26,7 @@ export function CreateProductionCompanyForm() {
     const navigate = useNavigate();
 
     const form = useForm<CreateProductionCompanyValues>({
-        resolver: zodResolver(createProductionCompanySchema) as any,
+        resolver: zodResolver(createProductionCompanySchema),
         defaultValues: {
             name: "",
             shortCode: "",

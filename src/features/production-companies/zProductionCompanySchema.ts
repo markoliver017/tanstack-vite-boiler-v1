@@ -37,7 +37,7 @@ export const createProductionCompanySchema = z.object({
     isActive: z.boolean().default(true),
 });
 
-export type CreateProductionCompanyValues = z.infer<
+export type CreateProductionCompanyValues = z.input<
     typeof createProductionCompanySchema
 >;
 
