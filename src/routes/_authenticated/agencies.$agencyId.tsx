@@ -36,7 +36,7 @@ function EditAgencyPage() {
                 description="Update agency information"
             />
 
-            <Card className="max-w-2xl">
+            <Card className="w-full md:w-2xl  mx-auto">
                 <CardContent className="pt-6">
                     <EditAgencyForm agency={agency} />
                 </CardContent>

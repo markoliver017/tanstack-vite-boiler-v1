@@ -25,7 +25,7 @@ export function CreateUserForm({ onSuccess }: { onSuccess: () => void }) {
 
     const form = useForm<CreateUserValues>({
         resolver: zodResolver(createUserSchema),
-        defaultValues: { name: "", email: "", role: "user" },
+        defaultValues: { name: "", email: "", role: "checker" },
     });
 
     const onSubmit = (data: CreateUserValues) => {
@@ -89,15 +89,16 @@ export function CreateUserForm({ onSuccess }: { onSuccess: () => void }) {
                                         <SelectValue placeholder="Select Role" />
                                     </SelectTrigger>
                                     <SelectContent>
-                                        <SelectItem value="admin">
-                                            Admin
-                                        </SelectItem>
-                                        <SelectItem value="user">
-                                            User
-                                        </SelectItem>
-                                        <SelectItem value="guest">
-                                            Guest
-                                        </SelectItem>
+                                        {[
+                                            "checker",
+                                            "agency_admin",
+                                            "production_viewer",
+                                            "system_admin",
+                                        ].map((role) => (
+                                            <SelectItem key={role} value={role}>
+                                                {role}
+                                            </SelectItem>
+                                        ))}
                                     </SelectContent>
                                 </Select>
                             </FormControl>

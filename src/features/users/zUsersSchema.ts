@@ -8,7 +8,13 @@ export const createUserSchema = z.object({
     name: z.string().min(2, "Name must be at least 2 characters"),
     email: z.email("Invalid email address"),
     role: z.enum(
-        ["super_admin", "admin", "user", "patient"],
+        [
+            "admin",
+            "checker",
+            "agency_admin",
+            "production_viewer",
+            "system_admin",
+        ],
         "Please select a role",
     ),
 });
