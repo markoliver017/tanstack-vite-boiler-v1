@@ -23,26 +23,56 @@ import { Route as authSignUpRouteImport } from './routes/(auth)/sign-up'
 import { Route as authSignInRouteImport } from './routes/(auth)/sign-in'
 import { Route as authCenteredRouteImport } from './routes/(auth)/_centered'
 import { Route as AuthenticatedUsersIndexRouteImport } from './routes/_authenticated/users.index'
+import { Route as AuthenticatedTicketTypesIndexRouteImport } from './routes/_authenticated/ticket-types.index'
 import { Route as AuthenticatedTheatersIndexRouteImport } from './routes/_authenticated/theaters.index'
+import { Route as AuthenticatedTheaterProductionTaxRulesIndexRouteImport } from './routes/_authenticated/theater-production-tax-rules.index'
+import { Route as AuthenticatedTheaterMovieTicketPricesIndexRouteImport } from './routes/_authenticated/theater-movie-ticket-prices.index'
 import { Route as AuthenticatedTheaterGroupsIndexRouteImport } from './routes/_authenticated/theater-groups.index'
+import { Route as AuthenticatedTaxRulesIndexRouteImport } from './routes/_authenticated/tax-rules.index'
 import { Route as AuthenticatedProductionCompaniesIndexRouteImport } from './routes/_authenticated/production-companies.index'
+import { Route as AuthenticatedMoviesIndexRouteImport } from './routes/_authenticated/movies.index'
+import { Route as AuthenticatedHourlyReportsIndexRouteImport } from './routes/_authenticated/hourly-reports.index'
+import { Route as AuthenticatedDiscountsIndexRouteImport } from './routes/_authenticated/discounts.index'
+import { Route as AuthenticatedCulturalTaxesIndexRouteImport } from './routes/_authenticated/cultural-taxes.index'
 import { Route as AuthenticatedCinemasIndexRouteImport } from './routes/_authenticated/cinemas.index'
+import { Route as AuthenticatedCinemaTicketsTemplateIndexRouteImport } from './routes/_authenticated/cinema-tickets-template.index'
 import { Route as AuthenticatedCinemaFormatsIndexRouteImport } from './routes/_authenticated/cinema-formats.index'
+import { Route as AuthenticatedCheckersIndexRouteImport } from './routes/_authenticated/checkers.index'
 import { Route as AuthenticatedAuditTrailsIndexRouteImport } from './routes/_authenticated/audit-trails.index'
 import { Route as AuthenticatedAgenciesIndexRouteImport } from './routes/_authenticated/agencies.index'
 import { Route as AuthenticatedUsersCreateRouteImport } from './routes/_authenticated/users.create'
 import { Route as AuthenticatedUsersUserIdRouteImport } from './routes/_authenticated/users.$userId'
+import { Route as AuthenticatedTicketTypesCreateRouteImport } from './routes/_authenticated/ticket-types.create'
+import { Route as AuthenticatedTicketTypesTicketTypeIdRouteImport } from './routes/_authenticated/ticket-types.$ticketTypeId'
 import { Route as AuthenticatedTheatersCreateRouteImport } from './routes/_authenticated/theaters.create'
 import { Route as AuthenticatedTheatersTheaterIdRouteImport } from './routes/_authenticated/theaters.$theaterId'
+import { Route as AuthenticatedTheaterProductionTaxRulesCreateRouteImport } from './routes/_authenticated/theater-production-tax-rules.create'
+import { Route as AuthenticatedTheaterProductionTaxRulesOverrideIdRouteImport } from './routes/_authenticated/theater-production-tax-rules.$overrideId'
+import { Route as AuthenticatedTheaterMovieTicketPricesCreateRouteImport } from './routes/_authenticated/theater-movie-ticket-prices.create'
+import { Route as AuthenticatedTheaterMovieTicketPricesPriceIdRouteImport } from './routes/_authenticated/theater-movie-ticket-prices.$priceId'
 import { Route as AuthenticatedTheaterGroupsCreateRouteImport } from './routes/_authenticated/theater-groups.create'
 import { Route as AuthenticatedTheaterGroupsTheaterGroupIdRouteImport } from './routes/_authenticated/theater-groups.$theaterGroupId'
+import { Route as AuthenticatedTaxRulesCreateRouteImport } from './routes/_authenticated/tax-rules.create'
+import { Route as AuthenticatedTaxRulesTaxRuleIdRouteImport } from './routes/_authenticated/tax-rules.$taxRuleId'
 import { Route as AuthenticatedProductionCompaniesCreateRouteImport } from './routes/_authenticated/production-companies.create'
 import { Route as AuthenticatedProductionCompaniesCompanyIdRouteImport } from './routes/_authenticated/production-companies.$companyId'
+import { Route as AuthenticatedMoviesCreateRouteImport } from './routes/_authenticated/movies.create'
+import { Route as AuthenticatedMoviesMovieIdRouteImport } from './routes/_authenticated/movies.$movieId'
+import { Route as AuthenticatedHourlyReportsCreateRouteImport } from './routes/_authenticated/hourly-reports.create'
+import { Route as AuthenticatedHourlyReportsHourlyReportIdRouteImport } from './routes/_authenticated/hourly-reports.$hourlyReportId'
+import { Route as AuthenticatedDiscountsCreateRouteImport } from './routes/_authenticated/discounts.create'
+import { Route as AuthenticatedDiscountsDiscountIdRouteImport } from './routes/_authenticated/discounts.$discountId'
 import { Route as AuthenticatedDashboardSettingsRouteImport } from './routes/_authenticated/dashboard.settings'
+import { Route as AuthenticatedCulturalTaxesCreateRouteImport } from './routes/_authenticated/cultural-taxes.create'
+import { Route as AuthenticatedCulturalTaxesCulturalTaxIdRouteImport } from './routes/_authenticated/cultural-taxes.$culturalTaxId'
 import { Route as AuthenticatedCinemasCreateRouteImport } from './routes/_authenticated/cinemas.create'
 import { Route as AuthenticatedCinemasCinemaIdRouteImport } from './routes/_authenticated/cinemas.$cinemaId'
+import { Route as AuthenticatedCinemaTicketsTemplateCreateRouteImport } from './routes/_authenticated/cinema-tickets-template.create'
+import { Route as AuthenticatedCinemaTicketsTemplateTemplateIdRouteImport } from './routes/_authenticated/cinema-tickets-template.$templateId'
 import { Route as AuthenticatedCinemaFormatsCreateRouteImport } from './routes/_authenticated/cinema-formats.create'
 import { Route as AuthenticatedCinemaFormatsCinemaFormatIdRouteImport } from './routes/_authenticated/cinema-formats.$cinemaFormatId'
+import { Route as AuthenticatedCheckersCreateRouteImport } from './routes/_authenticated/checkers.create'
+import { Route as AuthenticatedCheckersCheckerIdRouteImport } from './routes/_authenticated/checkers.$checkerId'
 import { Route as AuthenticatedAuditTrailsAuditTrailIdRouteImport } from './routes/_authenticated/audit-trails.$auditTrailId'
 import { Route as AuthenticatedAgenciesCreateRouteImport } from './routes/_authenticated/agencies.create'
 import { Route as AuthenticatedAgenciesAgencyIdRouteImport } from './routes/_authenticated/agencies.$agencyId'
@@ -51,7 +81,17 @@ import { Route as authCenteredForgotPasswordRouteImport } from './routes/(auth)/
 import { Route as authCenteredAuthVerificationRouteImport } from './routes/(auth)/_centered.auth-verification'
 import { Route as authCenteredAuthErrorRouteImport } from './routes/(auth)/_centered.auth-error'
 import { Route as AuthenticatedUsersUserIdEditRouteImport } from './routes/_authenticated/users.$userId_.edit'
+import { Route as AuthenticatedProductionCompaniesCompanyIdSchedulesRouteImport } from './routes/_authenticated/production-companies.$companyId_.schedules'
+import { Route as AuthenticatedMoviesMovieIdFormatsRouteImport } from './routes/_authenticated/movies.$movieId_.formats'
 import { Route as AuthenticatedCinemasCinemaIdFormatsRouteImport } from './routes/_authenticated/cinemas.$cinemaId_.formats'
+import { Route as AuthenticatedCheckersCheckerIdAuthorizationsRouteImport } from './routes/_authenticated/checkers.$checkerId_.authorizations'
+import { Route as AuthenticatedCheckersCheckerIdAssignmentsRouteImport } from './routes/_authenticated/checkers.$checkerId_.assignments'
+import { Route as AuthenticatedTheaterGroupsTheaterGroupIdTheatersIndexRouteImport } from './routes/_authenticated/theater-groups.$theaterGroupId_.theaters.index'
+import { Route as AuthenticatedMoviesMovieIdTheatersIndexRouteImport } from './routes/_authenticated/movies.$movieId_.theaters.index'
+import { Route as AuthenticatedMoviesMovieIdTheatersTheaterIdRouteImport } from './routes/_authenticated/movies.$movieId_.theaters.$theaterId'
+import { Route as AuthenticatedTheaterGroupsTheaterGroupIdTheatersTheaterIdCinemasIndexRouteImport } from './routes/_authenticated/theater-groups.$theaterGroupId_.theaters.$theaterId_.cinemas.index'
+import { Route as AuthenticatedMoviesMovieIdTheatersTheaterIdSlotSlotIdRouteImport } from './routes/_authenticated/movies.$movieId_.theaters.$theaterId_.slot.$slotId'
+import { Route as AuthenticatedMoviesMovieIdTheatersTheaterIdSlotSlotIdScreeningScreeningIdTicketsRouteImport } from './routes/_authenticated/movies.$movieId_.theaters.$theaterId_.slot.$slotId_.screening.$screeningId_.tickets'
 
 const PublicRoute = PublicRouteImport.update({
   id: '/_public',
@@ -120,10 +160,28 @@ const AuthenticatedUsersIndexRoute = AuthenticatedUsersIndexRouteImport.update({
   path: '/users/',
   getParentRoute: () => AuthenticatedRoute,
 } as any)
+const AuthenticatedTicketTypesIndexRoute =
+  AuthenticatedTicketTypesIndexRouteImport.update({
+    id: '/ticket-types/',
+    path: '/ticket-types/',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
 const AuthenticatedTheatersIndexRoute =
   AuthenticatedTheatersIndexRouteImport.update({
     id: '/theaters/',
     path: '/theaters/',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedTheaterProductionTaxRulesIndexRoute =
+  AuthenticatedTheaterProductionTaxRulesIndexRouteImport.update({
+    id: '/theater-production-tax-rules/',
+    path: '/theater-production-tax-rules/',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedTheaterMovieTicketPricesIndexRoute =
+  AuthenticatedTheaterMovieTicketPricesIndexRouteImport.update({
+    id: '/theater-movie-ticket-prices/',
+    path: '/theater-movie-ticket-prices/',
     getParentRoute: () => AuthenticatedRoute,
   } as any)
 const AuthenticatedTheaterGroupsIndexRoute =
@@ -132,10 +190,40 @@ const AuthenticatedTheaterGroupsIndexRoute =
     path: '/theater-groups/',
     getParentRoute: () => AuthenticatedRoute,
   } as any)
+const AuthenticatedTaxRulesIndexRoute =
+  AuthenticatedTaxRulesIndexRouteImport.update({
+    id: '/tax-rules/',
+    path: '/tax-rules/',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
 const AuthenticatedProductionCompaniesIndexRoute =
   AuthenticatedProductionCompaniesIndexRouteImport.update({
     id: '/production-companies/',
     path: '/production-companies/',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedMoviesIndexRoute =
+  AuthenticatedMoviesIndexRouteImport.update({
+    id: '/movies/',
+    path: '/movies/',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedHourlyReportsIndexRoute =
+  AuthenticatedHourlyReportsIndexRouteImport.update({
+    id: '/hourly-reports/',
+    path: '/hourly-reports/',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedDiscountsIndexRoute =
+  AuthenticatedDiscountsIndexRouteImport.update({
+    id: '/discounts/',
+    path: '/discounts/',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedCulturalTaxesIndexRoute =
+  AuthenticatedCulturalTaxesIndexRouteImport.update({
+    id: '/cultural-taxes/',
+    path: '/cultural-taxes/',
     getParentRoute: () => AuthenticatedRoute,
   } as any)
 const AuthenticatedCinemasIndexRoute =
@@ -144,10 +232,22 @@ const AuthenticatedCinemasIndexRoute =
     path: '/cinemas/',
     getParentRoute: () => AuthenticatedRoute,
   } as any)
+const AuthenticatedCinemaTicketsTemplateIndexRoute =
+  AuthenticatedCinemaTicketsTemplateIndexRouteImport.update({
+    id: '/cinema-tickets-template/',
+    path: '/cinema-tickets-template/',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
 const AuthenticatedCinemaFormatsIndexRoute =
   AuthenticatedCinemaFormatsIndexRouteImport.update({
     id: '/cinema-formats/',
     path: '/cinema-formats/',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedCheckersIndexRoute =
+  AuthenticatedCheckersIndexRouteImport.update({
+    id: '/checkers/',
+    path: '/checkers/',
     getParentRoute: () => AuthenticatedRoute,
   } as any)
 const AuthenticatedAuditTrailsIndexRoute =
@@ -174,6 +274,18 @@ const AuthenticatedUsersUserIdRoute =
     path: '/users/$userId',
     getParentRoute: () => AuthenticatedRoute,
   } as any)
+const AuthenticatedTicketTypesCreateRoute =
+  AuthenticatedTicketTypesCreateRouteImport.update({
+    id: '/ticket-types/create',
+    path: '/ticket-types/create',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedTicketTypesTicketTypeIdRoute =
+  AuthenticatedTicketTypesTicketTypeIdRouteImport.update({
+    id: '/ticket-types/$ticketTypeId',
+    path: '/ticket-types/$ticketTypeId',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
 const AuthenticatedTheatersCreateRoute =
   AuthenticatedTheatersCreateRouteImport.update({
     id: '/theaters/create',
@@ -184,6 +296,30 @@ const AuthenticatedTheatersTheaterIdRoute =
   AuthenticatedTheatersTheaterIdRouteImport.update({
     id: '/theaters/$theaterId',
     path: '/theaters/$theaterId',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedTheaterProductionTaxRulesCreateRoute =
+  AuthenticatedTheaterProductionTaxRulesCreateRouteImport.update({
+    id: '/theater-production-tax-rules/create',
+    path: '/theater-production-tax-rules/create',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedTheaterProductionTaxRulesOverrideIdRoute =
+  AuthenticatedTheaterProductionTaxRulesOverrideIdRouteImport.update({
+    id: '/theater-production-tax-rules/$overrideId',
+    path: '/theater-production-tax-rules/$overrideId',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedTheaterMovieTicketPricesCreateRoute =
+  AuthenticatedTheaterMovieTicketPricesCreateRouteImport.update({
+    id: '/theater-movie-ticket-prices/create',
+    path: '/theater-movie-ticket-prices/create',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedTheaterMovieTicketPricesPriceIdRoute =
+  AuthenticatedTheaterMovieTicketPricesPriceIdRouteImport.update({
+    id: '/theater-movie-ticket-prices/$priceId',
+    path: '/theater-movie-ticket-prices/$priceId',
     getParentRoute: () => AuthenticatedRoute,
   } as any)
 const AuthenticatedTheaterGroupsCreateRoute =
@@ -198,6 +334,18 @@ const AuthenticatedTheaterGroupsTheaterGroupIdRoute =
     path: '/theater-groups/$theaterGroupId',
     getParentRoute: () => AuthenticatedRoute,
   } as any)
+const AuthenticatedTaxRulesCreateRoute =
+  AuthenticatedTaxRulesCreateRouteImport.update({
+    id: '/tax-rules/create',
+    path: '/tax-rules/create',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedTaxRulesTaxRuleIdRoute =
+  AuthenticatedTaxRulesTaxRuleIdRouteImport.update({
+    id: '/tax-rules/$taxRuleId',
+    path: '/tax-rules/$taxRuleId',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
 const AuthenticatedProductionCompaniesCreateRoute =
   AuthenticatedProductionCompaniesCreateRouteImport.update({
     id: '/production-companies/create',
@@ -210,11 +358,59 @@ const AuthenticatedProductionCompaniesCompanyIdRoute =
     path: '/production-companies/$companyId',
     getParentRoute: () => AuthenticatedRoute,
   } as any)
+const AuthenticatedMoviesCreateRoute =
+  AuthenticatedMoviesCreateRouteImport.update({
+    id: '/movies/create',
+    path: '/movies/create',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedMoviesMovieIdRoute =
+  AuthenticatedMoviesMovieIdRouteImport.update({
+    id: '/movies/$movieId',
+    path: '/movies/$movieId',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedHourlyReportsCreateRoute =
+  AuthenticatedHourlyReportsCreateRouteImport.update({
+    id: '/hourly-reports/create',
+    path: '/hourly-reports/create',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedHourlyReportsHourlyReportIdRoute =
+  AuthenticatedHourlyReportsHourlyReportIdRouteImport.update({
+    id: '/hourly-reports/$hourlyReportId',
+    path: '/hourly-reports/$hourlyReportId',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedDiscountsCreateRoute =
+  AuthenticatedDiscountsCreateRouteImport.update({
+    id: '/discounts/create',
+    path: '/discounts/create',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedDiscountsDiscountIdRoute =
+  AuthenticatedDiscountsDiscountIdRouteImport.update({
+    id: '/discounts/$discountId',
+    path: '/discounts/$discountId',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
 const AuthenticatedDashboardSettingsRoute =
   AuthenticatedDashboardSettingsRouteImport.update({
     id: '/settings',
     path: '/settings',
     getParentRoute: () => AuthenticatedDashboardRoute,
+  } as any)
+const AuthenticatedCulturalTaxesCreateRoute =
+  AuthenticatedCulturalTaxesCreateRouteImport.update({
+    id: '/cultural-taxes/create',
+    path: '/cultural-taxes/create',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedCulturalTaxesCulturalTaxIdRoute =
+  AuthenticatedCulturalTaxesCulturalTaxIdRouteImport.update({
+    id: '/cultural-taxes/$culturalTaxId',
+    path: '/cultural-taxes/$culturalTaxId',
+    getParentRoute: () => AuthenticatedRoute,
   } as any)
 const AuthenticatedCinemasCreateRoute =
   AuthenticatedCinemasCreateRouteImport.update({
@@ -228,6 +424,18 @@ const AuthenticatedCinemasCinemaIdRoute =
     path: '/cinemas/$cinemaId',
     getParentRoute: () => AuthenticatedRoute,
   } as any)
+const AuthenticatedCinemaTicketsTemplateCreateRoute =
+  AuthenticatedCinemaTicketsTemplateCreateRouteImport.update({
+    id: '/cinema-tickets-template/create',
+    path: '/cinema-tickets-template/create',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedCinemaTicketsTemplateTemplateIdRoute =
+  AuthenticatedCinemaTicketsTemplateTemplateIdRouteImport.update({
+    id: '/cinema-tickets-template/$templateId',
+    path: '/cinema-tickets-template/$templateId',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
 const AuthenticatedCinemaFormatsCreateRoute =
   AuthenticatedCinemaFormatsCreateRouteImport.update({
     id: '/cinema-formats/create',
@@ -238,6 +446,18 @@ const AuthenticatedCinemaFormatsCinemaFormatIdRoute =
   AuthenticatedCinemaFormatsCinemaFormatIdRouteImport.update({
     id: '/cinema-formats/$cinemaFormatId',
     path: '/cinema-formats/$cinemaFormatId',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedCheckersCreateRoute =
+  AuthenticatedCheckersCreateRouteImport.update({
+    id: '/checkers/create',
+    path: '/checkers/create',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedCheckersCheckerIdRoute =
+  AuthenticatedCheckersCheckerIdRouteImport.update({
+    id: '/checkers/$checkerId',
+    path: '/checkers/$checkerId',
     getParentRoute: () => AuthenticatedRoute,
   } as any)
 const AuthenticatedAuditTrailsAuditTrailIdRoute =
@@ -287,12 +507,76 @@ const AuthenticatedUsersUserIdEditRoute =
     path: '/users/$userId/edit',
     getParentRoute: () => AuthenticatedRoute,
   } as any)
+const AuthenticatedProductionCompaniesCompanyIdSchedulesRoute =
+  AuthenticatedProductionCompaniesCompanyIdSchedulesRouteImport.update({
+    id: '/production-companies/$companyId_/schedules',
+    path: '/production-companies/$companyId/schedules',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedMoviesMovieIdFormatsRoute =
+  AuthenticatedMoviesMovieIdFormatsRouteImport.update({
+    id: '/movies/$movieId_/formats',
+    path: '/movies/$movieId/formats',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
 const AuthenticatedCinemasCinemaIdFormatsRoute =
   AuthenticatedCinemasCinemaIdFormatsRouteImport.update({
     id: '/cinemas/$cinemaId_/formats',
     path: '/cinemas/$cinemaId/formats',
     getParentRoute: () => AuthenticatedRoute,
   } as any)
+const AuthenticatedCheckersCheckerIdAuthorizationsRoute =
+  AuthenticatedCheckersCheckerIdAuthorizationsRouteImport.update({
+    id: '/checkers/$checkerId_/authorizations',
+    path: '/checkers/$checkerId/authorizations',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedCheckersCheckerIdAssignmentsRoute =
+  AuthenticatedCheckersCheckerIdAssignmentsRouteImport.update({
+    id: '/checkers/$checkerId_/assignments',
+    path: '/checkers/$checkerId/assignments',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedTheaterGroupsTheaterGroupIdTheatersIndexRoute =
+  AuthenticatedTheaterGroupsTheaterGroupIdTheatersIndexRouteImport.update({
+    id: '/theater-groups/$theaterGroupId_/theaters/',
+    path: '/theater-groups/$theaterGroupId/theaters/',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedMoviesMovieIdTheatersIndexRoute =
+  AuthenticatedMoviesMovieIdTheatersIndexRouteImport.update({
+    id: '/movies/$movieId_/theaters/',
+    path: '/movies/$movieId/theaters/',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedMoviesMovieIdTheatersTheaterIdRoute =
+  AuthenticatedMoviesMovieIdTheatersTheaterIdRouteImport.update({
+    id: '/movies/$movieId_/theaters/$theaterId',
+    path: '/movies/$movieId/theaters/$theaterId',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedTheaterGroupsTheaterGroupIdTheatersTheaterIdCinemasIndexRoute =
+  AuthenticatedTheaterGroupsTheaterGroupIdTheatersTheaterIdCinemasIndexRouteImport.update(
+    {
+      id: '/theater-groups/$theaterGroupId_/theaters/$theaterId_/cinemas/',
+      path: '/theater-groups/$theaterGroupId/theaters/$theaterId/cinemas/',
+      getParentRoute: () => AuthenticatedRoute,
+    } as any,
+  )
+const AuthenticatedMoviesMovieIdTheatersTheaterIdSlotSlotIdRoute =
+  AuthenticatedMoviesMovieIdTheatersTheaterIdSlotSlotIdRouteImport.update({
+    id: '/movies/$movieId_/theaters/$theaterId_/slot/$slotId',
+    path: '/movies/$movieId/theaters/$theaterId/slot/$slotId',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedMoviesMovieIdTheatersTheaterIdSlotSlotIdScreeningScreeningIdTicketsRoute =
+  AuthenticatedMoviesMovieIdTheatersTheaterIdSlotSlotIdScreeningScreeningIdTicketsRouteImport.update(
+    {
+      id: '/movies/$movieId_/theaters/$theaterId_/slot/$slotId_/screening/$screeningId_/tickets',
+      path: '/movies/$movieId/theaters/$theaterId/slot/$slotId/screening/$screeningId/tickets',
+      getParentRoute: () => AuthenticatedRoute,
+    } as any,
+  )
 
 export interface FileRoutesByFullPath {
   '/': typeof PublicIndexRoute
@@ -312,29 +596,69 @@ export interface FileRoutesByFullPath {
   '/agencies/$agencyId': typeof AuthenticatedAgenciesAgencyIdRoute
   '/agencies/create': typeof AuthenticatedAgenciesCreateRoute
   '/audit-trails/$auditTrailId': typeof AuthenticatedAuditTrailsAuditTrailIdRoute
+  '/checkers/$checkerId': typeof AuthenticatedCheckersCheckerIdRoute
+  '/checkers/create': typeof AuthenticatedCheckersCreateRoute
   '/cinema-formats/$cinemaFormatId': typeof AuthenticatedCinemaFormatsCinemaFormatIdRoute
   '/cinema-formats/create': typeof AuthenticatedCinemaFormatsCreateRoute
+  '/cinema-tickets-template/$templateId': typeof AuthenticatedCinemaTicketsTemplateTemplateIdRoute
+  '/cinema-tickets-template/create': typeof AuthenticatedCinemaTicketsTemplateCreateRoute
   '/cinemas/$cinemaId': typeof AuthenticatedCinemasCinemaIdRoute
   '/cinemas/create': typeof AuthenticatedCinemasCreateRoute
+  '/cultural-taxes/$culturalTaxId': typeof AuthenticatedCulturalTaxesCulturalTaxIdRoute
+  '/cultural-taxes/create': typeof AuthenticatedCulturalTaxesCreateRoute
   '/dashboard/settings': typeof AuthenticatedDashboardSettingsRoute
+  '/discounts/$discountId': typeof AuthenticatedDiscountsDiscountIdRoute
+  '/discounts/create': typeof AuthenticatedDiscountsCreateRoute
+  '/hourly-reports/$hourlyReportId': typeof AuthenticatedHourlyReportsHourlyReportIdRoute
+  '/hourly-reports/create': typeof AuthenticatedHourlyReportsCreateRoute
+  '/movies/$movieId': typeof AuthenticatedMoviesMovieIdRoute
+  '/movies/create': typeof AuthenticatedMoviesCreateRoute
   '/production-companies/$companyId': typeof AuthenticatedProductionCompaniesCompanyIdRoute
   '/production-companies/create': typeof AuthenticatedProductionCompaniesCreateRoute
+  '/tax-rules/$taxRuleId': typeof AuthenticatedTaxRulesTaxRuleIdRoute
+  '/tax-rules/create': typeof AuthenticatedTaxRulesCreateRoute
   '/theater-groups/$theaterGroupId': typeof AuthenticatedTheaterGroupsTheaterGroupIdRoute
   '/theater-groups/create': typeof AuthenticatedTheaterGroupsCreateRoute
+  '/theater-movie-ticket-prices/$priceId': typeof AuthenticatedTheaterMovieTicketPricesPriceIdRoute
+  '/theater-movie-ticket-prices/create': typeof AuthenticatedTheaterMovieTicketPricesCreateRoute
+  '/theater-production-tax-rules/$overrideId': typeof AuthenticatedTheaterProductionTaxRulesOverrideIdRoute
+  '/theater-production-tax-rules/create': typeof AuthenticatedTheaterProductionTaxRulesCreateRoute
   '/theaters/$theaterId': typeof AuthenticatedTheatersTheaterIdRoute
   '/theaters/create': typeof AuthenticatedTheatersCreateRoute
+  '/ticket-types/$ticketTypeId': typeof AuthenticatedTicketTypesTicketTypeIdRoute
+  '/ticket-types/create': typeof AuthenticatedTicketTypesCreateRoute
   '/users/$userId': typeof AuthenticatedUsersUserIdRoute
   '/users/create': typeof AuthenticatedUsersCreateRoute
   '/agencies/': typeof AuthenticatedAgenciesIndexRoute
   '/audit-trails/': typeof AuthenticatedAuditTrailsIndexRoute
+  '/checkers/': typeof AuthenticatedCheckersIndexRoute
   '/cinema-formats/': typeof AuthenticatedCinemaFormatsIndexRoute
+  '/cinema-tickets-template/': typeof AuthenticatedCinemaTicketsTemplateIndexRoute
   '/cinemas/': typeof AuthenticatedCinemasIndexRoute
+  '/cultural-taxes/': typeof AuthenticatedCulturalTaxesIndexRoute
+  '/discounts/': typeof AuthenticatedDiscountsIndexRoute
+  '/hourly-reports/': typeof AuthenticatedHourlyReportsIndexRoute
+  '/movies/': typeof AuthenticatedMoviesIndexRoute
   '/production-companies/': typeof AuthenticatedProductionCompaniesIndexRoute
+  '/tax-rules/': typeof AuthenticatedTaxRulesIndexRoute
   '/theater-groups/': typeof AuthenticatedTheaterGroupsIndexRoute
+  '/theater-movie-ticket-prices/': typeof AuthenticatedTheaterMovieTicketPricesIndexRoute
+  '/theater-production-tax-rules/': typeof AuthenticatedTheaterProductionTaxRulesIndexRoute
   '/theaters/': typeof AuthenticatedTheatersIndexRoute
+  '/ticket-types/': typeof AuthenticatedTicketTypesIndexRoute
   '/users/': typeof AuthenticatedUsersIndexRoute
+  '/checkers/$checkerId/assignments': typeof AuthenticatedCheckersCheckerIdAssignmentsRoute
+  '/checkers/$checkerId/authorizations': typeof AuthenticatedCheckersCheckerIdAuthorizationsRoute
   '/cinemas/$cinemaId/formats': typeof AuthenticatedCinemasCinemaIdFormatsRoute
+  '/movies/$movieId/formats': typeof AuthenticatedMoviesMovieIdFormatsRoute
+  '/production-companies/$companyId/schedules': typeof AuthenticatedProductionCompaniesCompanyIdSchedulesRoute
   '/users/$userId/edit': typeof AuthenticatedUsersUserIdEditRoute
+  '/movies/$movieId/theaters/$theaterId': typeof AuthenticatedMoviesMovieIdTheatersTheaterIdRoute
+  '/movies/$movieId/theaters/': typeof AuthenticatedMoviesMovieIdTheatersIndexRoute
+  '/theater-groups/$theaterGroupId/theaters/': typeof AuthenticatedTheaterGroupsTheaterGroupIdTheatersIndexRoute
+  '/movies/$movieId/theaters/$theaterId/slot/$slotId': typeof AuthenticatedMoviesMovieIdTheatersTheaterIdSlotSlotIdRoute
+  '/theater-groups/$theaterGroupId/theaters/$theaterId/cinemas/': typeof AuthenticatedTheaterGroupsTheaterGroupIdTheatersTheaterIdCinemasIndexRoute
+  '/movies/$movieId/theaters/$theaterId/slot/$slotId/screening/$screeningId/tickets': typeof AuthenticatedMoviesMovieIdTheatersTheaterIdSlotSlotIdScreeningScreeningIdTicketsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof PublicIndexRoute
@@ -354,29 +678,69 @@ export interface FileRoutesByTo {
   '/agencies/$agencyId': typeof AuthenticatedAgenciesAgencyIdRoute
   '/agencies/create': typeof AuthenticatedAgenciesCreateRoute
   '/audit-trails/$auditTrailId': typeof AuthenticatedAuditTrailsAuditTrailIdRoute
+  '/checkers/$checkerId': typeof AuthenticatedCheckersCheckerIdRoute
+  '/checkers/create': typeof AuthenticatedCheckersCreateRoute
   '/cinema-formats/$cinemaFormatId': typeof AuthenticatedCinemaFormatsCinemaFormatIdRoute
   '/cinema-formats/create': typeof AuthenticatedCinemaFormatsCreateRoute
+  '/cinema-tickets-template/$templateId': typeof AuthenticatedCinemaTicketsTemplateTemplateIdRoute
+  '/cinema-tickets-template/create': typeof AuthenticatedCinemaTicketsTemplateCreateRoute
   '/cinemas/$cinemaId': typeof AuthenticatedCinemasCinemaIdRoute
   '/cinemas/create': typeof AuthenticatedCinemasCreateRoute
+  '/cultural-taxes/$culturalTaxId': typeof AuthenticatedCulturalTaxesCulturalTaxIdRoute
+  '/cultural-taxes/create': typeof AuthenticatedCulturalTaxesCreateRoute
   '/dashboard/settings': typeof AuthenticatedDashboardSettingsRoute
+  '/discounts/$discountId': typeof AuthenticatedDiscountsDiscountIdRoute
+  '/discounts/create': typeof AuthenticatedDiscountsCreateRoute
+  '/hourly-reports/$hourlyReportId': typeof AuthenticatedHourlyReportsHourlyReportIdRoute
+  '/hourly-reports/create': typeof AuthenticatedHourlyReportsCreateRoute
+  '/movies/$movieId': typeof AuthenticatedMoviesMovieIdRoute
+  '/movies/create': typeof AuthenticatedMoviesCreateRoute
   '/production-companies/$companyId': typeof AuthenticatedProductionCompaniesCompanyIdRoute
   '/production-companies/create': typeof AuthenticatedProductionCompaniesCreateRoute
+  '/tax-rules/$taxRuleId': typeof AuthenticatedTaxRulesTaxRuleIdRoute
+  '/tax-rules/create': typeof AuthenticatedTaxRulesCreateRoute
   '/theater-groups/$theaterGroupId': typeof AuthenticatedTheaterGroupsTheaterGroupIdRoute
   '/theater-groups/create': typeof AuthenticatedTheaterGroupsCreateRoute
+  '/theater-movie-ticket-prices/$priceId': typeof AuthenticatedTheaterMovieTicketPricesPriceIdRoute
+  '/theater-movie-ticket-prices/create': typeof AuthenticatedTheaterMovieTicketPricesCreateRoute
+  '/theater-production-tax-rules/$overrideId': typeof AuthenticatedTheaterProductionTaxRulesOverrideIdRoute
+  '/theater-production-tax-rules/create': typeof AuthenticatedTheaterProductionTaxRulesCreateRoute
   '/theaters/$theaterId': typeof AuthenticatedTheatersTheaterIdRoute
   '/theaters/create': typeof AuthenticatedTheatersCreateRoute
+  '/ticket-types/$ticketTypeId': typeof AuthenticatedTicketTypesTicketTypeIdRoute
+  '/ticket-types/create': typeof AuthenticatedTicketTypesCreateRoute
   '/users/$userId': typeof AuthenticatedUsersUserIdRoute
   '/users/create': typeof AuthenticatedUsersCreateRoute
   '/agencies': typeof AuthenticatedAgenciesIndexRoute
   '/audit-trails': typeof AuthenticatedAuditTrailsIndexRoute
+  '/checkers': typeof AuthenticatedCheckersIndexRoute
   '/cinema-formats': typeof AuthenticatedCinemaFormatsIndexRoute
+  '/cinema-tickets-template': typeof AuthenticatedCinemaTicketsTemplateIndexRoute
   '/cinemas': typeof AuthenticatedCinemasIndexRoute
+  '/cultural-taxes': typeof AuthenticatedCulturalTaxesIndexRoute
+  '/discounts': typeof AuthenticatedDiscountsIndexRoute
+  '/hourly-reports': typeof AuthenticatedHourlyReportsIndexRoute
+  '/movies': typeof AuthenticatedMoviesIndexRoute
   '/production-companies': typeof AuthenticatedProductionCompaniesIndexRoute
+  '/tax-rules': typeof AuthenticatedTaxRulesIndexRoute
   '/theater-groups': typeof AuthenticatedTheaterGroupsIndexRoute
+  '/theater-movie-ticket-prices': typeof AuthenticatedTheaterMovieTicketPricesIndexRoute
+  '/theater-production-tax-rules': typeof AuthenticatedTheaterProductionTaxRulesIndexRoute
   '/theaters': typeof AuthenticatedTheatersIndexRoute
+  '/ticket-types': typeof AuthenticatedTicketTypesIndexRoute
   '/users': typeof AuthenticatedUsersIndexRoute
+  '/checkers/$checkerId/assignments': typeof AuthenticatedCheckersCheckerIdAssignmentsRoute
+  '/checkers/$checkerId/authorizations': typeof AuthenticatedCheckersCheckerIdAuthorizationsRoute
   '/cinemas/$cinemaId/formats': typeof AuthenticatedCinemasCinemaIdFormatsRoute
+  '/movies/$movieId/formats': typeof AuthenticatedMoviesMovieIdFormatsRoute
+  '/production-companies/$companyId/schedules': typeof AuthenticatedProductionCompaniesCompanyIdSchedulesRoute
   '/users/$userId/edit': typeof AuthenticatedUsersUserIdEditRoute
+  '/movies/$movieId/theaters/$theaterId': typeof AuthenticatedMoviesMovieIdTheatersTheaterIdRoute
+  '/movies/$movieId/theaters': typeof AuthenticatedMoviesMovieIdTheatersIndexRoute
+  '/theater-groups/$theaterGroupId/theaters': typeof AuthenticatedTheaterGroupsTheaterGroupIdTheatersIndexRoute
+  '/movies/$movieId/theaters/$theaterId/slot/$slotId': typeof AuthenticatedMoviesMovieIdTheatersTheaterIdSlotSlotIdRoute
+  '/theater-groups/$theaterGroupId/theaters/$theaterId/cinemas': typeof AuthenticatedTheaterGroupsTheaterGroupIdTheatersTheaterIdCinemasIndexRoute
+  '/movies/$movieId/theaters/$theaterId/slot/$slotId/screening/$screeningId/tickets': typeof AuthenticatedMoviesMovieIdTheatersTheaterIdSlotSlotIdScreeningScreeningIdTicketsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -400,29 +764,69 @@ export interface FileRoutesById {
   '/_authenticated/agencies/$agencyId': typeof AuthenticatedAgenciesAgencyIdRoute
   '/_authenticated/agencies/create': typeof AuthenticatedAgenciesCreateRoute
   '/_authenticated/audit-trails/$auditTrailId': typeof AuthenticatedAuditTrailsAuditTrailIdRoute
+  '/_authenticated/checkers/$checkerId': typeof AuthenticatedCheckersCheckerIdRoute
+  '/_authenticated/checkers/create': typeof AuthenticatedCheckersCreateRoute
   '/_authenticated/cinema-formats/$cinemaFormatId': typeof AuthenticatedCinemaFormatsCinemaFormatIdRoute
   '/_authenticated/cinema-formats/create': typeof AuthenticatedCinemaFormatsCreateRoute
+  '/_authenticated/cinema-tickets-template/$templateId': typeof AuthenticatedCinemaTicketsTemplateTemplateIdRoute
+  '/_authenticated/cinema-tickets-template/create': typeof AuthenticatedCinemaTicketsTemplateCreateRoute
   '/_authenticated/cinemas/$cinemaId': typeof AuthenticatedCinemasCinemaIdRoute
   '/_authenticated/cinemas/create': typeof AuthenticatedCinemasCreateRoute
+  '/_authenticated/cultural-taxes/$culturalTaxId': typeof AuthenticatedCulturalTaxesCulturalTaxIdRoute
+  '/_authenticated/cultural-taxes/create': typeof AuthenticatedCulturalTaxesCreateRoute
   '/_authenticated/dashboard/settings': typeof AuthenticatedDashboardSettingsRoute
+  '/_authenticated/discounts/$discountId': typeof AuthenticatedDiscountsDiscountIdRoute
+  '/_authenticated/discounts/create': typeof AuthenticatedDiscountsCreateRoute
+  '/_authenticated/hourly-reports/$hourlyReportId': typeof AuthenticatedHourlyReportsHourlyReportIdRoute
+  '/_authenticated/hourly-reports/create': typeof AuthenticatedHourlyReportsCreateRoute
+  '/_authenticated/movies/$movieId': typeof AuthenticatedMoviesMovieIdRoute
+  '/_authenticated/movies/create': typeof AuthenticatedMoviesCreateRoute
   '/_authenticated/production-companies/$companyId': typeof AuthenticatedProductionCompaniesCompanyIdRoute
   '/_authenticated/production-companies/create': typeof AuthenticatedProductionCompaniesCreateRoute
+  '/_authenticated/tax-rules/$taxRuleId': typeof AuthenticatedTaxRulesTaxRuleIdRoute
+  '/_authenticated/tax-rules/create': typeof AuthenticatedTaxRulesCreateRoute
   '/_authenticated/theater-groups/$theaterGroupId': typeof AuthenticatedTheaterGroupsTheaterGroupIdRoute
   '/_authenticated/theater-groups/create': typeof AuthenticatedTheaterGroupsCreateRoute
+  '/_authenticated/theater-movie-ticket-prices/$priceId': typeof AuthenticatedTheaterMovieTicketPricesPriceIdRoute
+  '/_authenticated/theater-movie-ticket-prices/create': typeof AuthenticatedTheaterMovieTicketPricesCreateRoute
+  '/_authenticated/theater-production-tax-rules/$overrideId': typeof AuthenticatedTheaterProductionTaxRulesOverrideIdRoute
+  '/_authenticated/theater-production-tax-rules/create': typeof AuthenticatedTheaterProductionTaxRulesCreateRoute
   '/_authenticated/theaters/$theaterId': typeof AuthenticatedTheatersTheaterIdRoute
   '/_authenticated/theaters/create': typeof AuthenticatedTheatersCreateRoute
+  '/_authenticated/ticket-types/$ticketTypeId': typeof AuthenticatedTicketTypesTicketTypeIdRoute
+  '/_authenticated/ticket-types/create': typeof AuthenticatedTicketTypesCreateRoute
   '/_authenticated/users/$userId': typeof AuthenticatedUsersUserIdRoute
   '/_authenticated/users/create': typeof AuthenticatedUsersCreateRoute
   '/_authenticated/agencies/': typeof AuthenticatedAgenciesIndexRoute
   '/_authenticated/audit-trails/': typeof AuthenticatedAuditTrailsIndexRoute
+  '/_authenticated/checkers/': typeof AuthenticatedCheckersIndexRoute
   '/_authenticated/cinema-formats/': typeof AuthenticatedCinemaFormatsIndexRoute
+  '/_authenticated/cinema-tickets-template/': typeof AuthenticatedCinemaTicketsTemplateIndexRoute
   '/_authenticated/cinemas/': typeof AuthenticatedCinemasIndexRoute
+  '/_authenticated/cultural-taxes/': typeof AuthenticatedCulturalTaxesIndexRoute
+  '/_authenticated/discounts/': typeof AuthenticatedDiscountsIndexRoute
+  '/_authenticated/hourly-reports/': typeof AuthenticatedHourlyReportsIndexRoute
+  '/_authenticated/movies/': typeof AuthenticatedMoviesIndexRoute
   '/_authenticated/production-companies/': typeof AuthenticatedProductionCompaniesIndexRoute
+  '/_authenticated/tax-rules/': typeof AuthenticatedTaxRulesIndexRoute
   '/_authenticated/theater-groups/': typeof AuthenticatedTheaterGroupsIndexRoute
+  '/_authenticated/theater-movie-ticket-prices/': typeof AuthenticatedTheaterMovieTicketPricesIndexRoute
+  '/_authenticated/theater-production-tax-rules/': typeof AuthenticatedTheaterProductionTaxRulesIndexRoute
   '/_authenticated/theaters/': typeof AuthenticatedTheatersIndexRoute
+  '/_authenticated/ticket-types/': typeof AuthenticatedTicketTypesIndexRoute
   '/_authenticated/users/': typeof AuthenticatedUsersIndexRoute
+  '/_authenticated/checkers/$checkerId_/assignments': typeof AuthenticatedCheckersCheckerIdAssignmentsRoute
+  '/_authenticated/checkers/$checkerId_/authorizations': typeof AuthenticatedCheckersCheckerIdAuthorizationsRoute
   '/_authenticated/cinemas/$cinemaId_/formats': typeof AuthenticatedCinemasCinemaIdFormatsRoute
+  '/_authenticated/movies/$movieId_/formats': typeof AuthenticatedMoviesMovieIdFormatsRoute
+  '/_authenticated/production-companies/$companyId_/schedules': typeof AuthenticatedProductionCompaniesCompanyIdSchedulesRoute
   '/_authenticated/users/$userId_/edit': typeof AuthenticatedUsersUserIdEditRoute
+  '/_authenticated/movies/$movieId_/theaters/$theaterId': typeof AuthenticatedMoviesMovieIdTheatersTheaterIdRoute
+  '/_authenticated/movies/$movieId_/theaters/': typeof AuthenticatedMoviesMovieIdTheatersIndexRoute
+  '/_authenticated/theater-groups/$theaterGroupId_/theaters/': typeof AuthenticatedTheaterGroupsTheaterGroupIdTheatersIndexRoute
+  '/_authenticated/movies/$movieId_/theaters/$theaterId_/slot/$slotId': typeof AuthenticatedMoviesMovieIdTheatersTheaterIdSlotSlotIdRoute
+  '/_authenticated/theater-groups/$theaterGroupId_/theaters/$theaterId_/cinemas/': typeof AuthenticatedTheaterGroupsTheaterGroupIdTheatersTheaterIdCinemasIndexRoute
+  '/_authenticated/movies/$movieId_/theaters/$theaterId_/slot/$slotId_/screening/$screeningId_/tickets': typeof AuthenticatedMoviesMovieIdTheatersTheaterIdSlotSlotIdScreeningScreeningIdTicketsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -444,29 +848,69 @@ export interface FileRouteTypes {
     | '/agencies/$agencyId'
     | '/agencies/create'
     | '/audit-trails/$auditTrailId'
+    | '/checkers/$checkerId'
+    | '/checkers/create'
     | '/cinema-formats/$cinemaFormatId'
     | '/cinema-formats/create'
+    | '/cinema-tickets-template/$templateId'
+    | '/cinema-tickets-template/create'
     | '/cinemas/$cinemaId'
     | '/cinemas/create'
+    | '/cultural-taxes/$culturalTaxId'
+    | '/cultural-taxes/create'
     | '/dashboard/settings'
+    | '/discounts/$discountId'
+    | '/discounts/create'
+    | '/hourly-reports/$hourlyReportId'
+    | '/hourly-reports/create'
+    | '/movies/$movieId'
+    | '/movies/create'
     | '/production-companies/$companyId'
     | '/production-companies/create'
+    | '/tax-rules/$taxRuleId'
+    | '/tax-rules/create'
     | '/theater-groups/$theaterGroupId'
     | '/theater-groups/create'
+    | '/theater-movie-ticket-prices/$priceId'
+    | '/theater-movie-ticket-prices/create'
+    | '/theater-production-tax-rules/$overrideId'
+    | '/theater-production-tax-rules/create'
     | '/theaters/$theaterId'
     | '/theaters/create'
+    | '/ticket-types/$ticketTypeId'
+    | '/ticket-types/create'
     | '/users/$userId'
     | '/users/create'
     | '/agencies/'
     | '/audit-trails/'
+    | '/checkers/'
     | '/cinema-formats/'
+    | '/cinema-tickets-template/'
     | '/cinemas/'
+    | '/cultural-taxes/'
+    | '/discounts/'
+    | '/hourly-reports/'
+    | '/movies/'
     | '/production-companies/'
+    | '/tax-rules/'
     | '/theater-groups/'
+    | '/theater-movie-ticket-prices/'
+    | '/theater-production-tax-rules/'
     | '/theaters/'
+    | '/ticket-types/'
     | '/users/'
+    | '/checkers/$checkerId/assignments'
+    | '/checkers/$checkerId/authorizations'
     | '/cinemas/$cinemaId/formats'
+    | '/movies/$movieId/formats'
+    | '/production-companies/$companyId/schedules'
     | '/users/$userId/edit'
+    | '/movies/$movieId/theaters/$theaterId'
+    | '/movies/$movieId/theaters/'
+    | '/theater-groups/$theaterGroupId/theaters/'
+    | '/movies/$movieId/theaters/$theaterId/slot/$slotId'
+    | '/theater-groups/$theaterGroupId/theaters/$theaterId/cinemas/'
+    | '/movies/$movieId/theaters/$theaterId/slot/$slotId/screening/$screeningId/tickets'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -486,29 +930,69 @@ export interface FileRouteTypes {
     | '/agencies/$agencyId'
     | '/agencies/create'
     | '/audit-trails/$auditTrailId'
+    | '/checkers/$checkerId'
+    | '/checkers/create'
     | '/cinema-formats/$cinemaFormatId'
     | '/cinema-formats/create'
+    | '/cinema-tickets-template/$templateId'
+    | '/cinema-tickets-template/create'
     | '/cinemas/$cinemaId'
     | '/cinemas/create'
+    | '/cultural-taxes/$culturalTaxId'
+    | '/cultural-taxes/create'
     | '/dashboard/settings'
+    | '/discounts/$discountId'
+    | '/discounts/create'
+    | '/hourly-reports/$hourlyReportId'
+    | '/hourly-reports/create'
+    | '/movies/$movieId'
+    | '/movies/create'
     | '/production-companies/$companyId'
     | '/production-companies/create'
+    | '/tax-rules/$taxRuleId'
+    | '/tax-rules/create'
     | '/theater-groups/$theaterGroupId'
     | '/theater-groups/create'
+    | '/theater-movie-ticket-prices/$priceId'
+    | '/theater-movie-ticket-prices/create'
+    | '/theater-production-tax-rules/$overrideId'
+    | '/theater-production-tax-rules/create'
     | '/theaters/$theaterId'
     | '/theaters/create'
+    | '/ticket-types/$ticketTypeId'
+    | '/ticket-types/create'
     | '/users/$userId'
     | '/users/create'
     | '/agencies'
     | '/audit-trails'
+    | '/checkers'
     | '/cinema-formats'
+    | '/cinema-tickets-template'
     | '/cinemas'
+    | '/cultural-taxes'
+    | '/discounts'
+    | '/hourly-reports'
+    | '/movies'
     | '/production-companies'
+    | '/tax-rules'
     | '/theater-groups'
+    | '/theater-movie-ticket-prices'
+    | '/theater-production-tax-rules'
     | '/theaters'
+    | '/ticket-types'
     | '/users'
+    | '/checkers/$checkerId/assignments'
+    | '/checkers/$checkerId/authorizations'
     | '/cinemas/$cinemaId/formats'
+    | '/movies/$movieId/formats'
+    | '/production-companies/$companyId/schedules'
     | '/users/$userId/edit'
+    | '/movies/$movieId/theaters/$theaterId'
+    | '/movies/$movieId/theaters'
+    | '/theater-groups/$theaterGroupId/theaters'
+    | '/movies/$movieId/theaters/$theaterId/slot/$slotId'
+    | '/theater-groups/$theaterGroupId/theaters/$theaterId/cinemas'
+    | '/movies/$movieId/theaters/$theaterId/slot/$slotId/screening/$screeningId/tickets'
   id:
     | '__root__'
     | '/_authenticated'
@@ -531,29 +1015,69 @@ export interface FileRouteTypes {
     | '/_authenticated/agencies/$agencyId'
     | '/_authenticated/agencies/create'
     | '/_authenticated/audit-trails/$auditTrailId'
+    | '/_authenticated/checkers/$checkerId'
+    | '/_authenticated/checkers/create'
     | '/_authenticated/cinema-formats/$cinemaFormatId'
     | '/_authenticated/cinema-formats/create'
+    | '/_authenticated/cinema-tickets-template/$templateId'
+    | '/_authenticated/cinema-tickets-template/create'
     | '/_authenticated/cinemas/$cinemaId'
     | '/_authenticated/cinemas/create'
+    | '/_authenticated/cultural-taxes/$culturalTaxId'
+    | '/_authenticated/cultural-taxes/create'
     | '/_authenticated/dashboard/settings'
+    | '/_authenticated/discounts/$discountId'
+    | '/_authenticated/discounts/create'
+    | '/_authenticated/hourly-reports/$hourlyReportId'
+    | '/_authenticated/hourly-reports/create'
+    | '/_authenticated/movies/$movieId'
+    | '/_authenticated/movies/create'
     | '/_authenticated/production-companies/$companyId'
     | '/_authenticated/production-companies/create'
+    | '/_authenticated/tax-rules/$taxRuleId'
+    | '/_authenticated/tax-rules/create'
     | '/_authenticated/theater-groups/$theaterGroupId'
     | '/_authenticated/theater-groups/create'
+    | '/_authenticated/theater-movie-ticket-prices/$priceId'
+    | '/_authenticated/theater-movie-ticket-prices/create'
+    | '/_authenticated/theater-production-tax-rules/$overrideId'
+    | '/_authenticated/theater-production-tax-rules/create'
     | '/_authenticated/theaters/$theaterId'
     | '/_authenticated/theaters/create'
+    | '/_authenticated/ticket-types/$ticketTypeId'
+    | '/_authenticated/ticket-types/create'
     | '/_authenticated/users/$userId'
     | '/_authenticated/users/create'
     | '/_authenticated/agencies/'
     | '/_authenticated/audit-trails/'
+    | '/_authenticated/checkers/'
     | '/_authenticated/cinema-formats/'
+    | '/_authenticated/cinema-tickets-template/'
     | '/_authenticated/cinemas/'
+    | '/_authenticated/cultural-taxes/'
+    | '/_authenticated/discounts/'
+    | '/_authenticated/hourly-reports/'
+    | '/_authenticated/movies/'
     | '/_authenticated/production-companies/'
+    | '/_authenticated/tax-rules/'
     | '/_authenticated/theater-groups/'
+    | '/_authenticated/theater-movie-ticket-prices/'
+    | '/_authenticated/theater-production-tax-rules/'
     | '/_authenticated/theaters/'
+    | '/_authenticated/ticket-types/'
     | '/_authenticated/users/'
+    | '/_authenticated/checkers/$checkerId_/assignments'
+    | '/_authenticated/checkers/$checkerId_/authorizations'
     | '/_authenticated/cinemas/$cinemaId_/formats'
+    | '/_authenticated/movies/$movieId_/formats'
+    | '/_authenticated/production-companies/$companyId_/schedules'
     | '/_authenticated/users/$userId_/edit'
+    | '/_authenticated/movies/$movieId_/theaters/$theaterId'
+    | '/_authenticated/movies/$movieId_/theaters/'
+    | '/_authenticated/theater-groups/$theaterGroupId_/theaters/'
+    | '/_authenticated/movies/$movieId_/theaters/$theaterId_/slot/$slotId'
+    | '/_authenticated/theater-groups/$theaterGroupId_/theaters/$theaterId_/cinemas/'
+    | '/_authenticated/movies/$movieId_/theaters/$theaterId_/slot/$slotId_/screening/$screeningId_/tickets'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -664,11 +1188,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedUsersIndexRouteImport
       parentRoute: typeof AuthenticatedRoute
     }
+    '/_authenticated/ticket-types/': {
+      id: '/_authenticated/ticket-types/'
+      path: '/ticket-types'
+      fullPath: '/ticket-types/'
+      preLoaderRoute: typeof AuthenticatedTicketTypesIndexRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
     '/_authenticated/theaters/': {
       id: '/_authenticated/theaters/'
       path: '/theaters'
       fullPath: '/theaters/'
       preLoaderRoute: typeof AuthenticatedTheatersIndexRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/theater-production-tax-rules/': {
+      id: '/_authenticated/theater-production-tax-rules/'
+      path: '/theater-production-tax-rules'
+      fullPath: '/theater-production-tax-rules/'
+      preLoaderRoute: typeof AuthenticatedTheaterProductionTaxRulesIndexRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/theater-movie-ticket-prices/': {
+      id: '/_authenticated/theater-movie-ticket-prices/'
+      path: '/theater-movie-ticket-prices'
+      fullPath: '/theater-movie-ticket-prices/'
+      preLoaderRoute: typeof AuthenticatedTheaterMovieTicketPricesIndexRouteImport
       parentRoute: typeof AuthenticatedRoute
     }
     '/_authenticated/theater-groups/': {
@@ -678,11 +1223,46 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedTheaterGroupsIndexRouteImport
       parentRoute: typeof AuthenticatedRoute
     }
+    '/_authenticated/tax-rules/': {
+      id: '/_authenticated/tax-rules/'
+      path: '/tax-rules'
+      fullPath: '/tax-rules/'
+      preLoaderRoute: typeof AuthenticatedTaxRulesIndexRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
     '/_authenticated/production-companies/': {
       id: '/_authenticated/production-companies/'
       path: '/production-companies'
       fullPath: '/production-companies/'
       preLoaderRoute: typeof AuthenticatedProductionCompaniesIndexRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/movies/': {
+      id: '/_authenticated/movies/'
+      path: '/movies'
+      fullPath: '/movies/'
+      preLoaderRoute: typeof AuthenticatedMoviesIndexRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/hourly-reports/': {
+      id: '/_authenticated/hourly-reports/'
+      path: '/hourly-reports'
+      fullPath: '/hourly-reports/'
+      preLoaderRoute: typeof AuthenticatedHourlyReportsIndexRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/discounts/': {
+      id: '/_authenticated/discounts/'
+      path: '/discounts'
+      fullPath: '/discounts/'
+      preLoaderRoute: typeof AuthenticatedDiscountsIndexRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/cultural-taxes/': {
+      id: '/_authenticated/cultural-taxes/'
+      path: '/cultural-taxes'
+      fullPath: '/cultural-taxes/'
+      preLoaderRoute: typeof AuthenticatedCulturalTaxesIndexRouteImport
       parentRoute: typeof AuthenticatedRoute
     }
     '/_authenticated/cinemas/': {
@@ -692,11 +1272,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedCinemasIndexRouteImport
       parentRoute: typeof AuthenticatedRoute
     }
+    '/_authenticated/cinema-tickets-template/': {
+      id: '/_authenticated/cinema-tickets-template/'
+      path: '/cinema-tickets-template'
+      fullPath: '/cinema-tickets-template/'
+      preLoaderRoute: typeof AuthenticatedCinemaTicketsTemplateIndexRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
     '/_authenticated/cinema-formats/': {
       id: '/_authenticated/cinema-formats/'
       path: '/cinema-formats'
       fullPath: '/cinema-formats/'
       preLoaderRoute: typeof AuthenticatedCinemaFormatsIndexRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/checkers/': {
+      id: '/_authenticated/checkers/'
+      path: '/checkers'
+      fullPath: '/checkers/'
+      preLoaderRoute: typeof AuthenticatedCheckersIndexRouteImport
       parentRoute: typeof AuthenticatedRoute
     }
     '/_authenticated/audit-trails/': {
@@ -727,6 +1321,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedUsersUserIdRouteImport
       parentRoute: typeof AuthenticatedRoute
     }
+    '/_authenticated/ticket-types/create': {
+      id: '/_authenticated/ticket-types/create'
+      path: '/ticket-types/create'
+      fullPath: '/ticket-types/create'
+      preLoaderRoute: typeof AuthenticatedTicketTypesCreateRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/ticket-types/$ticketTypeId': {
+      id: '/_authenticated/ticket-types/$ticketTypeId'
+      path: '/ticket-types/$ticketTypeId'
+      fullPath: '/ticket-types/$ticketTypeId'
+      preLoaderRoute: typeof AuthenticatedTicketTypesTicketTypeIdRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
     '/_authenticated/theaters/create': {
       id: '/_authenticated/theaters/create'
       path: '/theaters/create'
@@ -739,6 +1347,34 @@ declare module '@tanstack/react-router' {
       path: '/theaters/$theaterId'
       fullPath: '/theaters/$theaterId'
       preLoaderRoute: typeof AuthenticatedTheatersTheaterIdRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/theater-production-tax-rules/create': {
+      id: '/_authenticated/theater-production-tax-rules/create'
+      path: '/theater-production-tax-rules/create'
+      fullPath: '/theater-production-tax-rules/create'
+      preLoaderRoute: typeof AuthenticatedTheaterProductionTaxRulesCreateRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/theater-production-tax-rules/$overrideId': {
+      id: '/_authenticated/theater-production-tax-rules/$overrideId'
+      path: '/theater-production-tax-rules/$overrideId'
+      fullPath: '/theater-production-tax-rules/$overrideId'
+      preLoaderRoute: typeof AuthenticatedTheaterProductionTaxRulesOverrideIdRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/theater-movie-ticket-prices/create': {
+      id: '/_authenticated/theater-movie-ticket-prices/create'
+      path: '/theater-movie-ticket-prices/create'
+      fullPath: '/theater-movie-ticket-prices/create'
+      preLoaderRoute: typeof AuthenticatedTheaterMovieTicketPricesCreateRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/theater-movie-ticket-prices/$priceId': {
+      id: '/_authenticated/theater-movie-ticket-prices/$priceId'
+      path: '/theater-movie-ticket-prices/$priceId'
+      fullPath: '/theater-movie-ticket-prices/$priceId'
+      preLoaderRoute: typeof AuthenticatedTheaterMovieTicketPricesPriceIdRouteImport
       parentRoute: typeof AuthenticatedRoute
     }
     '/_authenticated/theater-groups/create': {
@@ -755,6 +1391,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedTheaterGroupsTheaterGroupIdRouteImport
       parentRoute: typeof AuthenticatedRoute
     }
+    '/_authenticated/tax-rules/create': {
+      id: '/_authenticated/tax-rules/create'
+      path: '/tax-rules/create'
+      fullPath: '/tax-rules/create'
+      preLoaderRoute: typeof AuthenticatedTaxRulesCreateRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/tax-rules/$taxRuleId': {
+      id: '/_authenticated/tax-rules/$taxRuleId'
+      path: '/tax-rules/$taxRuleId'
+      fullPath: '/tax-rules/$taxRuleId'
+      preLoaderRoute: typeof AuthenticatedTaxRulesTaxRuleIdRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
     '/_authenticated/production-companies/create': {
       id: '/_authenticated/production-companies/create'
       path: '/production-companies/create'
@@ -769,12 +1419,68 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedProductionCompaniesCompanyIdRouteImport
       parentRoute: typeof AuthenticatedRoute
     }
+    '/_authenticated/movies/create': {
+      id: '/_authenticated/movies/create'
+      path: '/movies/create'
+      fullPath: '/movies/create'
+      preLoaderRoute: typeof AuthenticatedMoviesCreateRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/movies/$movieId': {
+      id: '/_authenticated/movies/$movieId'
+      path: '/movies/$movieId'
+      fullPath: '/movies/$movieId'
+      preLoaderRoute: typeof AuthenticatedMoviesMovieIdRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/hourly-reports/create': {
+      id: '/_authenticated/hourly-reports/create'
+      path: '/hourly-reports/create'
+      fullPath: '/hourly-reports/create'
+      preLoaderRoute: typeof AuthenticatedHourlyReportsCreateRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/hourly-reports/$hourlyReportId': {
+      id: '/_authenticated/hourly-reports/$hourlyReportId'
+      path: '/hourly-reports/$hourlyReportId'
+      fullPath: '/hourly-reports/$hourlyReportId'
+      preLoaderRoute: typeof AuthenticatedHourlyReportsHourlyReportIdRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/discounts/create': {
+      id: '/_authenticated/discounts/create'
+      path: '/discounts/create'
+      fullPath: '/discounts/create'
+      preLoaderRoute: typeof AuthenticatedDiscountsCreateRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/discounts/$discountId': {
+      id: '/_authenticated/discounts/$discountId'
+      path: '/discounts/$discountId'
+      fullPath: '/discounts/$discountId'
+      preLoaderRoute: typeof AuthenticatedDiscountsDiscountIdRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
     '/_authenticated/dashboard/settings': {
       id: '/_authenticated/dashboard/settings'
       path: '/settings'
       fullPath: '/dashboard/settings'
       preLoaderRoute: typeof AuthenticatedDashboardSettingsRouteImport
       parentRoute: typeof AuthenticatedDashboardRoute
+    }
+    '/_authenticated/cultural-taxes/create': {
+      id: '/_authenticated/cultural-taxes/create'
+      path: '/cultural-taxes/create'
+      fullPath: '/cultural-taxes/create'
+      preLoaderRoute: typeof AuthenticatedCulturalTaxesCreateRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/cultural-taxes/$culturalTaxId': {
+      id: '/_authenticated/cultural-taxes/$culturalTaxId'
+      path: '/cultural-taxes/$culturalTaxId'
+      fullPath: '/cultural-taxes/$culturalTaxId'
+      preLoaderRoute: typeof AuthenticatedCulturalTaxesCulturalTaxIdRouteImport
+      parentRoute: typeof AuthenticatedRoute
     }
     '/_authenticated/cinemas/create': {
       id: '/_authenticated/cinemas/create'
@@ -790,6 +1496,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedCinemasCinemaIdRouteImport
       parentRoute: typeof AuthenticatedRoute
     }
+    '/_authenticated/cinema-tickets-template/create': {
+      id: '/_authenticated/cinema-tickets-template/create'
+      path: '/cinema-tickets-template/create'
+      fullPath: '/cinema-tickets-template/create'
+      preLoaderRoute: typeof AuthenticatedCinemaTicketsTemplateCreateRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/cinema-tickets-template/$templateId': {
+      id: '/_authenticated/cinema-tickets-template/$templateId'
+      path: '/cinema-tickets-template/$templateId'
+      fullPath: '/cinema-tickets-template/$templateId'
+      preLoaderRoute: typeof AuthenticatedCinemaTicketsTemplateTemplateIdRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
     '/_authenticated/cinema-formats/create': {
       id: '/_authenticated/cinema-formats/create'
       path: '/cinema-formats/create'
@@ -802,6 +1522,20 @@ declare module '@tanstack/react-router' {
       path: '/cinema-formats/$cinemaFormatId'
       fullPath: '/cinema-formats/$cinemaFormatId'
       preLoaderRoute: typeof AuthenticatedCinemaFormatsCinemaFormatIdRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/checkers/create': {
+      id: '/_authenticated/checkers/create'
+      path: '/checkers/create'
+      fullPath: '/checkers/create'
+      preLoaderRoute: typeof AuthenticatedCheckersCreateRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/checkers/$checkerId': {
+      id: '/_authenticated/checkers/$checkerId'
+      path: '/checkers/$checkerId'
+      fullPath: '/checkers/$checkerId'
+      preLoaderRoute: typeof AuthenticatedCheckersCheckerIdRouteImport
       parentRoute: typeof AuthenticatedRoute
     }
     '/_authenticated/audit-trails/$auditTrailId': {
@@ -860,11 +1594,81 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedUsersUserIdEditRouteImport
       parentRoute: typeof AuthenticatedRoute
     }
+    '/_authenticated/production-companies/$companyId_/schedules': {
+      id: '/_authenticated/production-companies/$companyId_/schedules'
+      path: '/production-companies/$companyId/schedules'
+      fullPath: '/production-companies/$companyId/schedules'
+      preLoaderRoute: typeof AuthenticatedProductionCompaniesCompanyIdSchedulesRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/movies/$movieId_/formats': {
+      id: '/_authenticated/movies/$movieId_/formats'
+      path: '/movies/$movieId/formats'
+      fullPath: '/movies/$movieId/formats'
+      preLoaderRoute: typeof AuthenticatedMoviesMovieIdFormatsRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
     '/_authenticated/cinemas/$cinemaId_/formats': {
       id: '/_authenticated/cinemas/$cinemaId_/formats'
       path: '/cinemas/$cinemaId/formats'
       fullPath: '/cinemas/$cinemaId/formats'
       preLoaderRoute: typeof AuthenticatedCinemasCinemaIdFormatsRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/checkers/$checkerId_/authorizations': {
+      id: '/_authenticated/checkers/$checkerId_/authorizations'
+      path: '/checkers/$checkerId/authorizations'
+      fullPath: '/checkers/$checkerId/authorizations'
+      preLoaderRoute: typeof AuthenticatedCheckersCheckerIdAuthorizationsRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/checkers/$checkerId_/assignments': {
+      id: '/_authenticated/checkers/$checkerId_/assignments'
+      path: '/checkers/$checkerId/assignments'
+      fullPath: '/checkers/$checkerId/assignments'
+      preLoaderRoute: typeof AuthenticatedCheckersCheckerIdAssignmentsRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/theater-groups/$theaterGroupId_/theaters/': {
+      id: '/_authenticated/theater-groups/$theaterGroupId_/theaters/'
+      path: '/theater-groups/$theaterGroupId/theaters'
+      fullPath: '/theater-groups/$theaterGroupId/theaters/'
+      preLoaderRoute: typeof AuthenticatedTheaterGroupsTheaterGroupIdTheatersIndexRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/movies/$movieId_/theaters/': {
+      id: '/_authenticated/movies/$movieId_/theaters/'
+      path: '/movies/$movieId/theaters'
+      fullPath: '/movies/$movieId/theaters/'
+      preLoaderRoute: typeof AuthenticatedMoviesMovieIdTheatersIndexRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/movies/$movieId_/theaters/$theaterId': {
+      id: '/_authenticated/movies/$movieId_/theaters/$theaterId'
+      path: '/movies/$movieId/theaters/$theaterId'
+      fullPath: '/movies/$movieId/theaters/$theaterId'
+      preLoaderRoute: typeof AuthenticatedMoviesMovieIdTheatersTheaterIdRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/theater-groups/$theaterGroupId_/theaters/$theaterId_/cinemas/': {
+      id: '/_authenticated/theater-groups/$theaterGroupId_/theaters/$theaterId_/cinemas/'
+      path: '/theater-groups/$theaterGroupId/theaters/$theaterId/cinemas'
+      fullPath: '/theater-groups/$theaterGroupId/theaters/$theaterId/cinemas/'
+      preLoaderRoute: typeof AuthenticatedTheaterGroupsTheaterGroupIdTheatersTheaterIdCinemasIndexRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/movies/$movieId_/theaters/$theaterId_/slot/$slotId': {
+      id: '/_authenticated/movies/$movieId_/theaters/$theaterId_/slot/$slotId'
+      path: '/movies/$movieId/theaters/$theaterId/slot/$slotId'
+      fullPath: '/movies/$movieId/theaters/$theaterId/slot/$slotId'
+      preLoaderRoute: typeof AuthenticatedMoviesMovieIdTheatersTheaterIdSlotSlotIdRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/movies/$movieId_/theaters/$theaterId_/slot/$slotId_/screening/$screeningId_/tickets': {
+      id: '/_authenticated/movies/$movieId_/theaters/$theaterId_/slot/$slotId_/screening/$screeningId_/tickets'
+      path: '/movies/$movieId/theaters/$theaterId/slot/$slotId/screening/$screeningId/tickets'
+      fullPath: '/movies/$movieId/theaters/$theaterId/slot/$slotId/screening/$screeningId/tickets'
+      preLoaderRoute: typeof AuthenticatedMoviesMovieIdTheatersTheaterIdSlotSlotIdScreeningScreeningIdTicketsRouteImport
       parentRoute: typeof AuthenticatedRoute
     }
   }
@@ -891,28 +1695,68 @@ interface AuthenticatedRouteChildren {
   AuthenticatedAgenciesAgencyIdRoute: typeof AuthenticatedAgenciesAgencyIdRoute
   AuthenticatedAgenciesCreateRoute: typeof AuthenticatedAgenciesCreateRoute
   AuthenticatedAuditTrailsAuditTrailIdRoute: typeof AuthenticatedAuditTrailsAuditTrailIdRoute
+  AuthenticatedCheckersCheckerIdRoute: typeof AuthenticatedCheckersCheckerIdRoute
+  AuthenticatedCheckersCreateRoute: typeof AuthenticatedCheckersCreateRoute
   AuthenticatedCinemaFormatsCinemaFormatIdRoute: typeof AuthenticatedCinemaFormatsCinemaFormatIdRoute
   AuthenticatedCinemaFormatsCreateRoute: typeof AuthenticatedCinemaFormatsCreateRoute
+  AuthenticatedCinemaTicketsTemplateTemplateIdRoute: typeof AuthenticatedCinemaTicketsTemplateTemplateIdRoute
+  AuthenticatedCinemaTicketsTemplateCreateRoute: typeof AuthenticatedCinemaTicketsTemplateCreateRoute
   AuthenticatedCinemasCinemaIdRoute: typeof AuthenticatedCinemasCinemaIdRoute
   AuthenticatedCinemasCreateRoute: typeof AuthenticatedCinemasCreateRoute
+  AuthenticatedCulturalTaxesCulturalTaxIdRoute: typeof AuthenticatedCulturalTaxesCulturalTaxIdRoute
+  AuthenticatedCulturalTaxesCreateRoute: typeof AuthenticatedCulturalTaxesCreateRoute
+  AuthenticatedDiscountsDiscountIdRoute: typeof AuthenticatedDiscountsDiscountIdRoute
+  AuthenticatedDiscountsCreateRoute: typeof AuthenticatedDiscountsCreateRoute
+  AuthenticatedHourlyReportsHourlyReportIdRoute: typeof AuthenticatedHourlyReportsHourlyReportIdRoute
+  AuthenticatedHourlyReportsCreateRoute: typeof AuthenticatedHourlyReportsCreateRoute
+  AuthenticatedMoviesMovieIdRoute: typeof AuthenticatedMoviesMovieIdRoute
+  AuthenticatedMoviesCreateRoute: typeof AuthenticatedMoviesCreateRoute
   AuthenticatedProductionCompaniesCompanyIdRoute: typeof AuthenticatedProductionCompaniesCompanyIdRoute
   AuthenticatedProductionCompaniesCreateRoute: typeof AuthenticatedProductionCompaniesCreateRoute
+  AuthenticatedTaxRulesTaxRuleIdRoute: typeof AuthenticatedTaxRulesTaxRuleIdRoute
+  AuthenticatedTaxRulesCreateRoute: typeof AuthenticatedTaxRulesCreateRoute
   AuthenticatedTheaterGroupsTheaterGroupIdRoute: typeof AuthenticatedTheaterGroupsTheaterGroupIdRoute
   AuthenticatedTheaterGroupsCreateRoute: typeof AuthenticatedTheaterGroupsCreateRoute
+  AuthenticatedTheaterMovieTicketPricesPriceIdRoute: typeof AuthenticatedTheaterMovieTicketPricesPriceIdRoute
+  AuthenticatedTheaterMovieTicketPricesCreateRoute: typeof AuthenticatedTheaterMovieTicketPricesCreateRoute
+  AuthenticatedTheaterProductionTaxRulesOverrideIdRoute: typeof AuthenticatedTheaterProductionTaxRulesOverrideIdRoute
+  AuthenticatedTheaterProductionTaxRulesCreateRoute: typeof AuthenticatedTheaterProductionTaxRulesCreateRoute
   AuthenticatedTheatersTheaterIdRoute: typeof AuthenticatedTheatersTheaterIdRoute
   AuthenticatedTheatersCreateRoute: typeof AuthenticatedTheatersCreateRoute
+  AuthenticatedTicketTypesTicketTypeIdRoute: typeof AuthenticatedTicketTypesTicketTypeIdRoute
+  AuthenticatedTicketTypesCreateRoute: typeof AuthenticatedTicketTypesCreateRoute
   AuthenticatedUsersUserIdRoute: typeof AuthenticatedUsersUserIdRoute
   AuthenticatedUsersCreateRoute: typeof AuthenticatedUsersCreateRoute
   AuthenticatedAgenciesIndexRoute: typeof AuthenticatedAgenciesIndexRoute
   AuthenticatedAuditTrailsIndexRoute: typeof AuthenticatedAuditTrailsIndexRoute
+  AuthenticatedCheckersIndexRoute: typeof AuthenticatedCheckersIndexRoute
   AuthenticatedCinemaFormatsIndexRoute: typeof AuthenticatedCinemaFormatsIndexRoute
+  AuthenticatedCinemaTicketsTemplateIndexRoute: typeof AuthenticatedCinemaTicketsTemplateIndexRoute
   AuthenticatedCinemasIndexRoute: typeof AuthenticatedCinemasIndexRoute
+  AuthenticatedCulturalTaxesIndexRoute: typeof AuthenticatedCulturalTaxesIndexRoute
+  AuthenticatedDiscountsIndexRoute: typeof AuthenticatedDiscountsIndexRoute
+  AuthenticatedHourlyReportsIndexRoute: typeof AuthenticatedHourlyReportsIndexRoute
+  AuthenticatedMoviesIndexRoute: typeof AuthenticatedMoviesIndexRoute
   AuthenticatedProductionCompaniesIndexRoute: typeof AuthenticatedProductionCompaniesIndexRoute
+  AuthenticatedTaxRulesIndexRoute: typeof AuthenticatedTaxRulesIndexRoute
   AuthenticatedTheaterGroupsIndexRoute: typeof AuthenticatedTheaterGroupsIndexRoute
+  AuthenticatedTheaterMovieTicketPricesIndexRoute: typeof AuthenticatedTheaterMovieTicketPricesIndexRoute
+  AuthenticatedTheaterProductionTaxRulesIndexRoute: typeof AuthenticatedTheaterProductionTaxRulesIndexRoute
   AuthenticatedTheatersIndexRoute: typeof AuthenticatedTheatersIndexRoute
+  AuthenticatedTicketTypesIndexRoute: typeof AuthenticatedTicketTypesIndexRoute
   AuthenticatedUsersIndexRoute: typeof AuthenticatedUsersIndexRoute
+  AuthenticatedCheckersCheckerIdAssignmentsRoute: typeof AuthenticatedCheckersCheckerIdAssignmentsRoute
+  AuthenticatedCheckersCheckerIdAuthorizationsRoute: typeof AuthenticatedCheckersCheckerIdAuthorizationsRoute
   AuthenticatedCinemasCinemaIdFormatsRoute: typeof AuthenticatedCinemasCinemaIdFormatsRoute
+  AuthenticatedMoviesMovieIdFormatsRoute: typeof AuthenticatedMoviesMovieIdFormatsRoute
+  AuthenticatedProductionCompaniesCompanyIdSchedulesRoute: typeof AuthenticatedProductionCompaniesCompanyIdSchedulesRoute
   AuthenticatedUsersUserIdEditRoute: typeof AuthenticatedUsersUserIdEditRoute
+  AuthenticatedMoviesMovieIdTheatersTheaterIdRoute: typeof AuthenticatedMoviesMovieIdTheatersTheaterIdRoute
+  AuthenticatedMoviesMovieIdTheatersIndexRoute: typeof AuthenticatedMoviesMovieIdTheatersIndexRoute
+  AuthenticatedTheaterGroupsTheaterGroupIdTheatersIndexRoute: typeof AuthenticatedTheaterGroupsTheaterGroupIdTheatersIndexRoute
+  AuthenticatedMoviesMovieIdTheatersTheaterIdSlotSlotIdRoute: typeof AuthenticatedMoviesMovieIdTheatersTheaterIdSlotSlotIdRoute
+  AuthenticatedTheaterGroupsTheaterGroupIdTheatersTheaterIdCinemasIndexRoute: typeof AuthenticatedTheaterGroupsTheaterGroupIdTheatersTheaterIdCinemasIndexRoute
+  AuthenticatedMoviesMovieIdTheatersTheaterIdSlotSlotIdScreeningScreeningIdTicketsRoute: typeof AuthenticatedMoviesMovieIdTheatersTheaterIdSlotSlotIdScreeningScreeningIdTicketsRoute
 }
 
 const AuthenticatedRouteChildren: AuthenticatedRouteChildren = {
@@ -923,34 +1767,96 @@ const AuthenticatedRouteChildren: AuthenticatedRouteChildren = {
   AuthenticatedAgenciesCreateRoute: AuthenticatedAgenciesCreateRoute,
   AuthenticatedAuditTrailsAuditTrailIdRoute:
     AuthenticatedAuditTrailsAuditTrailIdRoute,
+  AuthenticatedCheckersCheckerIdRoute: AuthenticatedCheckersCheckerIdRoute,
+  AuthenticatedCheckersCreateRoute: AuthenticatedCheckersCreateRoute,
   AuthenticatedCinemaFormatsCinemaFormatIdRoute:
     AuthenticatedCinemaFormatsCinemaFormatIdRoute,
   AuthenticatedCinemaFormatsCreateRoute: AuthenticatedCinemaFormatsCreateRoute,
+  AuthenticatedCinemaTicketsTemplateTemplateIdRoute:
+    AuthenticatedCinemaTicketsTemplateTemplateIdRoute,
+  AuthenticatedCinemaTicketsTemplateCreateRoute:
+    AuthenticatedCinemaTicketsTemplateCreateRoute,
   AuthenticatedCinemasCinemaIdRoute: AuthenticatedCinemasCinemaIdRoute,
   AuthenticatedCinemasCreateRoute: AuthenticatedCinemasCreateRoute,
+  AuthenticatedCulturalTaxesCulturalTaxIdRoute:
+    AuthenticatedCulturalTaxesCulturalTaxIdRoute,
+  AuthenticatedCulturalTaxesCreateRoute: AuthenticatedCulturalTaxesCreateRoute,
+  AuthenticatedDiscountsDiscountIdRoute: AuthenticatedDiscountsDiscountIdRoute,
+  AuthenticatedDiscountsCreateRoute: AuthenticatedDiscountsCreateRoute,
+  AuthenticatedHourlyReportsHourlyReportIdRoute:
+    AuthenticatedHourlyReportsHourlyReportIdRoute,
+  AuthenticatedHourlyReportsCreateRoute: AuthenticatedHourlyReportsCreateRoute,
+  AuthenticatedMoviesMovieIdRoute: AuthenticatedMoviesMovieIdRoute,
+  AuthenticatedMoviesCreateRoute: AuthenticatedMoviesCreateRoute,
   AuthenticatedProductionCompaniesCompanyIdRoute:
     AuthenticatedProductionCompaniesCompanyIdRoute,
   AuthenticatedProductionCompaniesCreateRoute:
     AuthenticatedProductionCompaniesCreateRoute,
+  AuthenticatedTaxRulesTaxRuleIdRoute: AuthenticatedTaxRulesTaxRuleIdRoute,
+  AuthenticatedTaxRulesCreateRoute: AuthenticatedTaxRulesCreateRoute,
   AuthenticatedTheaterGroupsTheaterGroupIdRoute:
     AuthenticatedTheaterGroupsTheaterGroupIdRoute,
   AuthenticatedTheaterGroupsCreateRoute: AuthenticatedTheaterGroupsCreateRoute,
+  AuthenticatedTheaterMovieTicketPricesPriceIdRoute:
+    AuthenticatedTheaterMovieTicketPricesPriceIdRoute,
+  AuthenticatedTheaterMovieTicketPricesCreateRoute:
+    AuthenticatedTheaterMovieTicketPricesCreateRoute,
+  AuthenticatedTheaterProductionTaxRulesOverrideIdRoute:
+    AuthenticatedTheaterProductionTaxRulesOverrideIdRoute,
+  AuthenticatedTheaterProductionTaxRulesCreateRoute:
+    AuthenticatedTheaterProductionTaxRulesCreateRoute,
   AuthenticatedTheatersTheaterIdRoute: AuthenticatedTheatersTheaterIdRoute,
   AuthenticatedTheatersCreateRoute: AuthenticatedTheatersCreateRoute,
+  AuthenticatedTicketTypesTicketTypeIdRoute:
+    AuthenticatedTicketTypesTicketTypeIdRoute,
+  AuthenticatedTicketTypesCreateRoute: AuthenticatedTicketTypesCreateRoute,
   AuthenticatedUsersUserIdRoute: AuthenticatedUsersUserIdRoute,
   AuthenticatedUsersCreateRoute: AuthenticatedUsersCreateRoute,
   AuthenticatedAgenciesIndexRoute: AuthenticatedAgenciesIndexRoute,
   AuthenticatedAuditTrailsIndexRoute: AuthenticatedAuditTrailsIndexRoute,
+  AuthenticatedCheckersIndexRoute: AuthenticatedCheckersIndexRoute,
   AuthenticatedCinemaFormatsIndexRoute: AuthenticatedCinemaFormatsIndexRoute,
+  AuthenticatedCinemaTicketsTemplateIndexRoute:
+    AuthenticatedCinemaTicketsTemplateIndexRoute,
   AuthenticatedCinemasIndexRoute: AuthenticatedCinemasIndexRoute,
+  AuthenticatedCulturalTaxesIndexRoute: AuthenticatedCulturalTaxesIndexRoute,
+  AuthenticatedDiscountsIndexRoute: AuthenticatedDiscountsIndexRoute,
+  AuthenticatedHourlyReportsIndexRoute: AuthenticatedHourlyReportsIndexRoute,
+  AuthenticatedMoviesIndexRoute: AuthenticatedMoviesIndexRoute,
   AuthenticatedProductionCompaniesIndexRoute:
     AuthenticatedProductionCompaniesIndexRoute,
+  AuthenticatedTaxRulesIndexRoute: AuthenticatedTaxRulesIndexRoute,
   AuthenticatedTheaterGroupsIndexRoute: AuthenticatedTheaterGroupsIndexRoute,
+  AuthenticatedTheaterMovieTicketPricesIndexRoute:
+    AuthenticatedTheaterMovieTicketPricesIndexRoute,
+  AuthenticatedTheaterProductionTaxRulesIndexRoute:
+    AuthenticatedTheaterProductionTaxRulesIndexRoute,
   AuthenticatedTheatersIndexRoute: AuthenticatedTheatersIndexRoute,
+  AuthenticatedTicketTypesIndexRoute: AuthenticatedTicketTypesIndexRoute,
   AuthenticatedUsersIndexRoute: AuthenticatedUsersIndexRoute,
+  AuthenticatedCheckersCheckerIdAssignmentsRoute:
+    AuthenticatedCheckersCheckerIdAssignmentsRoute,
+  AuthenticatedCheckersCheckerIdAuthorizationsRoute:
+    AuthenticatedCheckersCheckerIdAuthorizationsRoute,
   AuthenticatedCinemasCinemaIdFormatsRoute:
     AuthenticatedCinemasCinemaIdFormatsRoute,
+  AuthenticatedMoviesMovieIdFormatsRoute:
+    AuthenticatedMoviesMovieIdFormatsRoute,
+  AuthenticatedProductionCompaniesCompanyIdSchedulesRoute:
+    AuthenticatedProductionCompaniesCompanyIdSchedulesRoute,
   AuthenticatedUsersUserIdEditRoute: AuthenticatedUsersUserIdEditRoute,
+  AuthenticatedMoviesMovieIdTheatersTheaterIdRoute:
+    AuthenticatedMoviesMovieIdTheatersTheaterIdRoute,
+  AuthenticatedMoviesMovieIdTheatersIndexRoute:
+    AuthenticatedMoviesMovieIdTheatersIndexRoute,
+  AuthenticatedTheaterGroupsTheaterGroupIdTheatersIndexRoute:
+    AuthenticatedTheaterGroupsTheaterGroupIdTheatersIndexRoute,
+  AuthenticatedMoviesMovieIdTheatersTheaterIdSlotSlotIdRoute:
+    AuthenticatedMoviesMovieIdTheatersTheaterIdSlotSlotIdRoute,
+  AuthenticatedTheaterGroupsTheaterGroupIdTheatersTheaterIdCinemasIndexRoute:
+    AuthenticatedTheaterGroupsTheaterGroupIdTheatersTheaterIdCinemasIndexRoute,
+  AuthenticatedMoviesMovieIdTheatersTheaterIdSlotSlotIdScreeningScreeningIdTicketsRoute:
+    AuthenticatedMoviesMovieIdTheatersTheaterIdSlotSlotIdScreeningScreeningIdTicketsRoute,
 }
 
 const AuthenticatedRouteWithChildren = AuthenticatedRoute._addFileChildren(

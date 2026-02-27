@@ -249,3 +249,39 @@
 
     --sidebar-ring: oklch(0.556 0 0);
 }
+
+@layer utilities {
+    .public-cinema-theme {
+        font-family:
+            "Oswald",
+            "Avenir Next Condensed",
+            "Franklin Gothic Medium",
+            "Arial Narrow",
+            sans-serif;
+    }
+
+    .projector-sweep {
+        background:
+            linear-gradient(
+                115deg,
+                transparent 0%,
+                rgba(255, 255, 255, 0.14) 42%,
+                transparent 78%
+            );
+        animation: projector-pan 9s ease-in-out infinite alternate;
+    }
+
+    .film-grain {
+        background-image: radial-gradient(rgba(255, 255, 255, 0.18) 0.45px, transparent 0.45px);
+        background-size: 3px 3px;
+    }
+}
+
+@keyframes projector-pan {
+    0% {
+        transform: translateX(-2%) scale(1);
+    }
+    100% {
+        transform: translateX(2%) scale(1.03);
+    }
+}

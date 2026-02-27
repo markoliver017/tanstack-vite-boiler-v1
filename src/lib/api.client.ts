@@ -14,19 +14,21 @@ export async function apiRequest<T>(
     });
 
     if (!response.ok) {
+        let errorMessage =
+            response.statusText || "An error occurred while fetching";
         try {
             const errorData = await response.json();
-            throw new Error(
-                errorData.message || "An unknown error occurred while fetching",
-            );
-            // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        } catch (error) {
-            // If the response body is not JSON or doesn't contain a message,
-            // use the HTTP status text as a fallback.
-            throw new Error(
-                response.statusText || "An error occurred while fetching",
-            );
+            if (errorData.message) {
+                errorMessage = Array.isArray(errorData.message)
+                    ? errorData.message.join(", ")
+                    : errorData.message;
+            } else if (errorData.error) {
+                errorMessage = errorData.error;
+            }
+        } catch {
+            // Ignore error if response is not JSON
         }
+        throw new Error(errorMessage);
     }
 
     return response.json();
@@ -46,9 +48,21 @@ export async function fetchList<T>(
     });
 
     if (!response.ok) {
-        throw new Error(
-            response.statusText || "An error occurred while fetching",
-        );
+        let errorMessage =
+            response.statusText || "An error occurred while fetching";
+        try {
+            const errorData = await response.json();
+            if (errorData.message) {
+                errorMessage = Array.isArray(errorData.message)
+                    ? errorData.message.join(", ")
+                    : errorData.message;
+            } else if (errorData.error) {
+                errorMessage = errorData.error;
+            }
+        } catch {
+            // Ignore error if response is not JSON
+        }
+        throw new Error(errorMessage);
     }
 
     const total = Number(response.headers.get("X-Total-Count") || 0);

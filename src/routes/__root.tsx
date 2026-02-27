@@ -9,6 +9,7 @@ import type { AuthSession } from "@/types/auth";
 import type { authClient } from "@/lib/auth/auth-client";
 import { MainLayout } from "@/components/layouts/MainLayout";
 import { NotFoundComponent } from "@/components/shared/NotFoundComponent";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 interface MyRouterContext {
     queryClient: QueryClient;
@@ -42,6 +43,7 @@ function RootComponent() {
         <MainLayout>
             <Outlet />
             <TanStackRouterDevtools />
+            <ReactQueryDevtools buttonPosition="bottom-right" />
             <Scripts />
         </MainLayout>
     );
