@@ -1,0 +1,118 @@
+{
+  "CAR": [
+    "ABR",
+    "APA",
+    "BEN",
+    "IFU",
+    "KAL",
+    "MOU"
+  ],
+  "XIII": [
+    "AGN",
+    "AGS",
+    "DIN",
+    "SUN",
+    "SUR"
+  ],
+  "VI": [
+    "AKL",
+    "ANT",
+    "CAP",
+    "GUI",
+    "ILI",
+    "NEC"
+  ],
+  "V": [
+    "ALB",
+    "CAN",
+    "CAS",
+    "CAT",
+    "MAS",
+    "SOR"
+  ],
+  "III": [
+    "AUR",
+    "BAN",
+    "BUL",
+    "NUE",
+    "PAM",
+    "TAR",
+    "ZMB"
+  ],
+  "BARMM": [
+    "BAS",
+    "LAS",
+    "MAG",
+    "SLU",
+    "TAW"
+  ],
+  "II": [
+    "BTN",
+    "CAG",
+    "ISA",
+    "NUV",
+    "QUI"
+  ],
+  "IV-A": [
+    "BTG",
+    "CAV",
+    "LAG",
+    "QUE",
+    "RIZ"
+  ],
+  "VIII": [
+    "BIL",
+    "EAS",
+    "LEY",
+    "NSA",
+    "SLE",
+    "WSA"
+  ],
+  "VII": [
+    "BOH",
+    "CEB",
+    "NER",
+    "SIG"
+  ],
+  "X": [
+    "BUK",
+    "CAM",
+    "LAN",
+    "MSC",
+    "MSR"
+  ],
+  "XII": [
+    "NCO",
+    "SAR",
+    "SCO",
+    "SUK"
+  ],
+  "XI": [
+    "DAC",
+    "DAO",
+    "DAS",
+    "DAV",
+    "DAV2"
+  ],
+  "I": [
+    "ILN",
+    "ILS",
+    "LUN",
+    "PAN"
+  ],
+  "IV-B": [
+    "MAD",
+    "MDC",
+    "MDR",
+    "PLW",
+    "ROM"
+  ],
+  "NCR": [
+    "MM"
+  ],
+  "IX": [
+    "ZAN",
+    "ZAS",
+    "ZSI"
+  ]
+}

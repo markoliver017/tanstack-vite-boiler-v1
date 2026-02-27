@@ -1,0 +1,52 @@
+{
+  "source": "https://psgc.gitlab.io/api",
+  "fetchedAt": "2026-02-26T04:12:53.550Z",
+  "files": {
+    "regions.raw.json": {
+      "count": 17,
+      "sample": [
+        "code",
+        "name",
+        "regionName",
+        "islandGroupCode",
+        "psgc10DigitCode"
+      ]
+    },
+    "provinces.raw.json": {
+      "count": 81,
+      "sample": [
+        "code",
+        "name",
+        "regionCode",
+        "islandGroupCode",
+        "psgc10DigitCode"
+      ]
+    },
+    "cities-municipalities.raw.json": {
+      "count": 1634,
+      "sample": [
+        "code",
+        "name",
+        "oldName",
+        "isCapital",
+        "isCity",
+        "isMunicipality",
+        "provinceCode",
+        "districtCode"
+      ]
+    },
+    "barangays.raw.json": {
+      "count": 42046,
+      "sample": [
+        "code",
+        "name",
+        "oldName",
+        "subMunicipalityCode",
+        "cityCode",
+        "municipalityCode",
+        "districtCode",
+        "provinceCode"
+      ]
+    }
+  }
+}

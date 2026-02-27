@@ -31,6 +31,8 @@ export const addressUtils = {
 
     // Get cities based on the province key (e.g., "MM" or "ABR")
     getCitiesByProvince: (provinceKey: string): PSGCCity[] => {
-        return (cities as PSGCCity[]).filter((c) => c.province === provinceKey);
+        return (cities as PSGCCity[])
+            .filter((c) => c.province === provinceKey)
+            .sort((a, b) => a.name.localeCompare(b.name));
     },
 };
